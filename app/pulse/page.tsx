@@ -12,9 +12,10 @@ import {
   PulseTeamDesktop,
   PulseHandledDesktop,
 } from "@/components/pulse-desktop-screens"
+import { PulseDesignSystemArtboard } from "@/components/pulse-design-system"
 
 export default function PulsePage() {
-  const [viewMode, setViewMode] = useState<"desktop" | "mobile">("desktop")
+  const [viewMode, setViewMode] = useState<"desktop" | "mobile" | "design-system">("desktop")
 
   // Pulse internal operational command states (extracted from Pulse - Operations.dc.html)
   const [activePulseScreenIndex, setActivePulseScreenIndex] = useState(0)
@@ -44,19 +45,31 @@ export default function PulsePage() {
                 <div className="flex items-center gap-5 text-[11px] text-[#1E1611]/45">
                   <button
                     onClick={() => setViewMode("desktop")}
-                    className={`transition-colors ${viewMode === "desktop" ? "text-[#1E1611] font-semibold" : "hover:text-[#1E1611]"}`}
+                    className={`transition-colors ${viewMode === "desktop" ? "text-[#1E1611] font-semibold" : "hover:text-[#1E1611]"} cursor-pointer`}
                   >
                     Desktop
                   </button>
                   <button
                     onClick={() => setViewMode("mobile")}
-                    className={`transition-colors ${viewMode === "mobile" ? "text-[#1E1611] font-semibold" : "hover:text-[#1E1611]"}`}
+                    className={`transition-colors ${viewMode === "mobile" ? "text-[#1E1611] font-semibold" : "hover:text-[#1E1611]"} cursor-pointer`}
                   >
                     Mobile
+                  </button>
+                  <button
+                    onClick={() => setViewMode("design-system")}
+                    className={`transition-colors ${viewMode === "design-system" ? "text-[#1E1611] font-semibold" : "hover:text-[#1E1611]"} cursor-pointer`}
+                  >
+                    Design System
                   </button>
                 </div>
               </div>
             </div>
+
+            {viewMode === "design-system" && (
+              <div className="w-full flex justify-center">
+                <PulseDesignSystemArtboard />
+              </div>
+            )}
 
             {viewMode === "desktop" && (
               <div className="w-full overflow-x-auto rounded-[24px]">
