@@ -163,9 +163,8 @@ export default function Page() {
   const scrollToScreen = (index: number) => {
     setActiveScreenIndex(index)
     const element = document.getElementById(`screen-${index}`)
-    if (element && containerRef.current) {
-      const leftPos = element.offsetLeft - containerRef.current.offsetLeft - 32
-      containerRef.current.scrollTo({ left: leftPos, behavior: "smooth" })
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" })
     }
   }
 
@@ -370,10 +369,10 @@ export default function Page() {
           <span className="bg-[#2F483A] text-[#FAF8F5] text-[7.5px] uppercase tracking-widest px-2.5 py-0.5 rounded-full font-bold ml-2">6 Screens Flow</span>
         </div>
 
-        {/* Horizontal Mockups Showcase Track */}
+        {/* Grid Mockups Showcase Track (3 screens per row) */}
         <div 
           ref={containerRef}
-          className="w-full flex overflow-x-auto py-6 px-4 gap-8 items-start scrollbar-thin scrollbar-thumb-[#1E1611]/10 scrollbar-track-transparent bg-[#FAF8F5]/30 border border-[#1E1611]/6 rounded-[40px] shadow-[inset_0_2px_8px_rgba(30,22,17,0.02)]"
+          className="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 py-8 px-6 gap-x-8 gap-y-12 bg-[#FAF8F5]/30 border border-[#1E1611]/6 rounded-[40px] shadow-[inset_0_2px_8px_rgba(30,22,17,0.02)] justify-items-center"
         >
         
         {/* ==================== SCREEN 1: ARRIVAL ==================== */}
