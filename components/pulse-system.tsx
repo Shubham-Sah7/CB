@@ -56,23 +56,25 @@ const TopStrip = () => (
 
 const NavRail = ({ active }: { active: string }) => (
   <div className="w-[188px] shrink-0 flex flex-col border-r border-[#1E1611]/8 py-5">
-    <div className="flex flex-col gap-1 px-3">
+    <div className="flex flex-col gap-1.5 px-3">
       {NAV_SECTIONS.map((s) => {
         const isActive = s.key === active
         return (
           <div
             key={s.key}
-            className="flex items-center gap-3 px-3 py-2.5 rounded-[8px]"
-            style={{ background: isActive ? "rgba(30,22,17,0.045)" : "transparent" }}
+            className={`flex items-center gap-3 px-3 py-2.5 transition-all duration-200 relative group cursor-pointer ${isActive ? "" : "hover:pl-4"}`}
           >
-            <span className="shrink-0" style={{ color: isActive ? "#2F483A" : "rgba(30,22,17,0.32)" }}>
+            {isActive && (
+              <div className="absolute left-0 top-1.5 bottom-1.5 w-[3px] bg-[#2F483A] rounded-r-[2px]" />
+            )}
+            <span className="shrink-0 transition-colors duration-200" style={{ color: isActive ? "#2F483A" : "rgba(30,22,17,0.32)" }}>
               {s.icon}
             </span>
             <div className="min-w-0 flex-1">
-              <div className={`text-[12.5px] leading-tight truncate ${isActive ? "text-[#1E1611] font-semibold" : "text-[#1E1611]/45"}`}>{s.label}</div>
-              {s.count !== undefined && <div className="text-[9.5px] text-[#C2410C]/85 mt-0.5 font-mono">{s.count} open</div>}
+              <div className={`transition-all duration-200 ${isActive ? "text-[#1E1611] font-serif italic text-[14px] font-semibold" : "text-[#1E1611]/50 text-[12.5px] hover:text-[#1E1611] font-medium"}`}>{s.label}</div>
+              {s.count !== undefined && <div className="text-[9px] text-[#C2410C]/80 mt-0.5 font-mono tracking-wide uppercase">{s.count} open</div>}
             </div>
-            {isActive && <span className="w-[5px] h-[5px] rounded-full bg-[#2F483A] shrink-0" />}
+            {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#2F483A] shrink-0" />}
           </div>
         )
       })}

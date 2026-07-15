@@ -60,7 +60,7 @@ export default function PulsePage() {
 
             {viewMode === "desktop" && (
               <div className="w-full overflow-x-auto rounded-[24px]">
-                <div style={{ minWidth: "max-content", background: "#2B2822", padding: "56px 64px 72px" }}>
+                <div className="paper-grain" style={{ minWidth: "max-content", background: "#161D18", padding: "56px 64px 72px" }}>
                   <PulseDesktopHeader />
                   <div style={{ display: "flex", flexDirection: "column", gap: "60px", alignItems: "flex-start" }}>
                     <div style={{ display: "flex", flexDirection: "column", gap: "22px" }}>
