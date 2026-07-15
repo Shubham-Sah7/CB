@@ -49,8 +49,10 @@ const TopStrip = () => (
     <span>3 / 4 Staff on Duty</span>
     <Sep />
     <span>100% Occupancy</span>
+    <Sep />
+    <span className="flex items-center gap-1.5"><span className="w-1 h-1 rounded-full bg-[#2F483A]" />PMS Synced 12s ago</span>
     <div className="flex-1" />
-    <span className="text-[#2F483A] font-medium">Elena Moser · Morning Lead</span>
+    <span className="text-[#2F483A] font-medium">Elena Moser</span>
   </div>
 )
 
@@ -112,26 +114,25 @@ export const PulseShell = ({ active, children }: { active: string; children: Rea
     </div>
   </div>
 )
-
 export const ScreenTitle = ({ title, meta, right }: { title: string; meta?: string; right?: ReactNode }) => (
-  <div className="h-[72px] shrink-0 flex items-center px-10 gap-4">
-    <h1 className="font-serif text-[22px] font-medium text-[#1E1611] tracking-wide">{title}</h1>
-    {meta && <span className="text-[13px] text-[#1E1611]/40 translate-y-[2px]">{meta}</span>}
+  <div className="h-[80px] shrink-0 flex items-center px-10 gap-5">
+    <h1 className="font-serif text-[24px] font-light text-[#1E1611] tracking-wide">{title}</h1>
+    {meta && <span className="text-[11.5px] font-mono uppercase tracking-[0.1em] text-[#1E1611]/35 translate-y-[1.5px]">{meta}</span>}
     <div className="flex-1" />
     {right}
   </div>
 )
 
 export const SectionLabel = ({ children }: { children: ReactNode }) => (
-  <div className="text-[9.5px] font-semibold uppercase tracking-[0.14em] text-[#1E1611]/40">{children}</div>
+  <div className="text-[10px] font-sans font-medium uppercase tracking-[0.18em] text-[#1E1611]/40">{children}</div>
 )
 
 export const PriorityMarker = ({ time, severity = "neutral" }: { time: string; severity?: Severity }) => (
   <div className="flex items-baseline gap-1.5">
-    <span className="font-mono text-[12.5px] font-semibold tabular-nums" style={{ color: TONE[severity] }}>
+    <span className="font-mono text-[12px] font-semibold tracking-tight tabular-nums" style={{ color: TONE[severity] }}>
       {time}
     </span>
-    {severity !== "neutral" && <span className="w-[4px] h-[4px] rounded-full shrink-0" style={{ background: TONE[severity] }} />}
+    {severity !== "neutral" && <span className="w-[4px] h-[4px] rounded-full shrink-0 animate-pulse" style={{ background: TONE[severity] }} />}
   </div>
 )
 
@@ -152,26 +153,26 @@ export const LedgerEntry = ({
   owner: string
   action: string
 }) => (
-  <div className="flex items-start gap-5 py-4 border-b border-[#1E1611]/7 last:border-0">
-    <div className="w-[62px] pt-0.5 shrink-0">
+  <div className="flex items-center gap-6 py-4 border-b border-[#1E1611]/4 last:border-0 hover:bg-[#1E1611]/[0.01] transition-colors px-4 -mx-4 rounded-[4px]">
+    <div className="w-[68px] shrink-0">
       <PriorityMarker time={time} severity={severity} />
     </div>
-    {icon && <div className="shrink-0 pt-1 text-[#1E1611]/30">{icon}</div>}
+    {icon && <div className="shrink-0 text-[#1E1611]/30">{icon}</div>}
     <div className="flex-1 min-w-0">
-      <div className="font-serif text-[15px] text-[#1E1611]">{title}</div>
-      <div className="text-[11px] text-[#1E1611]/40 mt-1">{meta}</div>
+      <div className="font-serif text-[15.5px] text-[#1E1611] font-medium tracking-wide">{title}</div>
+      <div className="text-[11.5px] text-[#1E1611]/40 mt-0.5 leading-normal">{meta}</div>
     </div>
-    <div className="w-[112px] shrink-0 text-[11.5px] text-[#1E1611]/55 pt-1">{owner}</div>
-    <button className="shrink-0 text-[12px] text-[#2F483A] font-medium pt-1 hover:opacity-70 transition-opacity">{action} ›</button>
+    <div className="w-[120px] shrink-0 text-[12px] text-[#1E1611]/50">{owner}</div>
+    <button className="shrink-0 text-[11px] font-sans font-bold uppercase tracking-wider text-[#2F483A] hover:text-[#26392E] transition-colors cursor-pointer">{action}</button>
   </div>
 )
 
 export const EditorialStat = ({ value, label, tone }: { value: ReactNode; label: string; tone?: string }) => (
-  <div className="flex flex-col gap-1 items-center">
-    <span className="font-sans text-[30px] font-semibold tracking-tight leading-none" style={{ color: tone ?? "#1E1611" }}>
+  <div className="flex flex-col gap-1 items-center justify-center">
+    <span className="font-sans text-[28px] font-light tracking-tight leading-none" style={{ color: tone ?? "#1E1611" }}>
       {value}
     </span>
-    <span className="text-[9px] uppercase tracking-[0.12em] font-semibold text-[#1E1611]/45 text-center">{label}</span>
+    <span className="text-[9px] uppercase tracking-[0.15em] font-medium text-[#1E1611]/40 text-center">{label}</span>
   </div>
 )
 
@@ -202,7 +203,7 @@ export const RadialGauge = ({
   valueLabel,
   label,
   tone = "#2F483A",
-  size = 66,
+  size = 60,
 }: {
   value: number
   valueLabel: string
@@ -210,16 +211,16 @@ export const RadialGauge = ({
   tone?: string
   size?: number
 }) => {
-  const strokeW = 4
-  const r = (size - 12) / 2
+  const strokeW = 3
+  const r = (size - 10) / 2
   const c = 2 * Math.PI * r
   const offset = c * (1 - Math.min(100, Math.max(0, value)) / 100)
   return (
-    <div className="flex flex-col items-center gap-1.5">
+    <div className="flex flex-col items-center gap-2">
       <div className="relative" style={{ width: size, height: size }}>
         <svg width={size} height={size} className="-rotate-90">
-          <circle cx={size / 2} cy={size / 2} r={size / 2 - 2} fill="none" stroke="rgba(30,22,17,0.05)" strokeWidth="0.75" strokeDasharray="2 2" />
-          <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="rgba(30,22,17,0.06)" strokeWidth={strokeW} />
+          <circle cx={size / 2} cy={size / 2} r={size / 2 - 2} fill="none" stroke="rgba(30,22,17,0.03)" strokeWidth="0.5" strokeDasharray="1.5 1.5" />
+          <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="rgba(30,22,17,0.04)" strokeWidth={strokeW} />
           <circle
             cx={size / 2}
             cy={size / 2}
@@ -234,28 +235,27 @@ export const RadialGauge = ({
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="font-sans text-[13px] font-bold tracking-tight" style={{ color: tone }}>{valueLabel}</span>
+          <span className="font-sans text-[11.5px] font-medium tracking-tight text-[#1E1611]/85">{valueLabel}</span>
         </div>
       </div>
-      <span className="text-[8.5px] uppercase tracking-[0.12em] font-semibold text-[#1E1611]/45 text-center leading-tight">{label}</span>
+      <span className="text-[9px] uppercase tracking-[0.15em] font-medium text-[#1E1611]/40 text-center leading-tight">{label}</span>
     </div>
   )
 }
 
-// Two measures, one scale, direct-labeled — no legend needed for a pair.
 export const BarCompare = ({ label, items }: { label: string; items: { label: string; value: number }[] }) => {
   const max = Math.max(...items.map((i) => i.value))
   return (
-    <div className="flex flex-col gap-1.5 min-w-[150px]">
-      <div className="text-[8.5px] uppercase tracking-[0.12em] font-semibold text-[#1E1611]/45">{label}</div>
+    <div className="flex flex-col gap-2 min-w-[150px]">
+      <div className="text-[9px] uppercase tracking-[0.15em] font-medium text-[#1E1611]/40">{label}</div>
       <div className="flex flex-col gap-2">
         {items.map((it, i) => (
-          <div key={i} className="flex items-center gap-2.5">
-            <span className="text-[10px] text-[#1E1611]/50 w-[62px] shrink-0 font-medium">{it.label}</span>
-            <div className="flex-1 h-[4px] rounded-full bg-[#1E1611]/6 overflow-hidden relative">
-              <div className="h-full rounded-full bg-[#2F483A]" style={{ width: `${(it.value / max) * 100}%` }} />
+          <div key={i} className="flex items-center gap-3">
+            <span className="text-[10.5px] text-[#1E1611]/50 w-[64px] shrink-0 font-medium">{it.label}</span>
+            <div className="flex-1 h-[3px] bg-[#1E1611]/5 rounded-full overflow-hidden relative">
+              <div className="h-full bg-[#2F483A] rounded-full" style={{ width: `${(it.value / max) * 100}%` }} />
             </div>
-            <span className="text-[11px] font-mono font-bold text-[#1E1611] w-[16px] text-right" style={{ fontVariantNumeric: "lining-nums" }}>{it.value}</span>
+            <span className="text-[11px] font-mono font-medium text-[#1E1611]/70 w-[16px] text-right" style={{ fontVariantNumeric: "lining-nums" }}>{it.value}</span>
           </div>
         ))}
       </div>
@@ -268,11 +268,11 @@ export const TimelineRibbon = ({ stops }: { stops: { time: string; text: string 
     {stops.map((s, i) => (
       <div key={i} className="flex gap-3 pb-4 last:pb-0">
         <div className="flex flex-col items-center pt-1">
-          <span className="w-[4px] h-[4px] rounded-full bg-[#1E1611]/45 shrink-0" />
-          {i < stops.length - 1 && <span className="w-px flex-1 bg-[#1E1611]/12 mt-1" />}
+          <span className="w-[3px] h-[3px] rounded-full bg-[#1E1611]/30 shrink-0" />
+          {i < stops.length - 1 && <span className="w-px flex-1 bg-[#1E1611]/8 mt-1" />}
         </div>
         <div>
-          <div className="font-mono text-[10px] text-[#1E1611]/40">{s.time}</div>
+          <div className="font-mono text-[9.5px] text-[#1E1611]/35">{s.time}</div>
           <div className="text-[12px] text-[#1E1611]/70 mt-0.5 leading-snug">{s.text}</div>
         </div>
       </div>
@@ -282,7 +282,7 @@ export const TimelineRibbon = ({ stops }: { stops: { time: string; text: string 
 
 export const RecommendationSection = ({ label, children }: { label: string; children: ReactNode }) => (
   <div className="flex flex-col gap-3">
-    <span className="text-[9px] font-semibold uppercase tracking-[0.14em] text-[#C2410C]/75">{label}</span>
+    <span className="text-[9.5px] font-sans font-medium uppercase tracking-[0.18em] text-[#8A6D3B]">{label}</span>
     <div className="flex flex-col gap-4">{children}</div>
   </div>
 )
@@ -291,7 +291,6 @@ export const RecommendationLine = ({
   action,
   outcome,
   time,
-  confidence,
 }: {
   action: string
   outcome: string
@@ -300,12 +299,11 @@ export const RecommendationLine = ({
 }) => (
   <div>
     <div className="flex items-baseline justify-between gap-2">
-      <span className="font-serif text-[14px] text-[#1E1611]">{action}</span>
-      <span className="text-[10px] font-mono text-[#1E1611]/35 shrink-0">{time}</span>
+      <span className="font-serif text-[14px] font-medium text-[#1E1611]">{action}</span>
+      <span className="text-[9.5px] font-mono text-[#1E1611]/35 shrink-0">{time}</span>
     </div>
     <div className="text-[11.5px] text-[#1E1611]/50 mt-1 leading-snug">
       {outcome}
-      {confidence !== undefined && <span className="text-[#2F483A]"> · {confidence}% confidence</span>}
     </div>
   </div>
 )
@@ -314,9 +312,9 @@ export const DependencyNode = ({ tag, severity, title, detail }: { tag: string; 
   <div className="py-3.5">
     <div className="flex items-center gap-2">
       <span className="w-[4px] h-[4px] rounded-full shrink-0" style={{ background: TONE[severity] }} />
-      <span className="text-[9.5px] uppercase tracking-[0.1em] font-semibold" style={{ color: TONE[severity] }}>{tag}</span>
+      <span className="text-[9.5px] uppercase tracking-[0.12em] font-medium" style={{ color: TONE[severity] }}>{tag}</span>
     </div>
-    <div className="font-serif text-[17px] text-[#1E1611] mt-1.5">{title}</div>
+    <div className="font-serif text-[17px] text-[#1E1611] font-medium mt-1.5">{title}</div>
     <div className="text-[12px] text-[#1E1611]/50 mt-1 leading-snug">{detail}</div>
   </div>
 )

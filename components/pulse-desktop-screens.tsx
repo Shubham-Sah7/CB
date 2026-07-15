@@ -32,54 +32,54 @@ const BRIEF_ISSUES = [
     time: "02:00",
     severity: "critical" as const,
     icon: <HouseIcon className="w-4 h-4" />,
-    title: "Room 304 flooded",
-    meta: "Guests moved to 217 at 02:40 · room offline indefinitely",
+    title: "Room 304 water leakage",
+    meta: "Guests relocated to Room 217 at 02:40 · Room offline for maintenance",
     owner: "Unassigned",
-    action: "Apologize",
+    action: "Care Protocol",
   },
   {
     time: "by 09:00",
     severity: "critical" as const,
     icon: <RoomKeyIcon className="w-4 h-4" />,
-    title: "Overbooked by one room tonight",
-    meta: "304 pushed a sold-out night one over capacity",
-    owner: "Elena · you",
+    title: "Overbooking (1 Room Deficit)",
+    meta: "Room 304 offline resulted in zero capacity availability",
+    owner: "Elena",
     action: "Resolve",
   },
   {
     time: "by 11:00",
     severity: "attention" as const,
     icon: <BellIcon className="w-4 h-4" />,
-    title: "VIP couple arriving early",
-    meta: "Brandt · 6th stay — Room 208 checks out at noon",
+    title: "VIP Early Arrival (Herr & Frau Brandt)",
+    meta: "6th stay · Room 208 checkout scheduled for 12:00",
     owner: "Sofia",
-    action: "Prepare",
+    action: "Prepare Room",
   },
   {
-    time: "before shift",
+    time: "by 07:00",
     severity: "attention" as const,
     icon: <LuggageIcon className="w-4 h-4" />,
-    title: "Front office short-staffed",
-    meta: "Léa out sick — 3 of 4 today, 6 tasks need an owner",
-    owner: "Elena · you",
-    action: "Rebalance",
+    title: "Shift Capacity Deficit",
+    meta: "Léa absent · 3 of 4 team members active · roster balancing required",
+    owner: "Elena",
+    action: "Balance Roster",
   },
   {
     time: "all day",
     severity: "neutral" as const,
     icon: <HouseIcon className="w-4 h-4" />,
-    title: "14 arrivals · 11 departures · group of 8",
-    meta: "Standard load, running alongside the above",
-    owner: "Front desk",
+    title: "Routine Operations",
+    meta: "14 arrivals · 11 departures · 1 group check-in (8 guests)",
+    owner: "Front Desk",
     action: "Review",
   },
 ]
 
 const OVERNIGHT_LOG = [
-  { time: "02:00", text: "Water sensor triggered, Room 304" },
-  { time: "02:40", text: "Guests relocated to 217 by night manager" },
-  { time: "03:10", text: "Maintenance isolated the riser; 304 offline" },
-  { time: "06:15", text: "Léa reported sick for the morning shift" },
+  { time: "02:00", text: "Water telemetry alert triggered in Room 304" },
+  { time: "02:40", text: "Night Duty Manager relocated guests to Room 217" },
+  { time: "03:10", text: "Facilities isolated the riser; Room 304 set to offline" },
+  { time: "06:15", text: "Léa reported absence for morning shift" },
 ]
 
 export const PulseBriefDesktop = () => (
@@ -87,27 +87,25 @@ export const PulseBriefDesktop = () => (
     <div className="flex-1 flex flex-col min-w-0">
       <ScreenTitle title="Morning Brief" meta="Wednesday 15 July" />
       <div className="flex-1 flex min-w-0">
-        <div className="flex-1 flex flex-col px-8 py-6 min-w-0 gap-6">
-          <Card className="px-6 py-5 flex items-center justify-between gap-4">
+        <div className="flex-1 flex flex-col px-10 py-8 min-w-0 gap-8">
+          <Card className="px-8 py-6 flex items-center justify-between gap-8">
             <RadialGauge value={95.5} valueLabel="86/90" label="Rooms Ready" />
             <RadialGauge value={100} valueLabel="100%" label="Occupancy" />
             <RadialGauge value={75} valueLabel="75%" label="Staff Capacity" tone="#8A6D3B" />
-            <div className="w-px self-stretch bg-[#1E1611]/8 hidden xl:block mx-1" />
-            <EditorialStat value="2" label="Critical" tone="#C2410C" />
+            <EditorialStat value="2" label="Urgent Attention" tone="#C2410C" />
             <EditorialStat value="1" label="VIP Arrivals" />
-            <div className="w-px self-stretch bg-[#1E1611]/8 hidden xl:block mx-1" />
-            <BarCompare label="Today's Load" items={[{ label: "Arrivals", value: 14 }, { label: "Departures", value: 11 }]} />
+            <BarCompare label="Operational Load" items={[{ label: "Arrivals", value: 14 }, { label: "Departures", value: 11 }]} />
             <div className="w-[120px] shrink-0">
               <PunchStrip total={10} filled={7} label="Housekeeping" />
             </div>
           </Card>
 
-          <Card className="px-6 py-5 flex-1 flex flex-col min-h-0">
-            <div className="flex items-baseline justify-between mb-1">
-              <SectionLabel>Needs you · ordered by urgency</SectionLabel>
-              <span className="text-[11px] text-[#1E1611]/35 italic font-serif">Start at the top</span>
+          <Card className="px-8 py-6 flex-1 flex flex-col min-h-0">
+            <div className="flex items-baseline justify-between mb-4">
+              <SectionLabel>Handover Registry · Awaiting Care</SectionLabel>
+              <span className="text-[11.5px] text-[#1E1611]/35 italic font-serif">Start at the top</span>
             </div>
-            <div>
+            <div className="flex-1 overflow-y-auto">
               {BRIEF_ISSUES.map((issue, i) => (
                 <LedgerEntry key={i} {...issue} />
               ))}
@@ -115,24 +113,24 @@ export const PulseBriefDesktop = () => (
           </Card>
         </div>
 
-        <div className="w-[300px] shrink-0 px-5 py-6 flex flex-col gap-5 overflow-y-auto">
-          <Card className="px-5 py-5 flex flex-col gap-4">
-            <SectionLabel>Recommended</SectionLabel>
-            <RecommendationSection label="Now">
-              <RecommendationLine action="Apologize to 304 guests" outcome="Warm note + amenity to 217" time="2 min" confidence={96} />
-              <RecommendationLine action="Resolve the overbooking" outcome="Clears three downstream items" time="3 min" confidence={94} />
+        <div className="w-[320px] shrink-0 px-6 py-8 flex flex-col gap-6 overflow-y-auto border-l border-[#1E1611]/6">
+          <Card className="px-6 py-6 flex flex-col gap-5">
+            <SectionLabel>Handover Guidelines</SectionLabel>
+            <RecommendationSection label="Immediate">
+              <RecommendationLine action="Care Protocol: Room 304" outcome="Deliver apology and amenity to Room 217" time="2 min" />
+              <RecommendationLine action="Resolve Overbooking" outcome="Clears three downstream operational issues" time="3 min" />
             </RecommendationSection>
             <RecommendationSection label="Next">
-              <RecommendationLine action="Green-light VIP turnaround" outcome="Confirms the early checkout" time="2 min" confidence={88} />
+              <RecommendationLine action="VIP Room Turnaround" outcome="Authorize early checkout for Room 208" time="2 min" />
             </RecommendationSection>
             <RecommendationSection label="Later">
-              <RecommendationLine action="Rebalance the shift" outcome="Restores 4-of-4 capacity" time="3 min" confidence={82} />
+              <RecommendationLine action="Balance Shift Roster" outcome="Assign Léa's outstanding guest care duties" time="3 min" />
             </RecommendationSection>
           </Card>
 
-          <Card className="px-5 py-5">
-            <SectionLabel>Overnight Log</SectionLabel>
-            <div className="mt-3">
+          <Card className="px-6 py-6">
+            <SectionLabel>Overnight Logbook</SectionLabel>
+            <div className="mt-4">
               <TimelineRibbon stops={OVERNIGHT_LOG} />
             </div>
           </Card>
@@ -147,38 +145,37 @@ export const PulseBriefDesktop = () => (
 export const PulseConflictsDesktop = () => (
   <PulseShell active="conflicts">
     <div className="flex-1 flex flex-col min-w-0">
-      <ScreenTitle title="How these connect" meta="One root cause, four consequences" />
+      <ScreenTitle title="Dependency Chain" meta="Root-Cause Cascade" />
       <div className="flex-1 flex min-w-0">
-        <div className="flex-1 px-10 py-10 min-w-0 flex justify-center overflow-y-auto">
+        <div className="flex-1 px-10 py-8 min-w-0 flex justify-center overflow-y-auto">
           <Card className="px-8 py-8 w-full max-w-[560px] h-fit">
-            <DependencyNode tag="Root cause" severity="critical" title="Room 304 flooded" detail="Pipe leak at 02:00. Room offline for the foreseeable — one fewer sellable room." />
-            <DependencyThread label="causes" />
-            <DependencyNode tag="Critical" severity="critical" title="Overbooked by one" detail="Sold-out night, now one over capacity. Decision needed by 09:00." />
-            <DependencyThread label="forces" />
-            <DependencyNode tag="Attention" severity="attention" title="VIP room conflict" detail="Room 208 held for the Brandts, occupied until noon. Arrival 11:00." />
-            <DependencyThread label="delays" />
-            <DependencyNode tag="Attention" severity="attention" title="Housekeeping crunch" detail="Under an hour to turn 208 before 11:00 — one fewer housekeeper." />
+            <DependencyNode tag="Root Disruption" severity="critical" title="Room 304 Offline" detail="Riser leak isolated at 02:00. Room offline indefinitely." />
+            <DependencyThread label="triggers" />
+            <DependencyNode tag="Critical Impact" severity="critical" title="1 Room Overcapacity" detail="Resort fully committed tonight. Guest relocation required by 09:00." />
+            <DependencyThread label="restricts" />
+            <DependencyNode tag="Service Deficit" severity="attention" title="VIP Prep Collision" detail="Room 208 checkout scheduled for 12:00. Incoming VIP arrival at 11:00." />
+            <DependencyThread label="shortens" />
+            <DependencyNode tag="Service Deficit" severity="attention" title="Turnaround Deficit" detail="Deficit of 60 minutes for Room 208 sanitization. Staff allocation required." />
             <div className="ml-5 mt-4 pt-4 border-l border-dashed border-[#1E1611]/15 pl-6">
-              <DependencyNode tag="Compounding" severity="neutral" title="Front office short one (sick)" detail="Fewer hands make every step above slower." />
+              <DependencyNode tag="Aggravating Deficit" severity="neutral" title="Front Office Shortage" detail="Reduced staffing levels slow turnaround and check-in workflows." />
             </div>
           </Card>
         </div>
-        <div className="w-[360px] shrink-0 px-6 py-10 border-l border-[#1E1611]/8 bg-[#FAF8F5]/50">
-          <Card className="px-7 py-7">
-            <SectionLabel>Reading the chain</SectionLabel>
+        <div className="w-[360px] shrink-0 px-6 py-8 border-l border-[#1E1611]/6 bg-[#FAF8F5]/50 flex flex-col gap-6">
+          <Card className="px-6 py-6">
+            <SectionLabel>Operations Analysis</SectionLabel>
             <div className="font-serif text-[20px] text-[#1E1611] mt-3 leading-snug">It all traces back to Room 304.</div>
             <p className="text-[12.5px] text-[#1E1611]/55 leading-relaxed mt-3">
-              One flooded room removed a night&apos;s last bit of slack. Everything downstream — the overbooking, the VIP squeeze, the
-              housekeeping crunch — is a consequence, not a separate fire.
+              Room 304 water leakage removed the resort's operational buffer. Subsequent downstream incidents — overcapacity, VIP turnaround squeeze, and staffing shortage — stem directly from this single disruption.
             </p>
             <div className="mt-6 pt-5 border-t border-dashed border-[#1E1611]/12">
-              <div className="text-[10.5px] font-semibold text-[#2F483A] uppercase tracking-wide">Do this first</div>
-              <p className="text-[12.5px] text-[#1E1611] mt-1.5 leading-relaxed">
-                Resolving the overbooking clears <span className="font-semibold">three</span> of the four downstream items at once.
+              <div className="text-[10px] font-sans font-medium uppercase tracking-[0.15em] text-[#2F483A]">Recommended Path</div>
+              <p className="text-[12px] text-[#1E1611] mt-1.5 leading-relaxed">
+                Addressing the room overcapacity clears <span className="font-semibold text-[#2F483A]">three</span> downstream service blockages simultaneously.
               </p>
             </div>
             <div className="mt-8">
-              <PrimaryAction className="w-full">Resolve the overbooking</PrimaryAction>
+              <PrimaryAction className="w-full">Resolve Overbooking</PrimaryAction>
             </div>
           </Card>
         </div>
@@ -192,76 +189,86 @@ export const PulseConflictsDesktop = () => (
 const OVERBOOK_OPTIONS = [
   {
     recommended: true,
-    title: "Rebook to sister property",
-    detail: "Chalet Verbois, 6 min transfer. Complimentary car both ways, one free night on return.",
-    guest: "Minimal — upgrade & return perk soften it",
-    ops: "Low — partner has availability now",
-    revenue: "−CHF 1,400 tonight, recovered on return",
+    title: "Relocate to Sister Property",
+    detail: "Chalet Verbois (6 min transfer). Complimentary private shuttle, return stay voucher.",
+    guest: "Minimal (upgrade & return perk)",
+    ops: "Low (vacancy confirmed)",
+    revenue: "−CHF 1,400 (reimbursed by partner)",
   },
   {
     recommended: false,
-    title: "Consolidate a flexible party",
-    detail: "Move a two-room family booking into a suite, freeing one room.",
-    guest: "Moderate — asks a guest to shift rooms",
-    ops: "Medium — coordination & re-clean",
-    revenue: "Neutral — suite comped",
+    title: "Consolidate Flexible Group",
+    detail: "Upgrade two-room family reservation to Ambassador Suite, releasing one room.",
+    guest: "Moderate (voluntary suite upgrade)",
+    ops: "Medium (suite preparation required)",
+    revenue: "Neutral (internal reallocation)",
   },
   {
     recommended: false,
-    title: "Decline the newest booking",
-    detail: "Turn away the most recent, lowest-value reservation with full refund and gesture.",
-    guest: "High — a guest is turned away",
-    ops: "Low — nothing to coordinate",
-    revenue: "−CHF 980, plus reputation risk",
+    title: "Decline Late Reservation",
+    detail: "Cancel the most recent reservation with full refund and future stay voucher.",
+    guest: "Critical (guest redirection)",
+    ops: "Low (immediate check-out)",
+    revenue: "−CHF 980 (reputation risk)",
   },
 ]
 
 export const PulseOverbookingDesktop = () => (
   <PulseShell active="overbooking">
-    <div className="w-[268px] shrink-0 px-5 py-7">
-      <Card className="px-6 py-6 h-full flex flex-col">
-        <SectionLabel>The situation · tonight</SectionLabel>
-        <div className="font-serif text-[20px] text-[#1E1611] mt-3">Overbooked by one.</div>
-        <div className="flex items-center gap-5 mt-5 pb-5 border-b border-dashed border-[#1E1611]/12">
-          <RadialGauge value={98.9} valueLabel="89/90" label="Usable Rooms" size={62} />
-          <EditorialStat value="+1" label="Without a room" tone="#C2410C" />
+    <div className="w-[280px] shrink-0 px-6 py-8 border-r border-[#1E1611]/6 flex flex-col gap-6">
+      <Card className="px-6 py-6 h-full flex flex-col gap-5">
+        <SectionLabel>Current Capacity Status</SectionLabel>
+        <div className="font-serif text-[20px] text-[#1E1611] leading-tight">Overcapacity (1 Room Deficit)</div>
+        <div className="flex items-center gap-5 mt-4 pb-5 border-b border-dashed border-[#1E1611]/12">
+          <RadialGauge value={98.9} valueLabel="89/90" label="Usable Rooms" size={56} />
+          <EditorialStat value="+1" label="Room Deficit" tone="#C2410C" />
         </div>
-        <p className="text-[12px] text-[#1E1611]/55 leading-relaxed mt-4">
-          Room 304 offline removed the last of tonight&apos;s capacity. One incoming reservation must be handled with care.
+        <p className="text-[12px] text-[#1E1611]/55 leading-relaxed mt-2">
+          Room 304 maintenance offline removed the remaining buffer. One incoming check-in requires immediate resolution.
         </p>
-        <div className="mt-5 text-[11.5px] text-[#8A6D3B] font-medium">Decide before 09:00 — guest is mid-journey</div>
+        <div className="mt-auto text-[11px] text-[#8A6D3B] font-mono uppercase tracking-wide leading-normal">
+          Action Required by 09:00 — Guest en route
+        </div>
       </Card>
     </div>
 
     <div className="flex-1 flex flex-col min-w-0">
-      <ScreenTitle title="Resolve the overbooking" meta="Compare impact, then confirm" />
+      <ScreenTitle title="Overbooking Resolution" meta="Assess triage outcomes" />
       <div className="flex-1 px-10 py-8 flex flex-col min-w-0 overflow-y-auto">
-        <Card className="px-8 py-2">
+        <div className="flex items-center gap-6 px-6 pb-3 border-b border-[#1E1611]/8 text-[9px] font-sans font-medium uppercase tracking-[0.15em] text-[#1E1611]/40">
+          <div className="flex-1 min-w-0">Resolution Strategy</div>
+          <div className="w-[150px]">Guest Experience Impact</div>
+          <div className="w-[150px]">Operational Effort</div>
+          <div className="w-[170px]">Financial Impact</div>
+          <div className="w-[60px] text-right">Action</div>
+        </div>
+        
+        <Card className="px-6 py-2 mt-2">
           {OVERBOOK_OPTIONS.map((opt, i) => (
-            <div key={i} className="flex items-start gap-6 py-4 border-b border-[#1E1611]/7 last:border-0">
+            <div key={i} className="flex items-start gap-6 py-4.5 border-b border-[#1E1611]/4 last:border-0 hover:bg-[#1E1611]/[0.01] transition-colors">
               <div className="flex-1 min-w-0">
-                {opt.recommended && <div className="text-[9.5px] font-semibold text-[#2F483A] uppercase tracking-wide mb-1">Recommended</div>}
-                <div className="font-serif text-[16px] text-[#1E1611]">{opt.title}</div>
+                {opt.recommended && <div className="text-[9px] font-sans font-bold text-[#2F483A] uppercase tracking-wider mb-1">Recommended Path</div>}
+                <div className="font-serif text-[15.5px] text-[#1E1611] font-medium tracking-wide">{opt.title}</div>
                 <div className="text-[11.5px] text-[#1E1611]/45 leading-snug mt-1">{opt.detail}</div>
               </div>
-              <div className="w-[150px] text-[11.5px] text-[#1E1611]/60 leading-snug pt-0.5">{opt.guest}</div>
-              <div className="w-[150px] text-[11.5px] text-[#1E1611]/60 leading-snug pt-0.5">{opt.ops}</div>
-              <div className="w-[170px] text-[11.5px] text-[#1E1611]/60 leading-snug pt-0.5">{opt.revenue}</div>
-              <div className="pt-0.5">
-                <ActionText muted={!opt.recommended}>Choose</ActionText>
+              <div className="w-[150px] text-[12px] text-[#1E1611]/60 leading-snug pt-0.5">{opt.guest}</div>
+              <div className="w-[150px] text-[12px] text-[#1E1611]/60 leading-snug pt-0.5">{opt.ops}</div>
+              <div className="w-[170px] text-[12px] text-[#1E1611]/60 leading-snug pt-0.5">{opt.revenue}</div>
+              <div className="w-[60px] text-right pt-0.5">
+                <ActionText muted={!opt.recommended}>Select</ActionText>
               </div>
             </div>
           ))}
         </Card>
 
-        <div className="flex items-center gap-5 mt-5">
+        <div className="flex items-center gap-5 mt-8 pt-6 border-t border-dashed border-[#1E1611]/12">
           <div className="flex-1">
             <div className="text-[13px] text-[#1E1611]">
-              <span className="font-semibold">Rebook to sister property</span> selected.
+              Selected Strategy: <span className="font-serif italic font-semibold text-[14px]">Relocate to Sister Property</span>.
             </div>
-            <div className="text-[11px] text-[#1E1611]/40 mt-0.5">Guest notified, car booked, return night flagged for owner review.</div>
+            <div className="text-[11px] text-[#1E1611]/40 mt-0.5">Guest notification prepared, shuttle scheduled, compensation voucher queued for approval.</div>
           </div>
-          <PrimaryAction>Confirm resolution</PrimaryAction>
+          <PrimaryAction>Confirm Resolution</PrimaryAction>
         </div>
       </div>
     </div>
@@ -271,11 +278,11 @@ export const PulseOverbookingDesktop = () => (
 // ==================== SCREEN 04: VIP ARRIVAL ====================
 
 const TURNAROUND_STEPS = [
-  { label: "Checkout", time: "target 11:00", done: true },
-  { label: "Strip & clean", time: "≈ 45 min" },
-  { label: "Amenities", time: "≈ 20 min" },
-  { label: "Inspection", time: "≈ 15 min" },
-  { label: "Ready", time: "by 11:00" },
+  { label: "Scheduled Checkout", time: "target 11:00", done: true },
+  { label: "Sanitization", time: "≈ 45 min" },
+  { label: "Preference Setup", time: "≈ 20 min" },
+  { label: "Quality Inspection", time: "≈ 15 min" },
+  { label: "Room Ready", time: "by 11:00" },
 ]
 
 export const PulseVipDesktop = () => (
@@ -285,55 +292,54 @@ export const PulseVipDesktop = () => (
         title="Room 208 · Junior Suite Alpine"
         right={
           <div className="flex gap-7 text-right">
-            <EditorialStat value="11:00" label="VIP arrives · in 4h" />
-            <EditorialStat value="12:00" label="Room free · checkout" tone="#8A6D3B" />
+            <EditorialStat value="11:00" label="VIP Arrival" />
+            <EditorialStat value="12:00" label="Scheduled Checkout" tone="#8A6D3B" />
           </div>
         }
       />
       <div className="flex-1 flex min-w-0">
-        <div className="flex-1 px-8 py-6 flex flex-col gap-6 min-w-0">
-          <div className="text-[12.5px] text-[#1E1611]/60 italic font-serif">
-            <span className="text-[#8A6D3B] font-semibold not-italic">One-hour gap.</span> Won&apos;t finish before 11:00 unless checkout moves
-            earlier or a second housekeeper joins.
+        <div className="flex-1 px-10 py-8 flex flex-col gap-8 min-w-0">
+          <div className="text-[12.5px] text-[#1E1611]/60 italic font-serif leading-relaxed">
+            <span className="text-[#8A6D3B] font-semibold not-italic">Service Deficit.</span> Turnaround will not complete prior to 11:00 arrival without checkout relocation or auxiliary housekeeping support.
           </div>
 
           <div>
-            <SectionLabel>Housekeeping turnaround</SectionLabel>
-            <div className="flex items-start mt-5">
+            <SectionLabel>Room Turnaround Schedule</SectionLabel>
+            <div className="flex items-start mt-6">
               {TURNAROUND_STEPS.map((step, i) => (
                 <div key={i} className="flex-1 flex items-center">
                   <div className="flex flex-col items-center text-center flex-1">
                     <span
-                      className="w-[18px] h-[18px] rounded-full flex items-center justify-center text-[9.5px] font-mono"
+                      className="w-[18px] h-[18px] rounded-full flex items-center justify-center text-[9px] font-mono"
                       style={{
                         background: step.done ? "#2F483A" : "transparent",
-                        color: step.done ? "#F6F2EA" : "#1E1611",
+                        color: step.done ? "#FAF8F5" : "#1E1611",
                         opacity: step.done ? 1 : 0.35,
-                        border: step.done ? "none" : "1px solid currentColor",
+                        border: step.done ? "none" : "0.5px solid currentColor",
                       }}
                     >
                       {step.done ? "✓" : i + 1}
                     </span>
-                    <div className="text-[11.5px] font-medium text-[#1E1611] mt-2">{step.label}</div>
-                    <div className="text-[9.5px] text-[#1E1611]/40 mt-0.5 font-mono">{step.time}</div>
+                    <div className="text-[12px] font-medium text-[#1E1611] mt-2.5">{step.label}</div>
+                    <div className="text-[9.5px] text-[#1E1611]/45 mt-0.5 font-mono">{step.time}</div>
                   </div>
-                  {i < TURNAROUND_STEPS.length - 1 && <div className="h-px flex-1 bg-[#1E1611]/10 -mt-6" />}
+                  {i < TURNAROUND_STEPS.length - 1 && <div className="h-[0.5px] flex-1 bg-[#1E1611]/12 -mt-6" />}
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="flex items-center gap-5 pt-1">
-            <PrimaryAction>Request early checkout · 11:00</PrimaryAction>
-            <ActionText muted>Add 2nd housekeeper · −30 min</ActionText>
+          <div className="flex items-center gap-5 pt-2">
+            <PrimaryAction>Request Early Checkout</PrimaryAction>
+            <ActionText muted>Allocate Second Housekeeper</ActionText>
           </div>
 
-          <div className="mt-auto pt-5 border-t border-dashed border-[#1E1611]/12">
+          <div className="mt-auto pt-6 border-t border-dashed border-[#1E1611]/12">
             <OwnerToken initials="MR" name="Marta Ruiz" image="https://images.unsplash.com/photo-1594744803329-e58b31de215f?auto=format&fit=crop&q=80&w=150&h=150" />
           </div>
         </div>
 
-        <div className="w-[300px] shrink-0 border-l border-[#1E1611]/8 px-6 py-7 overflow-y-auto flex flex-col gap-6">
+        <div className="w-[320px] shrink-0 border-l border-[#1E1611]/6 px-6 py-8 overflow-y-auto flex flex-col gap-6">
           <GuestPassport
             name="Herr & Frau Brandt"
             tag="Returning · 6th stay · anniversary"
@@ -341,9 +347,9 @@ export const PulseVipDesktop = () => (
           />
 
           <div>
-            <div className="flex items-baseline justify-between mb-2.5">
-              <SectionLabel>Welcome amenities</SectionLabel>
-              <span className="text-[10.5px] text-[#1E1611]/40 font-mono">2/5</span>
+            <div className="flex items-baseline justify-between mb-3">
+              <SectionLabel>Arrival Preferences</SectionLabel>
+              <span className="text-[10.5px] text-[#1E1611]/40 font-mono">2/5 Completed</span>
             </div>
             <ServiceSheet
               items={[
@@ -356,14 +362,14 @@ export const PulseVipDesktop = () => (
             />
           </div>
 
-          <div className="pt-5 border-t border-dashed border-[#1E1611]/12 flex gap-7">
+          <div className="pt-6 border-t border-dashed border-[#1E1611]/12 flex gap-7">
             <div>
-              <div className="text-[9.5px] text-[#1E1611]/40 uppercase tracking-wide">Owner</div>
-              <div className="text-[12px] font-medium text-[#1E1611] mt-1">Sofia · concierge</div>
+              <div className="text-[9.5px] font-sans font-medium uppercase tracking-[0.12em] text-[#1E1611]/40">Assigned</div>
+              <div className="text-[12px] font-medium text-[#1E1611] mt-1">Sofia</div>
             </div>
             <div>
-              <div className="text-[9.5px] text-[#1E1611]/40 uppercase tracking-wide">ETA</div>
-              <div className="text-[12px] font-medium text-[#1E1611] mt-1">Private transfer, 10:45</div>
+              <div className="text-[9.5px] font-sans font-medium uppercase tracking-[0.12em] text-[#1E1611]/40">Arrival Details</div>
+              <div className="text-[12px] font-medium text-[#1E1611] mt-1">Private Transfer (10:45)</div>
             </div>
           </div>
         </div>
@@ -377,45 +383,45 @@ export const PulseVipDesktop = () => (
 const TEAM_COLUMNS = [
   {
     name: "Léa",
-    status: "Out sick",
+    status: "Absent",
     tone: "#C2410C",
     reassign: true,
     image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150&h=150",
     tasks: [
-      { time: "09:00 · Rm 217", title: "Follow up with 304 guests", suggest: "Anna" },
-      { time: "10:30 · Lobby", title: "Greet VIP Brandt on arrival", suggest: "Sofia" },
-      { time: "15:00 · Desk", title: "Check in group of 8", suggest: "Marc" },
+      { time: "09:00 · Room 217", title: "Relocation follow-up (Room 304)", suggest: "Anna" },
+      { time: "10:30 · Lobby", title: "VIP Welcoming (Herr & Frau Brandt)", suggest: "Sofia" },
+      { time: "15:00 · Desk", title: "Group Check-in (8 guests)", suggest: "Marc" },
     ],
   },
   {
     name: "Anna",
-    status: "Full · 5 tasks",
+    status: "Fully Allocated",
     tone: "#8A6D3B",
     capacity: 88,
     image: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&q=80&w=150&h=150",
     tasks: [
-      { time: "08:00 · Desk", title: "Morning departures (11)" },
-      { time: "All day", title: "Front desk cover" },
+      { time: "08:00 · Desk", title: "Scheduled Checkouts (11 departures)" },
+      { time: "All Day", title: "Front Desk Duty Cover" },
     ],
   },
   {
     name: "Marc",
-    status: "Room for 2 more",
+    status: "Available (2 Tasks)",
     tone: "#2F483A",
     capacity: 42,
     dropzone: true,
     image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150&h=150",
-    tasks: [{ time: "All morning", title: "Arrivals desk (14)" }],
+    tasks: [{ time: "All Morning", title: "Arrivals Desk (14 arrivals)" }],
   },
   {
     name: "Sofia",
-    status: "Balanced · concierge",
+    status: "Optimal Capacity",
     tone: "#1E1611",
     capacity: 64,
     image: "https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&q=80&w=150&h=150",
     tasks: [
-      { time: "by 11:00", title: "VIP arrival & amenities" },
-      { time: "Evening", title: "Dinner reservations" },
+      { time: "by 11:00", title: "VIP Arrival Setup & Preferences" },
+      { time: "Evening", title: "Concierge Restaurant Bookings" },
     ],
   },
 ]
@@ -424,11 +430,11 @@ export const PulseTeamDesktop = () => (
   <PulseShell active="team">
     <div className="flex-1 flex flex-col min-w-0">
       <ScreenTitle
-        title="Today's work"
-        meta="3 of 4 on shift · Léa out sick"
-        right={<PrimaryAction>Auto-balance</PrimaryAction>}
+        title="Shift Assignment"
+        meta="3 of 4 Active · Léa Absent"
+        right={<PrimaryAction>Rebalance Shift</PrimaryAction>}
       />
-      <div className="flex-1 px-8 py-6 flex flex-col gap-5 min-w-0">
+      <div className="flex-1 px-10 py-8 flex flex-col gap-6 min-w-0">
         <div className="flex gap-8">
           {TEAM_COLUMNS.map((col, i) => (
             <div key={i} className="flex-1 min-w-0">
@@ -444,21 +450,23 @@ export const PulseTeamDesktop = () => (
 
         <div className="flex-1 flex gap-8 min-w-0">
           {TEAM_COLUMNS.map((col, i) => (
-            <div key={i} className="flex-1 flex flex-col gap-3 min-w-0 bg-[#1E1611]/[0.02] p-3 rounded-[8px] border border-[#1E1611]/[0.04]">
-              {col.tasks.map((t, j) => (
-                <div key={j} className="bg-white p-3 rounded-[5px] shadow-sm border border-[#1E1611]/5 relative hover:shadow-md transition-shadow cursor-grab">
-                  <div className="text-[10px] text-[#1E1611]/45 font-mono mb-1.5">{t.time}</div>
-                  <div className="text-[12.5px] text-[#1E1611] font-medium leading-snug">{t.title}</div>
-                  {"suggest" in t && t.suggest && (
-                    <div className="mt-3 pt-2 border-t border-dashed border-[#1E1611]/10">
-                      <ActionText>Assign to {t.suggest}</ActionText>
-                    </div>
-                  )}
-                </div>
-              ))}
+            <div key={i} className="flex-1 flex flex-col gap-4 min-w-0 bg-[#1E1611]/[0.015] p-4 rounded-[6px] border border-[#1E1611]/5">
+              <div className="flex-1 flex flex-col gap-3 overflow-y-auto">
+                {col.tasks.map((t, j) => (
+                  <div key={j} className="bg-white p-4 rounded-[5px] border border-[#1E1611]/4 shadow-[0_1px_3px_rgba(30,22,17,0.02)] hover:shadow-md transition-shadow cursor-grab">
+                    <div className="text-[9.5px] text-[#1E1611]/40 font-mono mb-1.5">{t.time}</div>
+                    <div className="text-[13px] text-[#1E1611] font-medium leading-snug">{t.title}</div>
+                    {"suggest" in t && t.suggest && (
+                      <div className="mt-3 pt-2.5 border-t border-dashed border-[#1E1611]/8">
+                        <ActionText>Assign to {t.suggest}</ActionText>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
               {col.dropzone && (
-                <div className="mt-auto py-3 rounded-[5px] border border-dashed border-[#2F483A]/40 text-center text-[11px] text-[#2F483A] font-medium bg-[#2F483A]/[0.02]">
-                  Drop reassigned tasks here
+                <div className="py-4.5 rounded-[5px] border border-dashed border-[#2F483A]/30 text-center text-[11px] text-[#2F483A] font-medium bg-[#2F483A]/[0.01] hover:bg-[#2F483A]/[0.03] transition-colors cursor-pointer mt-auto">
+                  Assign Remaining Service Tasks
                 </div>
               )}
             </div>
@@ -469,48 +477,71 @@ export const PulseTeamDesktop = () => (
   </PulseShell>
 )
 
-// ==================== SCREEN 06: HANDLED ====================
-
 const HANDLED_ROWS = [
-  { issue: "Room 304 guests relocated", owner: "Anna", deadline: "09:00", status: "resolved" as const, next: "Apology & amenity delivered" },
-  { issue: "Overbooking tonight", owner: "Elena", deadline: "09:00", status: "resolved" as const, next: "Rebooked to Chalet Verbois" },
-  { issue: "VIP arrival — Brandt", owner: "Sofia", deadline: "11:00", status: "progress" as const, next: "Early checkout requested" },
-  { issue: "Shift short-staffed", owner: "Elena", deadline: "08:00", status: "progress" as const, next: "6 tasks reassigned & confirmed" },
-  { issue: "Day load — 14/11 & group of 8", owner: "Marc", deadline: "15:00", status: "progress" as const, next: "Timeline reviewed, desk covered" },
+  { issue: "Relocate guests (Room 304)", owner: "Anna", deadline: "09:00", status: "resolved" as const, next: "Amenity & letter delivered" },
+  { issue: "Relocate overcapacity (Room 304)", owner: "Elena", deadline: "09:00", status: "resolved" as const, next: "Relocated to Chalet Verbois" },
+  { issue: "VIP Arrival Prep (Room 208)", owner: "Sofia", deadline: "11:00", status: "progress" as const, next: "Early checkout requested (11:00)" },
+  { issue: "Reallocate shift duties", owner: "Elena", deadline: "08:00", status: "progress" as const, next: "Roster rebalanced & confirmed" },
+  { issue: "Review daily operations load", owner: "Marc", deadline: "15:00", status: "progress" as const, next: "Logbook reviewed, desk covered" },
 ]
+
+const OWNER_DETAILS: Record<string, { initials: string, image: string }> = {
+  Anna: { initials: "AN", image: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&q=80&w=150&h=150" },
+  Elena: { initials: "EM", image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150&h=150" },
+  Sofia: { initials: "SO", image: "https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&q=80&w=150&h=150" },
+  Marc: { initials: "MA", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150&h=150" }
+}
 
 export const PulseHandledDesktop = () => (
   <PulseShell active="handled">
     <div className="flex-1 flex flex-col min-w-0">
-      <ScreenTitle title="Everything handled" meta="5 issues · 5 owners · 0 unassigned" />
-      <div className="flex-1 px-8 py-6 flex flex-col gap-7 min-w-0">
-        <div className="flex items-start gap-10">
+      <ScreenTitle title="Operations Log" meta="Handover Registry" />
+      <div className="flex-1 px-10 py-8 flex flex-col gap-8 min-w-0">
+        <div className="flex items-start gap-12">
           <EditorialStat value="2" label="Resolved" tone="#2F483A" />
           <EditorialStat value="3" label="In progress" tone="#8A6D3B" />
           <EditorialStat value="0" label="Unassigned" />
-          <EditorialStat value="07:00" label="Cleared by" />
+          <EditorialStat value="07:00" label="Cleared" />
         </div>
 
-        <div>
-          {HANDLED_ROWS.map((row, i) => (
-            <div key={i} className="flex items-center gap-6 py-3.5 border-b border-[#1E1611]/7 last:border-0">
-              <div className="flex-1 min-w-0 font-serif text-[14.5px] text-[#1E1611]">{row.issue}</div>
-              <div className="w-[90px] text-[11.5px] text-[#1E1611]/55">{row.owner}</div>
-              <div className="w-[70px] text-[11.5px] text-[#1E1611]/55 font-mono">{row.deadline}</div>
-              <div className="w-[110px]">
-                <span
-                  className="inline-flex items-center gap-1.5 text-[10.5px] font-semibold uppercase tracking-wide"
-                  style={{ color: row.status === "resolved" ? "#2F483A" : "#8A6D3B" }}
-                >
-                  <span className="w-[4px] h-[4px] rounded-full" style={{ background: row.status === "resolved" ? "#2F483A" : "#8A6D3B" }} />
-                  {row.status === "resolved" ? "Resolved" : "In progress"}
-                </span>
-              </div>
-              <div className="w-[220px] text-[11.5px] text-[#1E1611]/45">{row.next}</div>
-            </div>
-          ))}
-        </div>
+        <div className="flex flex-col gap-1">
+          <div className="flex items-center gap-6 px-4 pb-3 border-b border-[#1E1611]/8 text-[9px] font-sans font-medium uppercase tracking-[0.15em] text-[#1E1611]/40">
+            <div className="flex-1 min-w-0">Service Detail</div>
+            <div className="w-[120px] shrink-0">Assigned</div>
+            <div className="w-[70px] shrink-0 font-mono">Target</div>
+            <div className="w-[110px] shrink-0">Status</div>
+            <div className="w-[220px] shrink-0">Next Action</div>
+          </div>
 
+          <Card className="px-6 py-2 mt-2">
+            {HANDLED_ROWS.map((row, i) => {
+              const ownerInfo = OWNER_DETAILS[row.owner];
+              return (
+                <div key={i} className="flex items-center gap-6 py-4 border-b border-[#1E1611]/4 last:border-0 hover:bg-[#1E1611]/[0.01] transition-colors">
+                  <div className="flex-1 min-w-0 font-serif text-[15px] text-[#1E1611] font-medium tracking-wide">{row.issue}</div>
+                  <div className="w-[120px] shrink-0">
+                    {ownerInfo ? (
+                      <OwnerToken initials={ownerInfo.initials} name={row.owner} image={ownerInfo.image} />
+                    ) : (
+                      <span className="text-[12px] text-[#1E1611]/50">{row.owner}</span>
+                    )}
+                  </div>
+                  <div className="w-[70px] shrink-0 text-[11.5px] text-[#1E1611]/50 font-mono">{row.deadline}</div>
+                  <div className="w-[110px] shrink-0">
+                    <span
+                      className="inline-flex items-center gap-1.5 text-[10.5px] font-semibold uppercase tracking-wide"
+                      style={{ color: row.status === "resolved" ? "#2F483A" : "#8A6D3B" }}
+                    >
+                      <span className="w-[4px] h-[4px] rounded-full" style={{ background: row.status === "resolved" ? "#2F483A" : "#8A6D3B" }} />
+                      {row.status === "resolved" ? "Resolved" : "In Progress"}
+                    </span>
+                  </div>
+                  <div className="w-[220px] shrink-0 text-[12px] text-[#1E1611]/45">{row.next}</div>
+                </div>
+              );
+            })}
+          </Card>
+        </div>
       </div>
     </div>
   </PulseShell>
