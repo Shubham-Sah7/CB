@@ -88,16 +88,16 @@ export const PulseBriefDesktop = () => (
       <ScreenTitle title="Morning Brief" meta="Wednesday 15 July" />
       <div className="flex-1 flex min-w-0">
         <div className="flex-1 flex flex-col px-8 py-6 min-w-0 gap-6">
-          <Card className="px-6 py-5 flex items-center gap-8">
+          <Card className="px-6 py-5 flex items-center justify-between gap-4">
             <RadialGauge value={95.5} valueLabel="86/90" label="Rooms Ready" />
             <RadialGauge value={100} valueLabel="100%" label="Occupancy" />
             <RadialGauge value={75} valueLabel="75%" label="Staff Capacity" tone="#8A6D3B" />
-            <div className="w-px self-stretch bg-[#1E1611]/8" />
+            <div className="w-px self-stretch bg-[#1E1611]/8 hidden xl:block mx-1" />
             <EditorialStat value="2" label="Critical" tone="#C2410C" />
             <EditorialStat value="1" label="VIP Arrivals" />
-            <div className="w-px self-stretch bg-[#1E1611]/8" />
+            <div className="w-px self-stretch bg-[#1E1611]/8 hidden xl:block mx-1" />
             <BarCompare label="Today's Load" items={[{ label: "Arrivals", value: 14 }, { label: "Departures", value: 11 }]} />
-            <div className="w-[130px] ml-auto">
+            <div className="w-[120px] shrink-0">
               <PunchStrip total={10} filled={7} label="Housekeeping" />
             </div>
           </Card>

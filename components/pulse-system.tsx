@@ -168,7 +168,7 @@ export const LedgerEntry = ({
 
 export const EditorialStat = ({ value, label, tone }: { value: ReactNode; label: string; tone?: string }) => (
   <div className="flex flex-col gap-1 items-center">
-    <span className="font-serif text-[32px] leading-none font-light" style={{ color: tone ?? "#1E1611", fontVariantNumeric: "lining-nums" }}>
+    <span className="font-sans text-[30px] font-semibold tracking-tight leading-none" style={{ color: tone ?? "#1E1611" }}>
       {value}
     </span>
     <span className="text-[9px] uppercase tracking-[0.12em] font-semibold text-[#1E1611]/45 text-center">{label}</span>
@@ -234,7 +234,7 @@ export const RadialGauge = ({
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="font-serif text-[12.5px] font-medium tracking-tight" style={{ color: tone, fontVariantNumeric: "lining-nums" }}>{valueLabel}</span>
+          <span className="font-sans text-[13px] font-bold tracking-tight" style={{ color: tone }}>{valueLabel}</span>
         </div>
       </div>
       <span className="text-[8.5px] uppercase tracking-[0.12em] font-semibold text-[#1E1611]/45 text-center leading-tight">{label}</span>
