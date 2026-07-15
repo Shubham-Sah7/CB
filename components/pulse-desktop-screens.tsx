@@ -432,7 +432,7 @@ export const PulseTeamDesktop = () => (
         <div className="flex gap-8">
           {TEAM_COLUMNS.map((col, i) => (
             <div key={i} className="flex-1 min-w-0">
-              <OwnerToken initials={col.name.slice(0, 2).toUpperCase()} name={col.name} role={col.status} tone={col.tone} />
+              <OwnerToken initials={col.name.slice(0, 2).toUpperCase()} name={col.name} role={col.status} tone={col.tone} image={col.image} />
               {!col.reassign && (
                 <div className="mt-3">
                   <PunchStrip total={5} filled={Math.round(((col as { capacity: number }).capacity / 100) * 5)} label="Capacity" />
