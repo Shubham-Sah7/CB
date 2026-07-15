@@ -183,33 +183,63 @@ export const EditorialStat = ({ value, label, tone }: { value: ReactNode; label:
 )
 
 export const PunchStrip = ({ total, filled, label }: { total: number; filled: number; label: string }) => (
-  <div className="flex flex-col gap-1.5">
-    <div className="flex items-center justify-between text-[9.5px] text-[#1E1611]/40 uppercase tracking-wide">
+  <div className="flex flex-col gap-1.5 select-none">
+    <div className="flex items-center justify-between text-[9px] font-sans font-semibold text-[#1E1611]/45 uppercase tracking-wide">
       <span>{label}</span>
-      <span className="font-mono">{filled}/{total}</span>
+      <span className="font-mono text-[9px] font-bold">{filled}/{total}</span>
     </div>
-    <div className="flex gap-[3px]">
-      {Array.from({ length: total }).map((_, i) => (
-        <span key={i} className="h-[9px] flex-1 rounded-[1px]" style={{ background: i < filled ? "#2F483A" : "rgba(30,22,17,0.09)" }} />
-      ))}
+    <div className="flex gap-1 p-0.5 bg-[#1E1611]/3 rounded border border-[#1E1611]/8">
+      {Array.from({ length: total }).map((_, i) => {
+        const isFilled = i < filled
+        return (
+          <div 
+            key={i} 
+            className="h-3 flex-grow rounded-[2px] border border-[#1E1611]/5 flex items-center justify-center relative transition-all duration-[800ms]"
+            style={{ 
+              backgroundColor: isFilled ? "#2F483A" : "#FAF8F5",
+              boxShadow: isFilled ? "inset 0 1px 2px rgba(47, 72, 58, 0.25)" : "none"
+            }}
+          >
+            {/* Perforation hole punch center indicator */}
+            <div 
+              className={`w-1 h-1 rounded-full transition-all ${
+                isFilled 
+                  ? "bg-[#FAF8F5]/60" 
+                  : "bg-[#1E1611]/15"
+              }`} 
+            />
+          </div>
+        )
+      })}
     </div>
   </div>
 )
 
 // Paper-card container — gives a section presence against the page
-// background without becoming a flat SaaS rectangle (deckled edge + linen shadow).
-export const Card = ({ children, className = "" }: { children: ReactNode; className?: string }) => (
-  <div className={`deckled-card linen-shadow rounded-[10px] ${className}`}>{children}</div>
+// background without becoming a flat SaaS rectangle (deckled edge + inner line + metal eyelet).
+export const Card = ({ children, className = "", tagEyelet = false }: { children: ReactNode; className?: string; tagEyelet?: boolean }) => (
+  <div className={`deckled-card linen-shadow rounded-[10px] relative overflow-hidden bg-[#FAF8F5] border border-[#1E1611]/12 p-5 ${className}`}>
+    {/* Optional metal eyelet hole for vintage file tag look */}
+    {tagEyelet && (
+      <div className="absolute top-3 left-1/2 -translate-x-1/2 flex flex-col items-center pointer-events-none select-none z-20">
+        <div className="w-3.5 h-3.5 rounded-full bg-[#EBE3D2] border border-[#1E1611]/15 shadow-inner flex items-center justify-center">
+          <div className="w-1.5 h-1.5 rounded-full bg-[#FAF8F5] border border-[#1E1611]/8 shadow-[inset_0_1px_2px_rgba(0,0,0,0.15)]" />
+        </div>
+      </div>
+    )}
+    {/* Ledger double outer thin lining */}
+    <div className="absolute inset-[3px] border border-[#1E1611]/6 rounded-[8px] pointer-events-none" />
+    <div className="relative z-10 flex flex-col h-full">{children}</div>
+  </div>
 )
 
-// A quiet instrument-panel dial — for a single magnitude (0-100), not a
-// comparison. Track + one arc, rounded end, no legend (the label names it).
+// Swiss mechanical watch dial style radial gauge with 30-degree graduations and a thin pointer needle
 export const RadialGauge = ({
   value,
   valueLabel,
   label,
   tone = "#2F483A",
-  size = 66,
+  size = 76,
 }: {
   value: number
   valueLabel: string
@@ -217,15 +247,29 @@ export const RadialGauge = ({
   tone?: string
   size?: number
 }) => {
-  const strokeW = 4.5
-  const r = (size - strokeW) / 2
+  const strokeW = 3.5
+  const r = (size - 18) / 2
   const c = 2 * Math.PI * r
   const offset = c * (1 - Math.min(100, Math.max(0, value)) / 100)
+  
+  // Needle rotation (0% starts at -90deg, 100% ends at 270deg)
+  const angle = (value / 100) * 360 - 90
+  
   return (
-    <div className="flex flex-col items-center gap-2">
+    <div className="flex flex-col items-center gap-2 select-none">
       <div className="relative" style={{ width: size, height: size }}>
-        <svg width={size} height={size} className="-rotate-90">
-          <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="rgba(30,22,17,0.08)" strokeWidth={strokeW} />
+        <svg width={size} height={size} className="overflow-visible">
+          {/* Dial ticks (12 tick marks at 30-deg intervals like a chronometer) */}
+          <g transform={`translate(${size/2}, ${size/2})`} opacity="0.28" stroke="#1E1611" strokeWidth="0.75">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <line key={i} x1="0" y1={-r - 4} x2="0" y2={-r - 1} transform={`rotate(${i * 30})`} />
+            ))}
+          </g>
+          
+          {/* Circular gauge track */}
+          <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="rgba(30,22,17,0.06)" strokeWidth={strokeW} />
+          
+          {/* Active indicator arc */}
           <circle
             cx={size / 2}
             cy={size / 2}
@@ -236,33 +280,73 @@ export const RadialGauge = ({
             strokeLinecap="round"
             strokeDasharray={c}
             strokeDashoffset={offset}
+            className="transition-all duration-[1200ms] ease-out -rotate-90 origin-center"
+          />
+          
+          {/* Center pivot point */}
+          <circle cx={size / 2} cy={size / 2} r="2.5" fill="#1E1611" />
+          <circle cx={size / 2} cy={size / 2} r="1" fill="#FAF8F5" />
+          
+          {/* Instrument needle */}
+          <line 
+            x1={size / 2} 
+            y1={size / 2} 
+            x2={size / 2 + (r - 1) * Math.cos((angle * Math.PI) / 180)} 
+            y2={size / 2 + (r - 1) * Math.sin((angle * Math.PI) / 180)} 
+            stroke="#1E1611" 
+            strokeWidth="0.75" 
+            opacity="0.85"
+            className="transition-all duration-[1200ms] ease-out origin-center"
           />
         </svg>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="font-serif text-[14px]" style={{ color: tone }}>{valueLabel}</span>
+        <div className="absolute inset-0 flex flex-col items-center justify-center pt-2">
+          <span className="font-serif text-[12px] font-bold tracking-tight text-[#1E1611]" style={{ fontFamily: "Cormorant Garamond, serif" }}>{valueLabel}</span>
         </div>
       </div>
-      <span className="text-[9px] uppercase tracking-[0.1em] text-[#1E1611]/40 text-center leading-tight">{label}</span>
+      <span className="text-[9px] font-sans font-semibold uppercase tracking-[0.12em] text-[#1E1611]/40 text-center leading-tight">{label}</span>
     </div>
   )
 }
 
-// Two measures, one scale, direct-labeled — no legend needed for a pair.
+// Ledger slide-rule comparison grid (ruler layout with a slider notch)
 export const BarCompare = ({ label, items }: { label: string; items: { label: string; value: number }[] }) => {
   const max = Math.max(...items.map((i) => i.value))
   return (
-    <div className="flex flex-col gap-2 min-w-[150px]">
-      <div className="text-[9px] uppercase tracking-[0.1em] text-[#1E1611]/40">{label}</div>
-      <div className="flex flex-col gap-1.5">
-        {items.map((it, i) => (
-          <div key={i} className="flex items-center gap-2.5">
-            <span className="text-[10px] text-[#1E1611]/50 w-[62px] shrink-0">{it.label}</span>
-            <div className="flex-1 h-[5px] rounded-full bg-[#1E1611]/6 overflow-hidden">
-              <div className="h-full rounded-full bg-[#2F483A]" style={{ width: `${(it.value / max) * 100}%` }} />
+    <div className="flex flex-col gap-2 min-w-[160px] select-none">
+      <div className="text-[9px] font-sans font-semibold uppercase tracking-[0.12em] text-[#1E1611]/40">{label}</div>
+      <div className="flex flex-col gap-2.5">
+        {items.map((it, i) => {
+          const percentage = (it.value / max) * 100
+          return (
+            <div key={i} className="flex items-center gap-2.5">
+              <span className="text-[10px] font-sans font-medium text-[#1E1611]/60 w-[60px] shrink-0 truncate">{it.label}</span>
+              
+              {/* Ruler/slide track */}
+              <div className="flex-grow h-4 relative bg-[#1E1611]/3 rounded border border-[#1E1611]/8 overflow-hidden flex items-center">
+                {/* Scale ticks */}
+                <div className="absolute inset-0 flex justify-between pointer-events-none opacity-20">
+                  {Array.from({ length: 9 }).map((_, j) => (
+                    <div key={j} className={`w-[0.5px] bg-[#1E1611] ${j % 4 === 0 ? "h-full" : "h-1"}`} />
+                  ))}
+                </div>
+                
+                {/* Progress color fill */}
+                <div 
+                  className="h-full bg-[#2F483A]/10 border-r border-[#2F483A] transition-all duration-[1200ms] ease-out" 
+                  style={{ width: `${percentage}%` }} 
+                />
+                
+                {/* Slider tab */}
+                <div 
+                  className="absolute w-1 h-3 bg-[#1E1611] rounded-[1px] transition-all duration-[1200ms] ease-out" 
+                  style={{ left: `calc(${percentage}% - 2px)` }} 
+                />
+              </div>
+              
+              <span className="text-[11px] font-mono font-bold text-[#1E1611] w-[18px] text-right">{it.value}</span>
             </div>
-            <span className="text-[11px] font-mono text-[#1E1611] w-[16px] text-right">{it.value}</span>
-          </div>
-        ))}
+          )
+        })}
       </div>
     </div>
   )
