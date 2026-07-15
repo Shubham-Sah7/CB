@@ -82,7 +82,7 @@ const NavRail = ({ active }: { active: string }) => (
 
     <div className="mx-4 pt-6 border-t border-dashed border-[#1E1611]/12 flex flex-col gap-6 mt-4 mb-2">
       <div className="flex items-center gap-3 px-2">
-        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150&h=150" alt="Elena Moser" className="w-9 h-9 rounded-full object-cover shrink-0 border border-[#1E1611]/15 grayscale contrast-125 brightness-110" />
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150&h=150" alt="Elena Moser" className="w-9 h-9 rounded-full object-cover shrink-0 border border-[#1E1611]/15" />
         <div className="text-[14px] font-medium text-[#1E1611] truncate">Elena Moser</div>
       </div>
       <div className="pl-4">
@@ -332,7 +332,7 @@ export const GuestPassport = ({ name, tag, prefs }: { name: string; tag: string;
   <div className="deckled-card linen-shadow rounded-[6px] p-5 relative overflow-hidden">
     <TornPaperEdge className="text-[#FAF8F5] opacity-80" />
     <div className="flex gap-4 items-center relative z-10">
-      <img src="https://images.unsplash.com/photo-1588626359518-e397554f6534?auto=format&fit=crop&q=80&w=150&h=150&sat=-100" alt="Herr & Frau Brandt" className="w-12 h-14 rounded-[3px] object-cover shrink-0 border border-[#1E1611]/15" />
+      <img src="https://images.unsplash.com/photo-1588626359518-e397554f6534?auto=format&fit=crop&q=80&w=150&h=150" alt="Herr & Frau Brandt" className="w-12 h-14 rounded-[3px] object-cover shrink-0 border border-[#1E1611]/15" />
       <div>
         <div className="font-serif text-[18px] font-medium text-[#1E1611]">{name}</div>
         <div className="text-[11.5px] text-[#1E1611]/45 mt-0.5">{tag}</div>
@@ -361,7 +361,7 @@ export const RoomCard = ({ room, label, sub }: { room: string; label: string; su
 export const OwnerToken = ({ initials, name, role, tone, image }: { initials: string; name: string; role?: string; tone?: string; image?: string }) => (
   <div className="flex items-center gap-3">
     {image ? (
-      <img src={image} alt={name} className="w-8 h-8 rounded-full object-cover shrink-0 border border-[#1E1611]/10 grayscale contrast-125 brightness-110 sepia-[.2]" />
+      <img src={image} alt={name} className="w-8 h-8 rounded-full object-cover shrink-0 border border-[#1E1611]/15" />
     ) : (
       <div className="w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-semibold shrink-0" style={{ background: "#EBE5DA", color: tone ?? "#1E1611" }}>
         {initials}
