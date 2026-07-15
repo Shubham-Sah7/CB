@@ -187,27 +187,27 @@ export const PulseDesignSystemArtboard = () => {
             </div>
           </section>
 
-          {/* ==================== 03. SPACING SYSTEM ==================== */}
+          {/* ==================== 03. SPACING & RADIUS SYSTEM ==================== */}
           <section className="flex flex-col gap-6">
             <div className="border-b border-[#1E1611]/6 pb-2">
               <span className="font-mono text-[11px] text-[#8A6D3B]">03 / SYSTEM</span>
-              <h2 className="font-serif text-[22px] font-light text-[#1E1611] mt-0.5">Spacing System</h2>
+              <h2 className="font-serif text-[22px] font-light text-[#1E1611] mt-0.5">Spacing & Radius Systems</h2>
             </div>
 
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-10">
               <div className="flex flex-col gap-4">
                 <span className="text-[11.5px] font-sans font-bold uppercase tracking-wider text-[#1E1611]/50">Spacing Scale</span>
                 <div className="flex flex-col gap-3">
                   {[
-                    { token: "spacing.4", val: "4px", width: "w-1" },
-                    { token: "spacing.8", val: "8px", width: "w-2" },
-                    { token: "spacing.12", val: "12px", width: "w-3" },
-                    { token: "spacing.16", val: "16px", width: "w-4" },
-                    { token: "spacing.24", val: "24px", width: "w-6" },
-                    { token: "spacing.32", val: "32px", width: "w-8" },
-                    { token: "spacing.40", val: "40px", width: "w-10" },
-                    { token: "spacing.48", val: "48px", width: "w-12" },
-                    { token: "spacing.64", val: "64px", width: "w-16" }
+                    { token: "spacing.4", val: "4px" },
+                    { token: "spacing.8", val: "8px" },
+                    { token: "spacing.12", val: "12px" },
+                    { token: "spacing.16", val: "16px" },
+                    { token: "spacing.24", val: "24px" },
+                    { token: "spacing.32", val: "32px" },
+                    { token: "spacing.40", val: "40px" },
+                    { token: "spacing.48", val: "48px" },
+                    { token: "spacing.64", val: "64px" }
                   ].map((sp, idx) => (
                     <div key={idx} className="flex items-center justify-between border-b border-[#1E1611]/4 pb-2 last:border-0">
                       <span className="text-[11.5px] font-mono text-[#8A6D3B]">{sp.token}</span>
@@ -219,7 +219,7 @@ export const PulseDesignSystemArtboard = () => {
               </div>
 
               <div className="flex flex-col gap-4">
-                <span className="text-[11.5px] font-sans font-bold uppercase tracking-wider text-[#1E1611]/50">Layout Allocations</span>
+                <span className="text-[11.5px] font-sans font-bold uppercase tracking-wider text-[#1E1611]/50">Layout Spacing Allocations</span>
                 <div className="grid grid-cols-1 gap-3">
                   {[
                     { type: "Card Padding", space: "spacing.24", desc: "Internal padding for stationery cards (p-6)." },
@@ -235,6 +235,28 @@ export const PulseDesignSystemArtboard = () => {
                         <span className="text-[11px] text-[#1E1611]/45 block mt-0.5">{alloc.desc}</span>
                       </div>
                       <span className="text-[11px] font-mono text-[#8A6D3B] text-right">{alloc.space}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-4">
+                <span className="text-[11.5px] font-sans font-bold uppercase tracking-wider text-[#1E1611]/50">Radius Scale</span>
+                <div className="flex flex-col gap-3">
+                  {[
+                    { token: "radius.small", val: "4px", desc: "Form inputs, tags, small selection tabs.", preview: "rounded-[4px]" },
+                    { token: "radius.card", val: "6px", desc: "Primary stationery cards and ledger blocks.", preview: "rounded-[6px]" },
+                    { token: "radius.medium", val: "8px", desc: "Outer workspace mockups, screen showcases.", preview: "rounded-[8px]" },
+                    { token: "radius.large", val: "24px", desc: "Showcase viewport modules.", preview: "rounded-[24px]" },
+                    { token: "radius.full", val: "9999px", desc: "Primary action pills and avatars.", preview: "rounded-full" }
+                  ].map((rd, idx) => (
+                    <div key={idx} className="flex items-center gap-3 border-b border-[#1E1611]/4 pb-2 last:border-0">
+                      <div className={`w-8 h-8 bg-[#2F483A]/10 border border-[#2F483A]/30 shrink-0 ${rd.preview}`} />
+                      <div className="flex-grow min-w-0">
+                        <span className="text-[11.5px] font-mono text-[#8A6D3B] block">{rd.token}</span>
+                        <span className="text-[10px] text-[#1E1611]/50 block truncate mt-0.5">{rd.desc}</span>
+                      </div>
+                      <span className="text-[11px] text-[#1E1611]/45 text-right font-mono">{rd.val}</span>
                     </div>
                   ))}
                 </div>
@@ -387,6 +409,30 @@ export const PulseDesignSystemArtboard = () => {
                   </div>
                 </div>
               </Card>
+            </div>
+
+            {/* Shared vs Diverging Component Specifications */}
+            <div className="mt-6 border-t border-dashed border-[#1E1611]/12 pt-6">
+              <span className="text-[11.5px] font-sans font-bold uppercase tracking-wider text-[#1E1611]/50 block mb-4">Shared vs. Diverging Components</span>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-[12px] leading-relaxed">
+                <div className="p-4 rounded-[6px] border border-[#1E1611]/5 bg-[#FAF8F5]/50 flex flex-col gap-2.5">
+                  <span className="font-serif italic font-semibold text-[15px] text-[#1E1611] block mb-1">Host App (Mobile Guest Persona)</span>
+                  <div className="flex flex-col gap-2 text-[#1E1611]/70">
+                    <p>• <span className="font-semibold text-[#1E1611]">Visual Density:</span> Extremely low. Generous vertical breathing space helps stressed travelers feel calm and unhurried.</p>
+                    <p>• <span className="font-semibold text-[#1E1611]">Touch Targets:</span> Large physical scale (48px+ heights) to avoid errors during transit, walking, or check-in.</p>
+                    <p>• <span className="font-semibold text-[#1E1611]">Visual Elements:</span> Deckled card borders, wax seals, warm paper lighting, and large photography card blocks.</p>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-[6px] border border-[#1E1611]/5 bg-[#FAF8F5]/50 flex flex-col gap-2.5">
+                  <span className="font-serif italic font-semibold text-[15px] text-[#1E1611] block mb-1">Pulse App (Desktop Staff Persona)</span>
+                  <div className="flex flex-col gap-2 text-[#1E1611]/70">
+                    <p>• <span className="font-semibold text-[#1E1611]">Visual Density:</span> High-density tables, multi-column task boards, and dual sidebars to present critical operational chains.</p>
+                    <p>• <span className="font-semibold text-[#1E1611]">Target Controls:</span> High keyboard & hover target efficiency (36px action targets, compact status indicators) for rapid triage.</p>
+                    <p>• <span className="font-semibold text-[#1E1611]">Visual Elements:</span> Hairline rules, borderless ledger rows, telemetry micro-gauges, and assignee photo tokens.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
 
@@ -591,7 +637,56 @@ export const PulseDesignSystemArtboard = () => {
             </div>
           </section>
 
-          {/* ==================== 12. FINAL NOTES ==================== */}
+          {/* ==================== 12. DESIGN & ARCHITECTURAL REASONING ==================== */}
+          <section className="flex flex-col gap-6">
+            <div className="border-b border-[#1E1611]/6 pb-2">
+              <span className="font-mono text-[11px] text-[#8A6D3B]">12 / STRATEGY</span>
+              <h2 className="font-serif text-[22px] font-light text-[#1E1611] mt-0.5">Design & Architectural Reasoning</h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-[12px] text-[#1E1611]/70 leading-relaxed">
+              <div>
+                <span className="text-[12.5px] font-semibold text-[#1E1611] block mb-2">1. Three Core Assumptions</span>
+                <p className="mb-2">
+                  • <span className="font-semibold text-[#1E1611]">Pre-Arrival Check-in:</span> Stressed guests want to bypass physical reception entirely. Geofencing relies on passport verification, key issuance, and billing auth completing beforehand.
+                </p>
+                <p className="mb-2">
+                  • <span className="font-semibold text-[#1E1611]">Low-Frequency Telemetry:</span> Staff need active operational sync but not real-time flashing charts. Data polling occurs on quiet intervals (12s loops) rather than continuous updates.
+                </p>
+                <p>
+                  • <span className="font-semibold text-[#1E1611]">Analog Touch Preference:</span> Stressed travelers find relief in physical, tactile cues. High-end paper interfaces reduce friction and reassure luxury expectations.
+                </p>
+              </div>
+
+              <div>
+                <span className="text-[12.5px] font-semibold text-[#1E1611] block mb-2">2. What Breaks at 100 Hotels?</span>
+                <p className="mb-2">
+                  • <span className="font-semibold text-[#1E1611]">Triage Automation:</span> The current single-board morning registry relies on human coordination. At 100 hotels, centralized operations require automated triage prioritization.
+                </p>
+                <p className="mb-2">
+                  • <span className="font-semibold text-[#1E1611]">Relocation Inventory:</span> Rebooking overcapacity to local "sister properties" fails under high scaling. Dynamic cross-hotel inventory and localized partner availability APIs become necessary.
+                </p>
+                <p>
+                  • <span className="font-semibold text-[#1E1611]">Staff Allocation:</span> Drag-and-drop roster rebalance fails at scale. Global scheduling systems must handle active shifts automatically across multiple regions.
+                </p>
+              </div>
+
+              <div>
+                <span className="text-[12.5px] font-semibold text-[#1E1611] block mb-2">3. What Was Intentionally Left Out?</span>
+                <p className="mb-2">
+                  • <span className="font-semibold text-[#1E1611]">Chat & Communication:</span> Avoided real-time messaging between guests and staff. Aurelia concierge interaction should occur via pre-selected request options to preserve operational calmness.
+                </p>
+                <p className="mb-2">
+                  • <span className="font-semibold text-[#1E1611]">Financial/Invoicing Portal:</span> Billing issues, invoice disputes, and card auth adjustments were omitted. These create visual stress and belong inside back-office finance panels.
+                </p>
+                <p>
+                  • <span className="font-semibold text-[#1E1611]">Marketing & Booking flow:</span> The design is restricted to the active stay journey. Up-selling and room booking paths are excluded to avoid generic hotel booking noise.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* ==================== 13. FINAL NOTES ==================== */}
           <section className="border-t border-dashed border-[#1E1611]/12 pt-8 mb-6 flex flex-col items-center text-center">
             <p className="font-serif italic text-[16px] text-[#1E1611]/65 max-w-[620px] leading-relaxed">
               &ldquo;Pulse is designed to reduce operational thinking, not increase it. Every screen exists to answer one question quickly and quietly.&rdquo;
