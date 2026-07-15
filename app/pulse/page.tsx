@@ -13,9 +13,10 @@ import {
   PulseHandledDesktop,
 } from "@/components/pulse-desktop-screens"
 import { PulseDesignSystemArtboard } from "@/components/pulse-design-system"
+import { PulseReasoningArtboard } from "@/components/pulse-reasoning"
 
 export default function PulsePage() {
-  const [viewMode, setViewMode] = useState<"desktop" | "mobile" | "design-system">("desktop")
+  const [viewMode, setViewMode] = useState<"desktop" | "mobile" | "design-system" | "reasoning">("desktop")
 
   // Pulse internal operational command states (extracted from Pulse - Operations.dc.html)
   const [activePulseScreenIndex, setActivePulseScreenIndex] = useState(0)
@@ -61,6 +62,12 @@ export default function PulsePage() {
                   >
                     Design System
                   </button>
+                  <button
+                    onClick={() => setViewMode("reasoning")}
+                    className={`transition-colors ${viewMode === "reasoning" ? "text-[#1E1611] font-semibold" : "hover:text-[#1E1611]"} cursor-pointer`}
+                  >
+                    Reasoning
+                  </button>
                 </div>
               </div>
             </div>
@@ -68,6 +75,12 @@ export default function PulsePage() {
             {viewMode === "design-system" && (
               <div className="w-full flex justify-center">
                 <PulseDesignSystemArtboard />
+              </div>
+            )}
+
+            {viewMode === "reasoning" && (
+              <div className="w-full flex justify-center">
+                <PulseReasoningArtboard />
               </div>
             )}
 
