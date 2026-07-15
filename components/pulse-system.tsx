@@ -103,7 +103,7 @@ const OperationsFeed = () => (
 )
 
 export const PulseShell = ({ active, children }: { active: string; children: ReactNode }) => (
-  <div className="w-[1360px] h-[860px] bg-[#FAF8F5] paper-grain rounded-[8px] overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.3)] border border-[#1E1611]/10 flex flex-col relative">
+  <div className="w-[1360px] h-[590px] bg-[#FAF8F5] paper-grain rounded-[8px] overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.3)] border border-[#1E1611]/10 flex flex-col relative select-none">
     <TopStrip />
     <div className="flex flex-1 min-h-0">
       <NavRail active={active} />

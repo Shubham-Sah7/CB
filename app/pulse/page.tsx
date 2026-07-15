@@ -59,7 +59,7 @@ export default function PulsePage() {
             </div>
 
             {viewMode === "desktop" && (
-              <div className="w-full overflow-x-auto rounded-[38px] border border-[#1E1611]/12 shadow-sm bg-[#E3DDD0] p-16 relative overflow-hidden select-none">
+              <div className="w-full overflow-x-auto rounded-[38px] border border-[#1E1611]/12 shadow-sm bg-[#E3DDD0] py-10 px-8 relative overflow-hidden select-none">
                 
                 {/* Controlled messiness artifacts */}
                 <CoffeeRing className="top-12 right-20 opacity-30" />
@@ -82,10 +82,10 @@ export default function PulsePage() {
 
                 <PulseDesktopHeader />
 
-                <div className="flex flex-col gap-24 items-center mt-6">
+                <div className="flex flex-col gap-8 items-center mt-6">
                   
                   {/* Screen 01 */}
-                  <div className="flex flex-col gap-4 relative">
+                  <div className="flex flex-col gap-3 relative">
                     <PushPin className="top-2 left-10 bg-red-500 border-red-600" />
                     <PulseBriefDesktop 
                       onNavigate={(tab) => {
@@ -97,14 +97,14 @@ export default function PulsePage() {
                       overbookingResolution={overbookingResolution} 
                       isStaffReallocated={isStaffReallocated} 
                     />
-                    <div id="desktop-screen-0" className="flex justify-between items-center px-4">
+                    <div id="desktop-screen-0" className="flex justify-between items-center px-4 w-[1360px]">
                       <PulseScreenCaption number="01" text="Morning Brief — the whole night in 15 seconds" />
                       <span className="font-mono text-[9px] text-[#1E1611]/45">Artboard 01 // morning_brief.fig</span>
                     </div>
                   </div>
 
                   {/* Screen 02 */}
-                  <div className="flex flex-col gap-4 relative">
+                  <div className="flex flex-col gap-3 relative">
                     <PushPin className="top-2 right-10 bg-blue-500 border-blue-600" />
                     <PulseConflictsDesktop 
                       onNavigate={(tab) => {
@@ -116,27 +116,27 @@ export default function PulsePage() {
                       overbookingResolution={overbookingResolution} 
                       isStaffReallocated={isStaffReallocated} 
                     />
-                    <div id="desktop-screen-1" className="flex justify-between items-center px-4">
+                    <div id="desktop-screen-1" className="flex justify-between items-center px-4 w-[1360px]">
                       <PulseScreenCaption number="02" text="Conflicts — dependencies, not a pile of alerts" />
                       <span className="font-mono text-[9px] text-[#1E1611]/45">Artboard 02 // conflict_dependencies.fig</span>
                     </div>
                   </div>
 
                   {/* Screen 03 */}
-                  <div className="flex flex-col gap-4 relative">
+                  <div className="flex flex-col gap-3 relative">
                     <PushPin className="top-2 left-1/2 bg-yellow-500 border-yellow-600" />
                     <PulseOverbookingDesktop 
                       overbookingResolution={overbookingResolution} 
                       setOverbookingResolution={setOverbookingResolution} 
                     />
-                    <div id="desktop-screen-2" className="flex justify-between items-center px-4">
+                    <div id="desktop-screen-2" className="flex justify-between items-center px-4 w-[1360px]">
                       <PulseScreenCaption number="03" text="Overbooking — decide with impact in view" />
                       <span className="font-mono text-[9px] text-[#1E1611]/45">Artboard 03 // overbooking_picker.fig</span>
                     </div>
                   </div>
 
                   {/* Screen 04 */}
-                  <div className="flex flex-col gap-4 relative">
+                  <div className="flex flex-col gap-3 relative">
                     <MaskingTape className="-top-3 left-10 rotate-[5deg] w-14 h-4" />
                     <PulseVipDesktop 
                       vipChampagne={vipChampagne} 
@@ -150,34 +150,34 @@ export default function PulsePage() {
                       secondHousekeeperAdded={secondHousekeeperAdded} 
                       setSecondHousekeeperAdded={setSecondHousekeeperAdded} 
                     />
-                    <div id="desktop-screen-3" className="flex justify-between items-center px-4">
+                    <div id="desktop-screen-3" className="flex justify-between items-center px-4 w-[1360px]">
                       <PulseScreenCaption number="04" text="VIP Arrival — the whole turnaround on one screen" />
                       <span className="font-mono text-[9px] text-[#1E1611]/45">Artboard 04 // vip_turnaround.fig</span>
                     </div>
                   </div>
 
                   {/* Screen 05 */}
-                  <div className="flex flex-col gap-4 relative">
+                  <div className="flex flex-col gap-3 relative">
                     <PushPin className="top-2 right-12 bg-purple-500 border-purple-600" />
                     <PulseTeamDesktop 
                       isStaffReallocated={isStaffReallocated} 
                       setIsStaffReallocated={setIsStaffReallocated} 
                     />
-                    <div id="desktop-screen-4" className="flex justify-between items-center px-4">
+                    <div id="desktop-screen-4" className="flex justify-between items-center px-4 w-[1360px]">
                       <PulseScreenCaption number="05" text="Team — rebalance the shift like a board" />
                       <span className="font-mono text-[9px] text-[#1E1611]/45">Artboard 05 // staff_rebalancing.fig</span>
                     </div>
                   </div>
 
                   {/* Screen 06 */}
-                  <div className="flex flex-col gap-4 relative">
+                  <div className="flex flex-col gap-3 relative">
                     <MaskingTape className="-top-3 right-10 rotate-[-8deg] w-14 h-4" />
                     <PulseHandledDesktop 
                       overbookingResolution={overbookingResolution} 
                       isStaffReallocated={isStaffReallocated} 
                       earlyCheckoutRequested={earlyCheckoutRequested} 
                     />
-                    <div id="desktop-screen-5" className="flex justify-between items-center px-4">
+                    <div id="desktop-screen-5" className="flex justify-between items-center px-4 w-[1360px]">
                       <PulseScreenCaption number="06" text="Handled — owner, deadline, status, next" />
                       <span className="font-mono text-[9px] text-[#1E1611]/45">Artboard 06 // handoff_ready.fig</span>
                     </div>
