@@ -140,6 +140,25 @@ const FireplaceSVG = ({ isLit }: { isLit: boolean }) => (
   </svg>
 )
 
+// Designer Canvas Details
+const MaskingTape = ({ className = "rotate-12 w-12 h-4" }: { className?: string }) => (
+  <div className={`absolute bg-[#FAF8F5]/50 border-l border-r border-[#1E1611]/8 backdrop-blur-[0.5px] shadow-[0_1px_3px_rgba(0,0,0,0.02)] z-30 pointer-events-none ${className}`} style={{ mixBlendMode: 'multiply' }} />
+)
+
+const PushPin = ({ className = "" }: { className?: string }) => (
+  <div className={`absolute w-3 h-3 rounded-full bg-[#EF4444] border border-[#DC2626] shadow-[0_1.5px_3.5px_rgba(0,0,0,0.35)] z-30 pointer-events-none ${className}`}>
+    <div className="w-1 h-1 rounded-full bg-white/40 absolute top-0.5 left-0.5" />
+    <div className="w-0.5 h-2 bg-neutral-400 absolute top-2 left-1.5 -translate-x-1/2 -rotate-12 origin-top" />
+  </div>
+)
+
+const CoffeeRing = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 100 100" className={`absolute w-28 h-28 stroke-[#8C6D58]/12 fill-none stroke-[0.75] pointer-events-none z-30 ${className}`}>
+    <circle cx="50" cy="50" r="42" strokeDasharray="35 5 2 10 15 2 30 5" />
+    <circle cx="48" cy="52" r="39" strokeDasharray="10 40 5 15 2 20" />
+  </svg>
+)
+
 export default function Page() {
   const [activeScreenIndex, setActiveScreenIndex] = useState(0)
   
@@ -196,160 +215,194 @@ export default function Page() {
         <span className="bg-[#FB923C] text-[#FAF8F5] text-[8px] font-bold px-1.5 py-0.5 rounded-sm shadow-sm font-sans">Aurelia Design</span>
       </div>
 
-      {/* ==================== UPPER CANVAS: RESEARCH & TIMELINE ==================== */}
-      <div className="max-w-[1650px] mx-auto w-full flex flex-wrap gap-8 items-stretch justify-start">
+      {/* ==================== UPPER CANVAS: DESIGNER'S RESEARCH WALL ==================== */}
+      <div className="max-w-[1650px] mx-auto w-full p-10 bg-[#EBE5DA] border border-[#1E1611]/12 rounded-[38px] relative flex flex-wrap gap-10 items-stretch justify-start shadow-[inset_0_4px_20px_rgba(30,22,17,0.06),_0_12px_36px_-8px_rgba(30,22,17,0.08)] overflow-hidden">
         
-        {/* SECTION 01: The Story & About Aurelia */}
-        <div className="bg-[#FAF8F5]/85 border border-[#1E1611]/8 p-7 rounded-[28px] shadow-sm flex flex-col justify-between w-[380px] relative">
-          <div className="flex items-center gap-1.5 text-[8.5px] uppercase tracking-wider font-semibold text-[#1E1611]/40 select-none">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#1E1611]/30" />
-            <span>Section 01 // The Story</span>
-          </div>
-          <div className="my-3">
-            <h2 className="font-serif text-3xl font-light text-[#1E1611] leading-tight letterpress-heading">
-              Late Arrival<br />Choreography
-            </h2>
-            <p className="font-sans text-[11px] text-[#1E1611]/70 leading-relaxed font-light mt-3">
-              A hospitality experience designed for guests who have reached the end of a long, exhausting journey.
-            </p>
-          </div>
+        {/* Visual elements representing controlled studio messiness */}
+        <CoffeeRing className="top-12 right-20 opacity-70" />
+        <CoffeeRing className="bottom-8 left-1/3 opacity-40 scale-75" />
+
+        {/* SECTION 01: Storytelling Board */}
+        <div className="bg-[#FAF8F5] border border-[#1E1611]/10 p-6 rounded-[4px] shadow-[0_4px_15px_rgba(0,0,0,0.05)] w-[390px] relative rotate-[-0.5deg]">
+          <PushPin className="top-2 left-1/2" />
           
-          <div className="border-t border-[#1E1611]/10 pt-4 mt-1 flex flex-col gap-2.5">
-            <span className="font-sans text-[7.5px] uppercase tracking-[0.18em] text-[#1E1611]/55 font-bold">About Aurelia</span>
-            <div className="grid grid-cols-2 gap-y-2 gap-x-4 text-[10px] font-sans">
-              <div><strong className="text-[#1E1611]">Location:</strong> Swiss Alps</div>
-              <div><strong className="text-[#1E1611]">Capacity:</strong> 90 Rooms</div>
-              <div><strong className="text-[#1E1611]">Ownership:</strong> Family Owned</div>
-              <div><strong className="text-[#1E1611]">Type:</strong> Luxury Resort</div>
-              <div><strong className="text-[#1E1611]">Nightly:</strong> CHF 1,400</div>
-              <div><strong className="text-[#1E1611]">Loyalty:</strong> 60% Return</div>
-            </div>
-            <div className="mt-1.5 flex flex-wrap gap-1 text-[7.5px] uppercase tracking-widest text-[#2F483A] font-bold">
-              <span>No Front Desk Theatre</span>
-              <span>•</span>
-              <span>Quiet Precision</span>
-              <span>•</span>
-              <span>Warmth</span>
-            </div>
+          <div className="flex items-center gap-1.5 text-[8px] uppercase tracking-widest font-semibold text-[#1E1611]/40 mb-3 select-none">
+            <span>01 // Arrival Storyboard</span>
           </div>
-        </div>
 
-        {/* SECTION 02: User Persona (Herr Keller) */}
-        <div className="bg-[#FAF8F5]/85 border border-[#1E1611]/8 p-7 rounded-[28px] shadow-sm flex flex-col justify-between w-[380px] relative rotate-[0.5deg]">
-          <div className="flex items-center gap-1.5 text-[8.5px] uppercase tracking-wider font-semibold text-[#1E1611]/40 select-none">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#1E1611]/30" />
-            <span>Section 02 // Persona</span>
-          </div>
+          <h2 className="font-serif text-2xl font-light text-[#1E1611] leading-snug letterpress-heading">
+            Late Arrival<br />Choreography
+          </h2>
           
-          <div className="flex gap-4 items-center border-b border-[#1E1611]/10 pb-4 my-2">
-            <div 
-              className="w-18 h-20 bg-cover bg-center rounded-lg border border-[#1E1611]/10 filter grayscale brightness-[96%] relative overflow-hidden" 
-              style={{ backgroundImage: "url('/user_images/image_4.jpg')" }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute inset-0 pointer-events-none mix-blend-overlay opacity-15 bg-repeat noise-overlay" />
-            </div>
-            <div className="flex flex-col gap-0.5">
-              <h3 className="font-serif text-xl font-bold text-[#1E1611]">Herr Keller</h3>
-              <span className="text-[#1E1611]/55 text-[8.5px] uppercase tracking-widest font-semibold">Business Traveler · 42</span>
-              <span className="text-[#2F483A] font-bold text-[9px] uppercase tracking-wider">4th stay · VIP Guest</span>
-            </div>
+          {/* Alpine topographical sketch */}
+          <div className="my-4 p-2 bg-[#F3EFE9] border border-[#1E1611]/10 rounded relative overflow-hidden h-28">
+            <svg viewBox="0 0 100 50" className="w-full h-full stroke-[#1E1611]/30 fill-none stroke-[0.5]">
+              {/* Mountain ridge outline */}
+              <path d="M 5,45 Q 25,10 45,35 T 85,20 L 95,45 Z" strokeDasharray="1.5 1.5" />
+              <path d="M 15,45 L 35,22 L 55,45 L 75,28 L 90,45" />
+              {/* Gondola funicular sketch line */}
+              <line x1="10" y1="40" x2="80" y2="15" stroke="#2F483A" strokeWidth="0.75" />
+              <rect x="42" y="24" width="6" height="5" rx="1" fill="#FAF8F5" stroke="#2F483A" strokeWidth="0.5" />
+              <line x1="45" y1="24" x2="45" y2="28" stroke="#2F483A" strokeWidth="0.5" />
+            </svg>
+            <span className="absolute bottom-2 left-2 text-[7.5px] uppercase font-bold tracking-widest text-[#2F483A]">Funicular Route Sketch</span>
+            <span className="absolute top-2 right-2 text-[8px] font-serif italic text-[#1E1611]/50">Alt 1,800m • Foggy</span>
           </div>
 
-          <div className="flex flex-col gap-2 font-serif text-[13.5px] italic text-[#1E1611]/75 leading-relaxed py-1" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
-            <p>• Flight delayed 4 hours (arrives 11:40 PM)</p>
-            <p>• Mentally exhausted after a long journey</p>
-            <p>• Just wants to go straight to sleep</p>
-            <p>• Doesn&apos;t want paperwork or formal conversations</p>
-            <p>• Doesn&apos;t want decisions or choices right now</p>
-            <p>• Needs total reassurance that everything is ready</p>
-          </div>
-        </div>
-
-        {/* SECTION 03 & 04: Timeline & Emotional Journey */}
-        <div className="bg-[#FAF8F5]/85 border border-[#1E1611]/8 p-7 rounded-[28px] shadow-sm flex flex-col justify-between w-[480px] relative">
-          <div className="flex items-center gap-1.5 text-[8.5px] uppercase tracking-wider font-semibold text-[#1E1611]/40 select-none">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#1E1611]/30" />
-            <span>Section 03 & 04 // Journey & Emotion</span>
+          {/* Printed hotel miniature photo with masking tape */}
+          <div className="relative my-4 p-2 bg-white shadow-xs border border-[#1E1611]/8 w-44 mx-auto rotate-[3deg] flex flex-col gap-1.5">
+            <MaskingTape className="-top-2 left-10 rotate-[10deg] w-12 h-3.5" />
+            <div className="h-24 w-full bg-cover bg-center" style={{ backgroundImage: "url('/user_images/image_8.jpg')" }} />
+            <span className="font-serif text-[6.5px] italic text-[#1E1611]/60 text-center">Aurelia Alpine Entrance</span>
           </div>
 
-          {/* Journey Timeline */}
-          <div className="flex flex-col gap-2.5 my-2">
-            <span className="font-sans text-[7.5px] uppercase tracking-[0.18em] text-[#1E1611]/55 font-bold">Timeline</span>
-            <div className="flex items-center justify-between gap-1 text-[8.5px] font-sans">
-              {["Flight", "Airport", "Taxi", "Funicular", "Arrival", "Room", "Food", "Sleep", "Morning"].map((step, i, arr) => (
-                <React.Fragment key={step}>
-                  <div className="flex flex-col items-center gap-1">
-                    <span className="font-medium text-[#1E1611]">{step}</span>
-                  </div>
-                  {i < arr.length - 1 && <span className="text-[#1E1611]/25 text-[8px] select-none">→</span>}
-                </React.Fragment>
-              ))}
-            </div>
-          </div>
-
-          {/* Emotional Journey */}
-          <div className="border-t border-[#1E1611]/10 pt-4 flex flex-col gap-3">
-            <span className="font-sans text-[7.5px] uppercase tracking-[0.18em] text-[#1E1611]/55 font-bold">Emotional Arc</span>
-            <div className="flex items-center justify-between gap-1 text-[9px] font-sans">
-              {[
-                { emoji: "😩", desc: "Delayed", color: "text-[#EF4444]" },
-                { emoji: "😓", desc: "Tired", color: "text-[#F59E0B]" },
-                { emoji: "😐", desc: "Arrives", color: "text-[#9CA3AF]" },
-                { emoji: "🙂", desc: "Reassured", color: "text-[#2F483A]" },
-                { emoji: "😊", desc: "Warmed", color: "text-[#2F483A]" },
-                { emoji: "😴", desc: "Sleep", color: "text-[#1E1611]" },
-                { emoji: "🌄", desc: "Fresh", color: "text-[#2F483A]" }
-              ].map((item, i, arr) => (
-                <React.Fragment key={item.desc}>
-                  <div className="flex flex-col items-center gap-1.5 flex-1 text-center">
-                    <span className="text-lg leading-none">{item.emoji}</span>
-                    <span className={`font-semibold tracking-wider uppercase text-[7px] ${item.color}`}>{item.desc}</span>
-                  </div>
-                  {i < arr.length - 1 && <span className="text-[#1E1611]/15 text-[8px] pt-1.5">→</span>}
-                </React.Fragment>
-              ))}
-            </div>
+          <div className="font-serif text-[11px] italic text-[#1E1611]/75 leading-relaxed flex flex-col gap-1 border-t border-[#1E1611]/8 pt-4 mt-2" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
+            <p className="text-black font-semibold not-italic text-[10px] uppercase font-sans tracking-wide">Designer Observations:</p>
+            <p>&ldquo;Most guests reach here after long international flights.&rdquo;</p>
+            <p className="pl-4 text-[#C2410C]">↓ &ldquo;No energy left.&rdquo;</p>
+            <p className="pl-8 text-[#2F483A] font-bold">↓ &ldquo;Hotel should remove every unnecessary decision.&rdquo;</p>
           </div>
         </div>
 
-        {/* SECTION 12: Moodboard */}
-        <div className="bg-[#FAF8F5]/85 border border-[#1E1611]/8 p-7 rounded-[28px] shadow-sm flex flex-col justify-between w-[340px] relative rotate-[-0.5deg] overflow-hidden">
-          <div className="flex items-center gap-1.5 text-[8.5px] uppercase tracking-wider font-semibold text-[#1E1611]/40 select-none">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#1E1611]/30" />
-            <span>Section 12 // Moodboard</span>
+        {/* SECTION 02: User Persona (Herr Keller's Pinned Passport & Desk Items) */}
+        <div className="bg-[#FAF8F5] border border-[#1E1611]/10 p-7 rounded-[4px] shadow-[0_4px_15px_rgba(0,0,0,0.05)] w-[410px] relative rotate-[1.5deg] flex flex-col justify-between">
+          <PushPin className="top-2 right-12 bg-blue-500 border-blue-600" />
+          <MaskingTape className="-top-3.5 left-1/3 rotate-[-5deg] w-14 h-4" />
+          
+          <div className="flex items-center gap-1.5 text-[8px] uppercase tracking-widest font-semibold text-[#1E1611]/40 mb-3 select-none">
+            <span>02 // Pinned Desk Items (Alexander Keller)</span>
           </div>
 
-          <div className="relative h-24 my-2 flex gap-2">
-            {/* Alps Polaroid */}
-            <div className="w-18 bg-white p-1 rounded-sm shadow-sm rotate-[-4deg] flex flex-col gap-1 border border-[#1E1611]/5 flex-shrink-0">
-              <div className="h-12 w-full bg-cover bg-center rounded-xs" style={{ backgroundImage: "url('/user_images/image_5.jpg')" }} />
-              <span className="font-serif text-[5px] italic text-[#1E1611]/70 text-center mt-0.5">Alps</span>
+          {/* Swiss Passport card outline */}
+          <div className="border border-[#1E1611]/15 rounded-lg p-4 bg-[#F9F6F0] flex flex-col gap-3 relative overflow-hidden shadow-xs">
+            <div className="absolute top-2 right-2 w-8 h-8 rounded-full border border-dashed border-[#EF4444]/30 flex items-center justify-center rotate-12 text-[#EF4444]/50 font-sans text-[6px] font-bold uppercase tracking-widest leading-none text-center">
+              Genève<br />23.07.26
             </div>
-
-            {/* Fireplace Polaroid */}
-            <div className="w-18 bg-white p-1 rounded-sm shadow-sm rotate-[3deg] flex flex-col gap-1 border border-[#1E1611]/5 flex-shrink-0 translate-y-1.5">
-              <div className="h-12 w-full bg-cover bg-center rounded-xs" style={{ backgroundImage: "url('/user_images/image_6.jpg')" }} />
-              <span className="font-serif text-[5px] italic text-[#1E1611]/70 text-center mt-0.5">Hearth</span>
+            
+            <div className="flex gap-3 items-center">
+              <div 
+                className="w-14 h-16 bg-cover bg-center rounded border border-[#1E1611]/15 filter grayscale brightness-[96%] relative overflow-hidden flex-shrink-0" 
+                style={{ backgroundImage: "url('/user_images/image_4.jpg')" }}
+              />
+              <div className="flex flex-col text-[10px] font-sans text-[#1E1611]/70 leading-normal">
+                <span className="font-serif text-xs font-bold text-black">Alexander Keller</span>
+                <span>Birthplace: Zürich</span>
+                <span>Loyalty: <strong className="text-[#2F483A]">Aurelia Circle (VIP)</strong></span>
+                <span>Reservation: <strong className="text-black">Rm 214 · 4th stay</strong></span>
+              </div>
             </div>
-
-            {/* Hospitality Polaroid */}
-            <div className="w-18 bg-white p-1 rounded-sm shadow-sm rotate-[-2deg] flex flex-col gap-1 border border-[#1E1611]/5 flex-shrink-0 -translate-y-1">
-              <div className="h-12 w-full bg-cover bg-center rounded-xs" style={{ backgroundImage: "url('/user_images/image_8.jpg')" }} />
-              <span className="font-serif text-[5px] italic text-[#1E1611]/70 text-center mt-0.5">Luxury</span>
+            
+            {/* Boarding pass sketch */}
+            <div className="border-t border-dashed border-[#1E1611]/12 pt-2 text-[8px] font-mono flex justify-between uppercase">
+              <div>Flight: <span className="bg-yellow-100 px-1 font-bold">LH764</span></div>
+              <div>GVA: <span className="text-[#C2410C] font-bold">Delayed 4h</span></div>
+              <div>Arrives: <span className="font-bold">23:40</span></div>
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-1.5 text-[6.5px] font-sans uppercase tracking-widest text-[#1E1611]/50 font-bold justify-center border-t border-[#1E1611]/5 pt-3">
-            <span>Aman</span>
-            <span>•</span>
-            <span>Paper</span>
-            <span>•</span>
-            <span>Wax Seal</span>
-            <span>•</span>
-            <span>Wood</span>
-            <span>•</span>
-            <span>Fireplace</span>
+          {/* Luggage tag sketch */}
+          <div className="mt-4 p-2.5 border border-[#1E1611]/10 bg-[#FAF8F5] rounded flex justify-between items-center rotate-[-1deg] shadow-xs">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full border border-[#1E1611]/30 bg-[#EBE5DA]" />
+              <span className="font-mono text-[7px] uppercase tracking-wider text-[#1E1611]/50">Aurelia Luggage ID: 948271</span>
+            </div>
+            <span className="font-sans text-[7.5px] uppercase font-bold text-[#2F483A] bg-[#2F483A]/10 px-1.5 py-0.5 rounded">RM 214 IN TRANSIT</span>
+          </div>
+
+          <div className="font-serif text-[11.5px] italic text-[#1E1611]/85 leading-relaxed flex flex-col gap-1 mt-4 pt-4 border-t border-[#1E1611]/8" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
+            <p>• <span className="underline decoration-[#C2410C] decoration-2">No checked-in energy left</span> after 4-hour flight delay.</p>
+            <p>• Already trusts Aurelia but just wants to go straight to bed.</p>
+            <p>• <span className="bg-yellow-200/50 px-1 font-sans not-italic text-[10px] font-bold uppercase tracking-wider">Crucial Note:</span> Circle the digital key card activation. Bypass the desk.</p>
+          </div>
+        </div>
+
+        {/* SECTION 03 & 04: Journey Map & Emotional Curve */}
+        <div className="bg-[#FAF8F5] border border-[#1E1611]/10 p-7 rounded-[4px] shadow-[0_4px_15px_rgba(0,0,0,0.05)] w-[460px] relative rotate-[-1deg] flex flex-col justify-between">
+          <PushPin className="top-2 left-1/3 bg-green-600 border-green-700" />
+          
+          <div className="flex items-center gap-1.5 text-[8px] uppercase tracking-widest font-semibold text-[#1E1611]/40 mb-3 select-none">
+            <span>03 & 04 // Journey & Emotional Curve</span>
+          </div>
+
+          {/* Journey Path */}
+          <div className="flex flex-col gap-2">
+            <span className="font-sans text-[7.5px] uppercase tracking-[0.18em] text-[#1E1611]/55 font-bold">Physical Transit Journey</span>
+            <div className="grid grid-cols-5 gap-1 text-[8px] font-sans text-center text-[#1E1611]/85">
+              <div className="p-1 bg-[#1E1611]/5 rounded">Airport</div>
+              <div className="self-center text-center opacity-30 text-[6.5px]">2h Taxi</div>
+              <div className="p-1 bg-[#1E1611]/5 rounded">Funicular</div>
+              <div className="self-center text-center opacity-30 text-[6.5px]">12 min</div>
+              <div className="p-1 bg-[#2F483A]/10 text-[#2F483A] font-bold rounded">Room 214</div>
+            </div>
+          </div>
+
+          {/* Emotional Curve Graph */}
+          <div className="border-t border-[#1E1611]/10 pt-4 mt-4 flex flex-col gap-2">
+            <span className="font-sans text-[7.5px] uppercase tracking-[0.18em] text-[#1E1611]/55 font-bold">Emotional Arc Graph (SVG)</span>
+            
+            <div className="relative h-28 bg-[#FDFDFD] border border-[#1E1611]/10 rounded p-1">
+              <svg viewBox="0 0 100 50" className="w-full h-full stroke-[#1E1611] fill-none stroke-[0.75]">
+                {/* Underlay grid line */}
+                <line x1="0" y1="25" x2="100" y2="25" stroke="#1E1611" strokeWidth="0.25" strokeDasharray="2 2" />
+                {/* Curve line */}
+                <path d="M 5,45 C 20,45 35,40 48,22 C 60,8 75,5 95,7" stroke="#C2410C" strokeWidth="1.25" />
+                {/* Curve nodes */}
+                <circle cx="5" cy="45" r="1.5" fill="#C2410C" />
+                <circle cx="48" cy="22" r="1.5" fill="#C2410C" />
+                <circle cx="95" cy="7" r="1.5" fill="#2F483A" />
+              </svg>
+              
+              {/* Curve annotations */}
+              <span className="absolute bottom-1.5 left-2 text-[6px] uppercase font-bold text-[#C2410C]">High Stress (Delay)</span>
+              <span className="absolute top-10 left-1/3 text-[6px] uppercase font-bold text-[#C2410C]">Slowly Calming</span>
+              <span className="absolute top-1.5 right-2 text-[6px] uppercase font-bold text-[#2F483A]">Restful Sleep</span>
+            </div>
+          </div>
+
+          <div className="font-serif text-[11.5px] italic text-[#1E1611]/75 leading-relaxed flex flex-col gap-1 mt-4 pt-4 border-t border-[#1E1611]/8" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
+            <p>&ldquo;Too many decisions at check-in will break the experience.&rdquo;</p>
+            <p className="text-[#C2410C]">&ldquo;Need absolute reassurance upon funicular arrival.&rdquo;</p>
+            <p className="text-[#2F483A]">&ldquo;Guest finally relaxes only when room key activates.&rdquo;</p>
+          </div>
+        </div>
+
+        {/* SECTION 12: Moodboard Reference Pinboard (14 References) */}
+        <div className="bg-[#FAF8F5] border border-[#1E1611]/10 p-7 rounded-[4px] shadow-[0_4px_15px_rgba(0,0,0,0.05)] w-[360px] relative rotate-[0.5deg] overflow-hidden flex flex-col justify-between">
+          <PushPin className="top-2 right-6" />
+          
+          <div className="flex items-center gap-1.5 text-[8px] uppercase tracking-widest font-semibold text-[#1E1611]/40 mb-3 select-none">
+            <span>07 // Studio Moodboard References</span>
+          </div>
+
+          {/* Sprawling polaroid grid */}
+          <div className="grid grid-cols-2 gap-3 my-2 relative">
+            
+            <div className="bg-white p-1 rounded-xs shadow-xs rotate-[-3deg] border border-[#1E1611]/5 flex flex-col gap-0.5">
+              <div className="h-14 w-full bg-cover bg-center" style={{ backgroundImage: "url('/user_images/image_5.jpg')" }} />
+              <span className="font-serif text-[5px] text-[#1E1611]/60 text-center">Swiss Peaks</span>
+            </div>
+
+            <div className="bg-white p-1 rounded-xs shadow-xs rotate-[4deg] border border-[#1E1611]/5 flex flex-col gap-0.5 translate-y-1">
+              <div className="h-14 w-full bg-cover bg-center" style={{ backgroundImage: "url('/user_images/image_6.jpg')" }} />
+              <span className="font-serif text-[5px] text-[#1E1611]/60 text-center">Fireplace Reference</span>
+            </div>
+
+            <div className="bg-white p-1 rounded-xs shadow-xs rotate-[-2deg] border border-[#1E1611]/5 flex flex-col gap-0.5 -translate-y-1">
+              <div className="h-14 w-full bg-cover bg-center" style={{ backgroundImage: "url('/user_images/image_8.jpg')" }} />
+              <span className="font-serif text-[5px] text-[#1E1611]/60 text-center">Sanctuary Entrance</span>
+            </div>
+
+            <div className="bg-white p-1 rounded-xs shadow-xs rotate-[2deg] border border-[#1E1611]/5 flex flex-col gap-0.5">
+              <div className="h-14 w-full bg-cover bg-center" style={{ backgroundImage: "url('/user_images/image_3.jpg')" }} />
+              <span className="font-serif text-[5px] text-[#1E1611]/60 text-center">Fireplace Lit status</span>
+            </div>
+
+          </div>
+
+          <div className="font-serif text-[11px] italic text-[#1E1611]/75 leading-relaxed flex flex-col gap-1 mt-3 pt-3 border-t border-[#1E1611]/8" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
+            <p className="text-[#2F483A]">• &ldquo;Love the warmth of the fireplace lighting.&rdquo;</p>
+            <p>• &ldquo;Use the torn paper edge for cards.&rdquo;</p>
+            <p className="text-[#C2410C]">• <span className="line-through opacity-50">&ldquo;Avoid shiny metal cards&rdquo;</span> → Use Oak wood.</p>
           </div>
         </div>
 
@@ -1076,177 +1129,349 @@ export default function Page() {
       </div>
     </div>
 
-      {/* ==================== LOWER CANVAS: PRODUCT THINKING, FIGMA NOTES & HANDOFF ==================== */}
-      <div className="max-w-[1650px] mx-auto w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
+      {/* ==================== LOWER CANVAS: THE DESIGN STUDIO WHITEBOARD & HANDOFF ==================== */}
+      <div className="max-w-[1650px] mx-auto w-full p-10 bg-[#E3DDD0] border border-[#1E1611]/15 rounded-[38px] relative flex flex-col gap-12 shadow-[inset_0_4px_24px_rgba(30,22,17,0.08),_0_16px_40px_-10px_rgba(30,22,17,0.1)] overflow-hidden">
         
-        {/* SECTION 05: Product Thinking & Scribbles */}
-        <div className="bg-[#FAF8F5]/85 border border-[#1E1611]/8 p-6 rounded-[24px] shadow-sm flex flex-col justify-between font-sans text-xs min-h-[220px]">
-          <div className="flex items-center gap-1.5 text-[8px] uppercase tracking-widest font-semibold text-[#1E1611]/45">
-            <span>Section 05 // Product Thinking</span>
+        {/* Coffee rings and physical workspace details */}
+        <CoffeeRing className="top-12 left-1/4 opacity-40 scale-110" />
+        <CoffeeRing className="bottom-24 right-1/3 opacity-30" />
+        
+        {/* Figma Header details */}
+        <div className="flex justify-between items-center border-b border-[#1E1611]/10 pb-4">
+          <div className="flex items-center gap-2 text-xs font-sans font-semibold text-[#1E1611]/60">
+            <span className="w-2.5 h-2.5 bg-[#2F483A] rounded-full" />
+            <span>Figma Canvas // Section 02: Design Spec, Tradeoffs & Naming Tokens</span>
           </div>
-          <div className="flex flex-col gap-3 font-serif text-[13px] italic text-[#1E1611]/75 my-2" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
-            <div>
-              <p className="font-semibold text-black not-italic text-[11px] uppercase tracking-wider opacity-60">Guest is exhausted</p>
-              <p className="text-[11.5px] leading-relaxed mt-0.5">→ zero forms, zero inputs, zero paperwork on screen. Technology recedes.</p>
-            </div>
-            <div className="border-t border-[#1E1611]/5 pt-2">
-              <p className="font-semibold text-black not-italic text-[11px] uppercase tracking-wider opacity-60">Choices increase stress</p>
-              <p className="text-[11.5px] leading-relaxed mt-0.5">→ suggest single supper course instead of browsing a full restaurant menu.</p>
-            </div>
-            <div className="border-t border-[#1E1611]/5 pt-2">
-              <p className="font-semibold text-black not-italic text-[11px] uppercase tracking-wider opacity-60">Anticipate over React</p>
-              <p className="text-[11.5px] leading-relaxed mt-0.5">→ suggest key card activation, fireplace lit state, and luggage transit pre-resolved.</p>
-            </div>
-          </div>
+          <span className="font-mono text-[9px] uppercase tracking-widest text-[#1E1611]/50">Status: Under Review (Handoff Ready)</span>
         </div>
 
-        {/* SECTION 06: Assumptions */}
-        <div className="bg-[#FAF8F5]/85 border border-[#1E1611]/8 p-6 rounded-[24px] shadow-sm flex flex-col gap-4 font-sans text-xs min-h-[220px]">
-          <div className="flex items-center gap-1.5 text-[8px] uppercase tracking-widest font-semibold text-[#1E1611]/45">
-            <span>Section 06 // Assumptions</span>
-          </div>
-          <div className="grid grid-cols-2 gap-2 text-[9px] my-auto">
-            <div className="p-2.5 bg-[#FEF9C3] border border-[#EFE5A3] rotate-[1.5deg] rounded-sm shadow-xs flex flex-col gap-0.5">
-              <span className="font-bold">KYC Done</span>
-              <p className="opacity-75 leading-tight">Guest completed payment during booking.</p>
-            </div>
-            <div className="p-2.5 bg-[#D1F2FF] border border-[#B0E2FA] rotate-[-2deg] rounded-sm shadow-xs flex flex-col gap-0.5">
-              <span className="font-bold">Bluetooth Lock</span>
-              <p className="opacity-75 leading-tight">Sanctuary doors support Bluetooth key entry.</p>
-            </div>
-            <div className="p-2.5 bg-[#FFE2E2] border border-[#F5C2C2] rotate-[-0.5deg] rounded-sm shadow-xs flex flex-col gap-0.5">
-              <span className="font-bold">Geofenced</span>
-              <p className="opacity-75 leading-tight">Funicular geofence pre-loads active state key.</p>
-            </div>
-            <div className="p-2.5 bg-[#E2FFE2] border border-[#C2F5C2] rotate-[2deg] rounded-sm shadow-xs flex flex-col gap-0.5">
-              <span className="font-bold">Kitchen Open</span>
-              <p className="opacity-75 leading-tight">Kitchen open until 12:00 AM for late guest.</p>
-            </div>
-          </div>
-        </div>
-
-        {/* SECTION 07 & 08: Service Blueprint & Flow */}
-        <div className="bg-[#FAF8F5]/85 border border-[#1E1611]/8 p-6 rounded-[24px] shadow-sm flex flex-col justify-between font-sans text-xs min-h-[220px]">
-          <div className="flex items-center gap-1.5 text-[8px] uppercase tracking-widest font-semibold text-[#1E1611]/45">
-            <span>Section 07 & 08 // Service Blueprint & Flow</span>
-          </div>
+        {/* ==================== ROW 1: THE PRODUCT THESIS & OPERATION ROADMAP ==================== */}
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 items-stretch">
           
-          <div className="flex flex-col gap-2 my-2">
-            <div className="flex flex-col gap-1">
-              <span className="font-sans text-[7.5px] uppercase tracking-[0.15em] text-[#1E1611]/55 font-bold">App Interaction Flow</span>
-              <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-[8.5px] font-medium text-[#1E1611]/80">
-                {["Opening", "Check-In", "Wayfinding", "Entry", "Supper", "Sleep", "Morning"].map((flow, i, arr) => (
-                  <React.Fragment key={flow}>
-                    <span className="bg-[#1E1611]/5 px-1.5 py-0.5 rounded-sm">{flow}</span>
-                    {i < arr.length - 1 && <span className="opacity-45">→</span>}
-                  </React.Fragment>
-                ))}
+          {/* COLUMN 1.1: Product Thinking & Scribbles */}
+          <div className="bg-[#FAF8F5] border border-[#1E1611]/12 p-8 rounded-[8px] shadow-sm relative flex flex-col justify-between min-h-[380px]">
+            <PushPin className="top-2 left-12 bg-red-500 border-red-600" />
+            <MaskingTape className="-top-3 right-10 rotate-[5deg] w-16 h-4" />
+            
+            <div className="flex items-center gap-1.5 text-[8.5px] uppercase tracking-widest font-semibold text-[#1E1611]/45 mb-4">
+              <span>05 // UX Thesis & Evolution</span>
+            </div>
+
+            {/* Crossed-out Evolution Journey */}
+            <div className="flex flex-col gap-4 my-2 text-[10.5px] font-sans">
+              <div>
+                <span className="text-red-500 line-through block font-bold text-[8px] uppercase tracking-wider">❌ Option A (Traditional)</span>
+                <p className="line-through opacity-45 font-serif italic" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>&ldquo;Load the app home dashboard and show weather, news, hotel amenities menu.&rdquo;</p>
+              </div>
+              <div className="pl-4">
+                <span className="text-[#2F483A] block font-bold text-[8px] uppercase tracking-wider">✓ Option B (Anticipated)</span>
+                <p className="text-[#1E1611] font-serif italic font-bold" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>&ldquo;Immediate check-in. Zero clicks. Funicular triggers keycard delivery.&rdquo;</p>
               </div>
             </div>
 
-            <div className="border-t border-[#1E1611]/10 pt-2.5 flex flex-col gap-1">
-              <span className="font-sans text-[7.5px] uppercase tracking-[0.15em] text-[#1E1611]/55 font-bold">Service Blueprint alignment</span>
-              <div className="text-[8px] leading-relaxed text-[#1E1611]/70 font-mono flex flex-col gap-0.5">
-                <p><strong>GUEST:</strong> triggers funicular geofence</p>
-                <p><strong>RECEPTION:</strong> skipping front desk, pre-allocates room</p>
-                <p><strong>KITCHEN:</strong> preps suggestedConsommé and pairs tea</p>
+            {/* Diagram: How we reached simplicity */}
+            <div className="border-t border-[#1E1611]/10 pt-4 mt-2 flex flex-col gap-2.5">
+              <span className="font-sans text-[8px] uppercase tracking-[0.15em] text-[#1E1611]/55 font-bold">Logic Diagram</span>
+              <div className="flex flex-wrap items-center gap-1 text-[9px] font-mono text-[#1E1611]/80">
+                <span>Guest Arrives</span>
+                <span className="text-[#1E1611]/40">→</span>
+                <span className="bg-orange-100 px-1 text-orange-800 font-bold">Exhausted</span>
+                <span className="text-[#1E1611]/40">→</span>
+                <span className="underline">No Forms</span>
+                <span className="text-[#1E1611]/40">→</span>
+                <span className="bg-green-100 px-1 text-green-800 font-bold">1-Click Room Entry</span>
+              </div>
+              
+              {/* Hand-drawn side comment */}
+              <p className="font-serif italic text-xs text-[#C2410C] mt-2 leading-relaxed" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
+                * &ldquo;Can we completely replace the front desk? Validate with local Swiss laws.&rdquo;
+              </p>
+            </div>
+          </div>
+
+          {/* COLUMN 1.2: Validated Assumptions (Sticky Notes Stack) */}
+          <div className="bg-[#FAF8F5] border border-[#1E1611]/12 p-8 rounded-[8px] shadow-sm relative flex flex-col justify-between min-h-[380px]">
+            <PushPin className="top-2 left-1/2 bg-blue-500 border-blue-600" />
+            
+            <div className="flex items-center gap-1.5 text-[8.5px] uppercase tracking-widest font-semibold text-[#1E1611]/45 mb-4">
+              <span>06 // Operational Assumptions</span>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 my-2 text-[10px]">
+              
+              <div className="p-3 bg-[#FEF9C3] border border-[#EFE5A3] shadow-xs rotate-[-1.5deg] flex flex-col gap-1 relative">
+                <span className="font-bold text-[#1E1611]">Assump 01</span>
+                <p className="opacity-70 leading-tight">KYC / Payment completed during booking phase.</p>
+                <span className="text-[7px] text-[#2F483A] font-mono uppercase mt-1">Confidence: High</span>
+              </div>
+
+              <div className="p-3 bg-[#D1F2FF] border border-[#B0E2FA] shadow-xs rotate-[2deg] flex flex-col gap-1 relative">
+                <span className="font-bold text-[#1E1611]">Assump 02</span>
+                <p className="opacity-70 leading-tight">Door locks support active Bluetooth BLE unlock.</p>
+                <span className="text-[7px] text-[#C2410C] font-mono uppercase mt-1">Verify locks!</span>
+              </div>
+
+              <div className="p-3 bg-[#FFE2E2] border border-[#F5C2C2] shadow-xs rotate-[-1deg] flex flex-col gap-1 relative">
+                <span className="font-bold text-[#1E1611]">Assump 03</span>
+                <p className="opacity-70 leading-tight">Geofence detects GVA flight arrival & funicular exit.</p>
+                <span className="text-[7px] text-[#2F483A] font-mono uppercase mt-1">Confidence: Med</span>
+              </div>
+
+              <div className="p-3 bg-[#E2FFE2] border border-[#C2F5C2] shadow-xs rotate-[1.5deg] flex flex-col gap-1 relative">
+                <span className="font-bold text-[#1E1611]">Assump 04</span>
+                <p className="opacity-70 leading-tight">Staff can prep late supper & luggage before 23:40.</p>
+                <span className="text-[7px] text-[#2F483A] font-mono uppercase mt-1">Confidence: High</span>
+              </div>
+
+            </div>
+
+            {/* Note to the operations team */}
+            <div className="border-t border-[#1E1611]/10 pt-4 mt-2">
+              <span className="font-sans text-[7.5px] uppercase tracking-widest text-[#C2410C] font-bold block">Action Item:</span>
+              <p className="font-serif italic text-xs text-[#1E1611]/70 leading-relaxed" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
+                &ldquo;Need to confirm if geofencing is legal under Canton hospitality rules.&rdquo;
+              </p>
+            </div>
+          </div>
+
+          {/* COLUMN 1.3: Service Blueprint & Data Flow */}
+          <div className="bg-[#FAF8F5] border border-[#1E1611]/12 p-8 rounded-[8px] shadow-sm relative flex flex-col justify-between min-h-[380px]">
+            <PushPin className="top-2 right-12 bg-green-500 border-green-600" />
+            
+            <div className="flex items-center gap-1.5 text-[8.5px] uppercase tracking-widest font-semibold text-[#1E1611]/45 mb-4">
+              <span>07 // Service Blueprint Data Flow</span>
+            </div>
+
+            {/* Flowchart list */}
+            <div className="flex flex-col gap-3 font-mono text-[9px] text-[#1E1611]/80 my-2 leading-relaxed">
+              <div className="p-2 border border-[#1E1611]/10 rounded bg-[#FAF8F5] flex flex-col gap-0.5">
+                <div className="flex justify-between items-center">
+                  <span className="font-bold text-black uppercase text-[7.5px]">01 / Bluetooth Unlock Trigger</span>
+                  <span className="text-[#2F483A] font-bold">App</span>
+                </div>
+                <p className="opacity-70">BLE signal exchanges token with door unit on approach.</p>
+              </div>
+
+              <div className="p-2 border border-[#1E1611]/10 rounded bg-[#FAF8F5] flex flex-col gap-0.5">
+                <div className="flex justify-between items-center">
+                  <span className="font-bold text-black uppercase text-[7.5px]">02 / PMS Sync Status</span>
+                  <span className="text-[#2F483A] font-bold">PMS Server</span>
+                </div>
+                <p className="opacity-70">Validates room 214 check-in status, logs timestamp.</p>
+              </div>
+
+              <div className="p-2 border border-[#1E1611]/10 rounded bg-[#FAF8F5] flex flex-col gap-0.5">
+                <div className="flex justify-between items-center">
+                  <span className="font-bold text-black uppercase text-[7.5px]">03 / Hearth & Kitchen Prep</span>
+                  <span className="text-[#2F483A] font-bold">Hotel Ops</span>
+                </div>
+                <p className="opacity-70">Notifies in-room fireplace & kitchen tray placement.</p>
               </div>
             </div>
+
+            {/* Hand-drawn blueprint scribble */}
+            <p className="font-serif italic text-xs text-[#2F483A] border-t border-[#1E1611]/10 pt-4 mt-2" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
+              &ldquo;Data flows automatically. Front-end is just a mirror of the room state.&rdquo;
+            </p>
           </div>
+
         </div>
 
-        {/* SECTION 10: Design Principles */}
-        <div className="bg-[#FAF8F5]/85 border border-[#1E1611]/8 p-6 rounded-[24px] shadow-sm flex flex-col justify-between font-sans text-xs min-h-[220px]">
-          <div className="flex items-center gap-1.5 text-[8px] uppercase tracking-widest font-semibold text-[#1E1611]/45">
-            <span>Section 10 // Design Principles</span>
+        {/* ==================== ROW 2: TECHNICAL DESIGNS & DESIGN SYSTEM TOKENS ==================== */}
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 items-stretch">
+          
+          {/* COLUMN 2.1: Component Anatomy Specification */}
+          <div className="bg-[#FAF8F5] border border-[#1E1611]/12 p-8 rounded-[8px] shadow-sm relative flex flex-col justify-between min-h-[380px]">
+            <PushPin className="top-2 left-10 bg-yellow-500 border-yellow-600" />
+            
+            <div className="flex items-center gap-1.5 text-[8.5px] uppercase tracking-widest font-semibold text-[#1E1611]/45 mb-4">
+              <span>13 // Component Anatomy Specs</span>
+            </div>
+
+            {/* Component Anatomy Layout */}
+            <div className="flex flex-col gap-4 my-2 text-[10px] font-sans">
+              <div className="p-3 bg-[#FAF8F5] border border-[#1E1611]/15 rounded flex flex-col gap-2 shadow-xs">
+                <span className="font-bold text-[8.5px] uppercase tracking-wider text-[#2F483A]">Primary Button Specs</span>
+                <div className="flex justify-between text-[8px] font-mono border-b border-[#1E1611]/5 pb-1">
+                  <span>Padding:</span>
+                  <span>16px Y / 24px X</span>
+                </div>
+                <div className="flex justify-between text-[8px] font-mono border-b border-[#1E1611]/5 pb-1">
+                  <span>Radius:</span>
+                  <span>999px (Pill style)</span>
+                </div>
+                <div className="flex justify-between text-[8px] font-mono border-b border-[#1E1611]/5 pb-1">
+                  <span>Touch target:</span>
+                  <span>Min 44px conforming to WCAG AA</span>
+                </div>
+                <div className="flex justify-between text-[8px] font-mono">
+                  <span>Shadow:</span>
+                  <span>Soft blur #1E1611/8 offset-y 4px</span>
+                </div>
+              </div>
+
+              <div className="p-3 bg-[#FAF8F5] border border-[#1E1611]/15 rounded flex flex-col gap-2 shadow-xs">
+                <span className="font-bold text-[8.5px] uppercase tracking-wider text-[#2F483A]">Sanctuary Card Spec</span>
+                <div className="flex justify-between text-[8px] font-mono border-b border-[#1E1611]/5 pb-1">
+                  <span>Corner Radius:</span>
+                  <span>38px luxury soft corner</span>
+                </div>
+                <div className="flex justify-between text-[8px] font-mono">
+                  <span>Borders:</span>
+                  <span>0.5px hairline outline #1E1611/12</span>
+                </div>
+              </div>
+            </div>
+
+            <p className="font-serif italic text-xs text-[#C2410C]" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
+              * &ldquo;Make sure button corners don&apos;t look too sharp on screens.&rdquo;
+            </p>
           </div>
-          <div className="flex flex-col gap-2 font-serif text-[12.5px] italic text-[#2F483A]/90 my-auto" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
-            <p className="flex gap-2 items-center">✔ <span className="text-[#1E1611] font-sans text-xs not-italic">One primary action per screen</span></p>
-            <p className="flex gap-2 items-center">✔ <span className="text-[#1E1611] font-sans text-xs not-italic">Technology stays completely invisible</span></p>
-            <p className="flex gap-2 items-center">✔ <span className="text-[#1E1611] font-sans text-xs not-italic">Anticipation over client reaction</span></p>
-            <p className="flex gap-2 items-center">✔ <span className="text-[#1E1611] font-sans text-xs not-italic">Quiet luxury through total restraint</span></p>
-            <p className="flex gap-2 items-center">✔ <span className="text-[#1E1611] font-sans text-xs not-italic">Every interaction reduces guest effort</span></p>
+
+          {/* COLUMN 2.2: Naming Naming Tokens & Engineering Spec */}
+          <div className="bg-[#FAF8F5] border border-[#1E1611]/12 p-8 rounded-[8px] shadow-sm relative flex flex-col justify-between min-h-[380px]">
+            <PushPin className="top-2 right-12 bg-purple-500 border-purple-600" />
+            <MaskingTape className="bottom-4 left-6 rotate-[12deg] w-14 h-4" />
+            
+            <div className="flex items-center gap-1.5 text-[8.5px] uppercase tracking-widest font-semibold text-[#1E1611]/45 mb-4">
+              <span>15 // Engineering Naming Tokens</span>
+            </div>
+
+            {/* Token Table */}
+            <div className="flex flex-col gap-2 font-mono text-[9px] my-auto">
+              <div className="flex justify-between border-b border-[#1E1611]/8 pb-1">
+                <span className="font-bold">Spacing Scale:</span>
+                <span>4px · 8px · 16px · 24px · 32px · 48px</span>
+              </div>
+              <div className="flex justify-between border-b border-[#1E1611]/8 pb-1">
+                <span className="font-bold">Typography:</span>
+                <span>Display / Heading / Body / Caption</span>
+              </div>
+              <div className="flex justify-between border-b border-[#1E1611]/8 pb-1">
+                <span className="font-bold">Primary Button:</span>
+                <span>Host/Button/Primary</span>
+              </div>
+              <div className="flex justify-between border-b border-[#1E1611]/8 pb-1">
+                <span className="font-bold">Room Card:</span>
+                <span>Host/Card/Room</span>
+              </div>
+              <div className="flex justify-between border-b border-[#1E1611]/8 pb-1">
+                <span className="font-bold">Status Tag:</span>
+                <span>Host/Tag/Status</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="font-bold">Easing motion:</span>
+                <span>cubic-bezier(0.16, 1, 0.3, 1)</span>
+              </div>
+            </div>
+
+            <p className="font-serif italic text-xs text-[#2F483A] border-t border-[#1E1611]/10 pt-4 mt-2" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
+              &ldquo;Engineering: keep CSS values mapped to root design-system variables.&rdquo;
+            </p>
           </div>
+
+          {/* COLUMN 2.3: Edge Cases Scenario Planning */}
+          <div className="bg-[#FAF8F5] border border-[#1E1611]/12 p-8 rounded-[8px] shadow-sm relative flex flex-col justify-between min-h-[380px]">
+            <PushPin className="top-2 left-1/3 bg-red-500 border-red-600" />
+            
+            <div className="flex items-center gap-1.5 text-[8.5px] uppercase tracking-widest font-semibold text-[#1E1611]/45 mb-4">
+              <span>10 // Fallback Scenarios</span>
+            </div>
+
+            <div className="flex flex-col gap-4 text-[9.5px] my-2 font-mono">
+              <div className="p-2 border border-red-200 bg-red-50 rounded">
+                <strong className="block text-red-800 text-[8px] uppercase">Scenario 01: Battery Dies</strong>
+                <p className="opacity-85 mt-0.5">Concierge waiting at station with physical room key card.</p>
+              </div>
+
+              <div className="p-2 border border-red-200 bg-red-50 rounded">
+                <strong className="block text-red-800 text-[8px] uppercase">Scenario 02: BLE Key Fail</strong>
+                <p className="opacity-85 mt-0.5">Local offline lock decrypts fallback protocol; staff handles entry.</p>
+              </div>
+
+              <div className="p-2 border border-red-200 bg-red-50 rounded">
+                <strong className="block text-red-800 text-[8px] uppercase">Scenario 03: Late Kitchen Close</strong>
+                <p className="opacity-85 mt-0.5">Deliver a dry-aged local cheese plate with red wine directly in-room.</p>
+              </div>
+            </div>
+
+            <p className="font-serif italic text-xs text-[#C2410C]" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
+              * &ldquo;Confirm room keycard can be printed under 30 seconds at the gate.&rdquo;
+            </p>
+          </div>
+
         </div>
 
-        {/* SECTION 11: Edge Cases & Fallbacks */}
-        <div className="bg-[#FAF8F5]/85 border border-[#1E1611]/8 p-6 rounded-[24px] shadow-sm flex flex-col justify-between font-mono text-[9px] text-[#1E1611]/80 min-h-[220px]">
-          <div className="flex items-center gap-1.5 text-[8px] uppercase tracking-widest font-sans font-semibold text-[#1E1611]/45">
-            <span>Section 11 // Edge Cases & Fallbacks</span>
-          </div>
-          <div className="flex flex-col gap-2.5 my-2">
-            <div className="p-2.5 bg-[#FFE2E2] border border-[#F5C2C2] rounded-md flex flex-col gap-0.5">
-              <strong className="text-[#1E1611] font-sans font-semibold text-[9.5px]">Phone Battery Dead</strong>
-              <p className="opacity-70 leading-normal font-mono">Concierge stationed at funicular gate with pre-printed physical keycard slip.</p>
+        {/* ==================== ROW 3: INTERACTION ROADMAP & FUTURE ==================== */}
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 items-stretch">
+          
+          {/* COLUMN 3.1: Future Opportunities Roadmap */}
+          <div className="bg-[#FAF8F5] border border-[#1E1611]/12 p-8 rounded-[8px] shadow-sm relative flex flex-col justify-between min-h-[320px]">
+            <PushPin className="top-2 left-12" />
+            
+            <div className="flex items-center gap-1.5 text-[8.5px] uppercase tracking-widest font-semibold text-[#1E1611]/45 mb-4">
+              <span>16 // Future Roadmap Opportunities</span>
             </div>
-            <div className="p-2.5 bg-[#FFE2E2] border border-[#F5C2C2] rounded-md flex flex-col gap-0.5">
-              <strong className="text-[#1E1611] font-sans font-semibold text-[9.5px]">Digital Key Fail</strong>
-              <p className="opacity-70 leading-normal font-mono">Room local lock has secondary encrypted fallback; physical key card prepared in sanctuary box.</p>
-            </div>
-          </div>
-        </div>
 
-        {/* SECTION 13 & 14: Component Thinking & Motion */}
-        <div className="bg-[#FAF8F5]/85 border border-[#1E1611]/8 p-6 rounded-[24px] shadow-sm flex flex-col justify-between font-sans text-xs min-h-[220px]">
-          <div className="flex items-center gap-1.5 text-[8px] uppercase tracking-widest font-semibold text-[#1E1611]/45">
-            <span>Section 13 & 14 // Components & Motion</span>
-          </div>
-          <div className="flex flex-col gap-3 text-[9.5px] text-[#1E1611]/70 leading-normal my-auto">
-            <div>
-              <strong className="text-black uppercase tracking-wider text-[8px] block opacity-60">Figma Component Details</strong>
-              <p className="mt-0.5">Button Radius: 22px · Touch Targets: ≥44px · Card Corner Radius: 24px · Shadows: soft warm offset (stationery-look)</p>
+            <div className="flex items-center justify-between gap-2 text-[10px] font-mono my-auto">
+              <div className="p-3 bg-white border border-[#1E1611]/10 rounded flex-1 text-center shadow-xs">
+                <span className="font-bold text-[#2F483A]">Now</span>
+                <p className="text-[8px] opacity-75 mt-1">Late Arrival entry, digital keys, geofenced triggers.</p>
+              </div>
+              <span className="text-[#1E1611]/30">→</span>
+              <div className="p-3 bg-white border border-[#1E1611]/10 rounded flex-1 text-center shadow-xs">
+                <span className="font-bold text-[#2F483A]">Stay</span>
+                <p className="text-[8px] opacity-75 mt-1">Fireplace active control, ambient lighting levels, butler messaging.</p>
+              </div>
+              <span className="text-[#1E1611]/30">→</span>
+              <div className="p-3 bg-white border border-[#1E1611]/10 rounded flex-1 text-center shadow-xs">
+                <span className="font-bold text-[#2F483A]">Future</span>
+                <p className="text-[8px] opacity-75 mt-1">Pre-checkout invoice details, spa booking slots, transport scheduling.</p>
+              </div>
             </div>
-            <div className="border-t border-[#1E1611]/5 pt-2 flex flex-col gap-0.5">
-              <strong className="text-black uppercase tracking-wider text-[8px] block opacity-60">Motion Signature</strong>
-              <p>Wax Seal tap → breaks seal card → slide key · Map viewfinder → zoom viewport · Door unlock → auto-fade lights + fireplace lit.</p>
-            </div>
-          </div>
-        </div>
 
-        {/* SECTION 15: Engineering Handoff Specs */}
-        <div className="bg-[#FAF8F5]/85 border border-[#1E1611]/8 p-6 rounded-[24px] shadow-sm flex flex-col justify-between font-mono text-[9px] text-[#1E1611]/80 min-h-[220px]">
-          <div className="flex items-center gap-1.5 text-[8px] uppercase tracking-widest font-sans font-semibold text-[#1E1611]/45">
-            <span>Section 15 // Engineering Handoff Specs</span>
+            <p className="font-serif italic text-xs text-[#1E1611]/70 border-t border-[#1E1611]/10 pt-4 mt-2" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
+              &ldquo;Start simple. Solve the exhaustion phase before scaling stay features.&rdquo;
+            </p>
           </div>
-          <div className="flex flex-col gap-2 my-auto">
-            <div>
-              <span className="font-bold text-[#2F483A]">Layout Engine:</span>
-              <p className="opacity-70 mt-0.5">8pt spacing scale. Auto Layout constraints. Touch targets ≥ 44px. WCAG AA compliance check.</p>
-            </div>
-            <div>
-              <span className="font-bold text-[#2F483A]">Tokens:</span>
-              <p className="opacity-70 mt-0.5">Parchment: #EFEAE0 · Ink: #1E1611 · Spruce: #2F483A · Corner Radius: 38px/24px</p>
-            </div>
-            <div>
-              <span className="font-bold text-[#2F483A]">Motion Curve:</span>
-              <p className="opacity-70 mt-0.5">Duration: 200ms · Curve: cubic-bezier(0.16, 1, 0.3, 1) · Haptic feedback: light impact</p>
-            </div>
-          </div>
-        </div>
 
-        {/* SECTION 16: Future Opportunities Roadmap */}
-        <div className="bg-[#FAF8F5]/85 border border-[#1E1611]/8 p-6 rounded-[24px] shadow-sm flex flex-col justify-between font-sans text-xs min-h-[220px]">
-          <div className="flex items-center gap-1.5 text-[8px] uppercase tracking-widest font-semibold text-[#1E1611]/45">
-            <span>Section 16 // Future Opportunities</span>
+          {/* COLUMN 3.2: Motion Storyboard & Timing */}
+          <div className="bg-[#FAF8F5] border border-[#1E1611]/12 p-8 rounded-[8px] shadow-sm relative flex flex-col justify-between min-h-[320px]">
+            <PushPin className="top-2 right-12 bg-blue-500 border-blue-600" />
+            <MaskingTape className="-top-2 left-20 rotate-[-10deg] w-14 h-4" />
+            
+            <div className="flex items-center gap-1.5 text-[8.5px] uppercase tracking-widest font-semibold text-[#1E1611]/45 mb-4">
+              <span>14 // Motion Storyboard spec</span>
+            </div>
+
+            <div className="grid grid-cols-4 gap-2 text-[9px] text-center font-mono my-auto">
+              <div className="p-2 border border-[#1E1611]/10 rounded bg-[#FAF8F5] flex flex-col justify-between min-h-[100px]">
+                <strong className="text-black">1. Tap</strong>
+                <p className="text-[8px] opacity-70">Wax seal on envelope</p>
+                <span className="text-[7.5px] text-[#2F483A] font-bold">200ms</span>
+              </div>
+              <div className="p-2 border border-[#1E1611]/10 rounded bg-[#FAF8F5] flex flex-col justify-between min-h-[100px]">
+                <strong className="text-black">2. Break</strong>
+                <p className="text-[8px] opacity-70">Seal breaks into letter</p>
+                <span className="text-[7.5px] text-[#2F483A] font-bold">350ms</span>
+              </div>
+              <div className="p-2 border border-[#1E1611]/10 rounded bg-[#FAF8F5] flex flex-col justify-between min-h-[100px]">
+                <strong className="text-black">3. Glow</strong>
+                <p className="text-[8px] opacity-70">Keycard glows green</p>
+                <span className="text-[7.5px] text-[#2F483A] font-bold">400ms</span>
+              </div>
+              <div className="p-2 border border-[#1E1611]/10 rounded bg-[#FAF8F5] flex flex-col justify-between min-h-[100px]">
+                <strong className="text-black">4. Enter</strong>
+                <p className="text-[8px] opacity-70">Room lock turns green</p>
+                <span className="text-[7.5px] text-[#2F483A] font-bold">Ease Out</span>
+              </div>
+            </div>
+
+            <p className="font-serif italic text-xs text-[#C2410C]" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
+              * &ldquo;Test haptics: medium impact click on breaking the wax seal.&rdquo;
+            </p>
           </div>
-          <div className="grid grid-cols-2 gap-2 text-[8.5px] leading-relaxed text-[#1E1611]/70 my-auto">
-            <div className="p-2 border border-[#1E1611]/5 rounded bg-white/40">
-              <strong>Morning Spa</strong>
-              <p>Pre-scheduled late check-out massage suggestions.</p>
-            </div>
-            <div className="p-2 border border-[#1E1611]/5 rounded bg-white/40">
-              <strong>Hearth Control</strong>
-              <p>Extend digital key integration to adjust cabin fire status.</p>
-            </div>
-            <div className="p-2 border border-[#1E1611]/5 rounded bg-white/40">
-              <strong>Butler Chat</strong>
-              <p>Silent text concierge line for immediate needs.</p>
-            </div>
-            <div className="p-2 border border-[#1E1611]/5 rounded bg-white/40">
-              <strong>Alps Weather</strong>
-              <p>Dynamic morning ski forecasts and lift statuses.</p>
-            </div>
-          </div>
+
         </div>
 
       </div>
