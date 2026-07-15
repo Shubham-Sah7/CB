@@ -80,15 +80,14 @@ const NavRail = ({ active }: { active: string }) => (
 
     <div className="flex-1" />
 
-    <div className="mx-3 pt-4 border-t border-dashed border-[#1E1611]/12 flex items-center gap-2.5 px-3">
-      <div className="w-6 h-6 rounded-full bg-[#EBE5DA] flex items-center justify-center text-[9.5px] font-semibold text-[#1E1611] shrink-0">EM</div>
-      <div className="min-w-0">
-        <div className="text-[11px] font-medium text-[#1E1611] truncate">Elena Moser</div>
-        <div className="text-[9.5px] text-[#1E1611]/40">On shift · Morning Lead</div>
+    <div className="mx-4 pt-6 border-t border-dashed border-[#1E1611]/12 flex flex-col gap-6 mt-4 mb-2">
+      <div className="flex items-center gap-3 px-2">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150&h=150" alt="Elena Moser" className="w-9 h-9 rounded-full object-cover shrink-0 border border-[#1E1611]/15 grayscale contrast-125 brightness-110" />
+        <div className="text-[14px] font-medium text-[#1E1611] truncate">Elena Moser</div>
       </div>
-    </div>
-    <div className="px-6 pt-4">
-      <Monogram className="w-5 h-5 text-[#1E1611]/20" />
+      <div className="pl-4">
+        <Monogram className="w-[18px] h-[18px] text-[#1E1611]/20" />
+      </div>
     </div>
   </div>
 )
@@ -109,14 +108,13 @@ export const PulseShell = ({ active, children }: { active: string; children: Rea
       <NavRail active={active} />
       <div className="flex-1 flex min-w-0">{children}</div>
     </div>
-    <OperationsFeed />
   </div>
 )
 
 export const ScreenTitle = ({ title, meta, right }: { title: string; meta?: string; right?: ReactNode }) => (
-  <div className="h-[52px] shrink-0 flex items-baseline px-7 border-b border-[#1E1611]/8 gap-3">
-    <h1 className="font-serif text-[19px] text-[#1E1611]">{title}</h1>
-    {meta && <span className="text-[11.5px] text-[#1E1611]/40">{meta}</span>}
+  <div className="h-[72px] shrink-0 flex items-center px-10 gap-4">
+    <h1 className="font-serif text-[22px] font-medium text-[#1E1611] tracking-wide">{title}</h1>
+    {meta && <span className="text-[13px] text-[#1E1611]/40 translate-y-[2px]">{meta}</span>}
     <div className="flex-1" />
     {right}
   </div>
@@ -333,13 +331,11 @@ export const DependencyThread = ({ label }: { label: string }) => (
 export const GuestPassport = ({ name, tag, prefs }: { name: string; tag: string; prefs: string[] }) => (
   <div className="deckled-card linen-shadow rounded-[6px] p-5 relative overflow-hidden">
     <TornPaperEdge className="text-[#FAF8F5] opacity-80" />
-    <div className="flex gap-3 items-center relative z-10">
-      <div className="w-12 h-14 rounded-[3px] bg-[#EBE5DA] border border-[#1E1611]/10 flex items-center justify-center shrink-0">
-        <GuestSilhouetteIcon className="w-6 h-6 text-[#1E1611]/30" />
-      </div>
+    <div className="flex gap-4 items-center relative z-10">
+      <img src="https://images.unsplash.com/photo-1588626359518-e397554f6534?auto=format&fit=crop&q=80&w=150&h=150&sat=-100" alt="Herr & Frau Brandt" className="w-12 h-14 rounded-[3px] object-cover shrink-0 border border-[#1E1611]/15" />
       <div>
-        <div className="font-serif text-[16px] text-[#1E1611]">{name}</div>
-        <div className="text-[10.5px] text-[#1E1611]/40 mt-0.5">{tag}</div>
+        <div className="font-serif text-[18px] font-medium text-[#1E1611]">{name}</div>
+        <div className="text-[11.5px] text-[#1E1611]/45 mt-0.5">{tag}</div>
       </div>
       <Monogram className="w-5 h-5 text-[#1E1611]/15 ml-auto" />
     </div>
@@ -362,14 +358,17 @@ export const RoomCard = ({ room, label, sub }: { room: string; label: string; su
   </div>
 )
 
-export const OwnerToken = ({ initials, name, role, tone }: { initials: string; name: string; role?: string; tone?: string }) => (
-  <div className="flex items-center gap-2.5">
-    <div className="w-6 h-6 rounded-full flex items-center justify-center text-[9.5px] font-semibold shrink-0" style={{ background: "#EBE5DA", color: tone ?? "#1E1611" }}>
-      {initials}
-    </div>
+export const OwnerToken = ({ initials, name, role, tone, image }: { initials: string; name: string; role?: string; tone?: string; image?: string }) => (
+  <div className="flex items-center gap-3">
+    {image ? (
+      <img src={image} alt={name} className="w-8 h-8 rounded-full object-cover shrink-0 border border-[#1E1611]/10 grayscale contrast-125 brightness-110 sepia-[.2]" />
+    ) : (
+      <div className="w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-semibold shrink-0" style={{ background: "#EBE5DA", color: tone ?? "#1E1611" }}>
+        {initials}
+      </div>
+    )}
     <div className="leading-tight">
-      <div className="text-[11.5px] text-[#1E1611]">{name}</div>
-      {role && <div className="text-[9.5px] text-[#1E1611]/40">{role}</div>}
+      <div className="text-[13px] font-medium text-[#1E1611]">{name.split(' · ')[0]}</div>
     </div>
   </div>
 )

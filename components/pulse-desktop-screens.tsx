@@ -149,8 +149,8 @@ export const PulseConflictsDesktop = () => (
     <div className="flex-1 flex flex-col min-w-0">
       <ScreenTitle title="How these connect" meta="One root cause, four consequences" />
       <div className="flex-1 flex min-w-0">
-        <div className="flex-1 px-8 py-7 min-w-0">
-          <Card className="px-8 py-6 max-w-[480px]">
+        <div className="flex-1 px-10 py-10 min-w-0 flex justify-center overflow-y-auto">
+          <Card className="px-8 py-8 w-full max-w-[560px] h-fit">
             <DependencyNode tag="Root cause" severity="critical" title="Room 304 flooded" detail="Pipe leak at 02:00. Room offline for the foreseeable — one fewer sellable room." />
             <DependencyThread label="causes" />
             <DependencyNode tag="Critical" severity="critical" title="Overbooked by one" detail="Sold-out night, now one over capacity. Decision needed by 09:00." />
@@ -158,13 +158,13 @@ export const PulseConflictsDesktop = () => (
             <DependencyNode tag="Attention" severity="attention" title="VIP room conflict" detail="Room 208 held for the Brandts, occupied until noon. Arrival 11:00." />
             <DependencyThread label="delays" />
             <DependencyNode tag="Attention" severity="attention" title="Housekeeping crunch" detail="Under an hour to turn 208 before 11:00 — one fewer housekeeper." />
-            <div className="ml-4 mt-1 pl-4 border-l border-dashed border-[#1E1611]/12">
+            <div className="ml-5 mt-4 pt-4 border-l border-dashed border-[#1E1611]/15 pl-6">
               <DependencyNode tag="Compounding" severity="neutral" title="Front office short one (sick)" detail="Fewer hands make every step above slower." />
             </div>
           </Card>
         </div>
-        <div className="w-[320px] shrink-0 px-5 py-7">
-          <Card className="px-6 py-6 h-full flex flex-col">
+        <div className="w-[360px] shrink-0 px-6 py-10 border-l border-[#1E1611]/8 bg-[#FAF8F5]/50">
+          <Card className="px-7 py-7">
             <SectionLabel>Reading the chain</SectionLabel>
             <div className="font-serif text-[20px] text-[#1E1611] mt-3 leading-snug">It all traces back to Room 304.</div>
             <p className="text-[12.5px] text-[#1E1611]/55 leading-relaxed mt-3">
@@ -177,8 +177,9 @@ export const PulseConflictsDesktop = () => (
                 Resolving the overbooking clears <span className="font-semibold">three</span> of the four downstream items at once.
               </p>
             </div>
-            <div className="flex-1" />
-            <PrimaryAction className="w-full">Resolve the overbooking</PrimaryAction>
+            <div className="mt-8">
+              <PrimaryAction className="w-full">Resolve the overbooking</PrimaryAction>
+            </div>
           </Card>
         </div>
       </div>
@@ -234,8 +235,8 @@ export const PulseOverbookingDesktop = () => (
 
     <div className="flex-1 flex flex-col min-w-0">
       <ScreenTitle title="Resolve the overbooking" meta="Compare impact, then confirm" />
-      <div className="flex-1 px-8 py-6 flex flex-col min-w-0">
-        <Card className="px-6 py-2 flex-1">
+      <div className="flex-1 px-10 py-8 flex flex-col min-w-0 overflow-y-auto">
+        <Card className="px-8 py-2">
           {OVERBOOK_OPTIONS.map((opt, i) => (
             <div key={i} className="flex items-start gap-6 py-4 border-b border-[#1E1611]/7 last:border-0">
               <div className="flex-1 min-w-0">
@@ -328,7 +329,7 @@ export const PulseVipDesktop = () => (
           </div>
 
           <div className="mt-auto pt-5 border-t border-dashed border-[#1E1611]/12">
-            <OwnerToken initials="MR" name="Marta Ruiz · assigned housekeeper" role="Floor 2 · finishing Room 204" />
+            <OwnerToken initials="MR" name="Marta Ruiz" image="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=150&h=150" />
           </div>
         </div>
 
@@ -379,6 +380,7 @@ const TEAM_COLUMNS = [
     status: "Out sick",
     tone: "#C2410C",
     reassign: true,
+    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150&h=150",
     tasks: [
       { time: "09:00 · Rm 217", title: "Follow up with 304 guests", suggest: "Anna" },
       { time: "10:30 · Lobby", title: "Greet VIP Brandt on arrival", suggest: "Sofia" },
@@ -390,6 +392,7 @@ const TEAM_COLUMNS = [
     status: "Full · 5 tasks",
     tone: "#8A6D3B",
     capacity: 88,
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=150&h=150",
     tasks: [
       { time: "08:00 · Desk", title: "Morning departures (11)" },
       { time: "All day", title: "Front desk cover" },
@@ -401,6 +404,7 @@ const TEAM_COLUMNS = [
     tone: "#2F483A",
     capacity: 42,
     dropzone: true,
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150",
     tasks: [{ time: "All morning", title: "Arrivals desk (14)" }],
   },
   {
@@ -408,6 +412,7 @@ const TEAM_COLUMNS = [
     status: "Balanced · concierge",
     tone: "#1E1611",
     capacity: 64,
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150&h=150",
     tasks: [
       { time: "by 11:00", title: "VIP arrival & amenities" },
       { time: "Evening", title: "Dinner reservations" },
@@ -439,20 +444,20 @@ export const PulseTeamDesktop = () => (
 
         <div className="flex-1 flex gap-8 min-w-0">
           {TEAM_COLUMNS.map((col, i) => (
-            <div key={i} className="flex-1 flex flex-col gap-3 min-w-0">
+            <div key={i} className="flex-1 flex flex-col gap-3 min-w-0 bg-[#1E1611]/[0.02] p-3 rounded-[8px] border border-[#1E1611]/[0.04]">
               {col.tasks.map((t, j) => (
-                <div key={j} className="py-3 border-t border-[#1E1611]/7 first:border-t-0">
-                  <div className="text-[10px] text-[#1E1611]/35 font-mono">{t.time}</div>
-                  <div className="text-[12.5px] text-[#1E1611] mt-1 leading-snug">{t.title}</div>
+                <div key={j} className="bg-white p-3 rounded-[5px] shadow-sm border border-[#1E1611]/5 relative hover:shadow-md transition-shadow cursor-grab">
+                  <div className="text-[10px] text-[#1E1611]/45 font-mono mb-1.5">{t.time}</div>
+                  <div className="text-[12.5px] text-[#1E1611] font-medium leading-snug">{t.title}</div>
                   {"suggest" in t && t.suggest && (
-                    <div className="mt-1.5">
+                    <div className="mt-3 pt-2 border-t border-dashed border-[#1E1611]/10">
                       <ActionText>Assign to {t.suggest}</ActionText>
                     </div>
                   )}
                 </div>
               ))}
               {col.dropzone && (
-                <div className="mt-1 py-3 rounded-[3px] border border-dashed border-[#2F483A]/40 text-center text-[11px] text-[#2F483A] font-medium">
+                <div className="mt-auto py-3 rounded-[5px] border border-dashed border-[#2F483A]/40 text-center text-[11px] text-[#2F483A] font-medium bg-[#2F483A]/[0.02]">
                   Drop reassigned tasks here
                 </div>
               )}
@@ -506,13 +511,6 @@ export const PulseHandledDesktop = () => (
           ))}
         </div>
 
-        <div className="flex items-center gap-4 mt-auto pt-4 border-t border-dashed border-[#1E1611]/12">
-          <div className="flex-1">
-            <div className="font-serif text-[17px] text-[#1E1611]">You&apos;re clear to start the day.</div>
-            <div className="text-[12px] text-[#1E1611]/45 mt-0.5">Every issue has an owner, a deadline, and a next step.</div>
-          </div>
-          <ActionText muted>Hand off to day team</ActionText>
-        </div>
       </div>
     </div>
   </PulseShell>
