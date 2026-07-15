@@ -434,44 +434,45 @@ export const PulseTeamDesktop = () => (
         meta="3 of 4 Active · Léa Absent"
         right={<PrimaryAction>Rebalance Shift</PrimaryAction>}
       />
-      <div className="flex-1 px-10 py-8 flex flex-col gap-6 min-w-0">
-        <div className="flex gap-8">
-          {TEAM_COLUMNS.map((col, i) => (
-            <div key={i} className="flex-1 min-w-0">
-              <OwnerToken initials={col.name.slice(0, 2).toUpperCase()} name={col.name} role={col.status} tone={col.tone} image={col.image} />
-              {!col.reassign && (
-                <div className="mt-3">
-                  <PunchStrip total={5} filled={Math.round(((col as { capacity: number }).capacity / 100) * 5)} label="Capacity" />
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-
-        <div className="flex-1 flex gap-8 min-w-0">
-          {TEAM_COLUMNS.map((col, i) => (
-            <div key={i} className="flex-1 flex flex-col gap-4 min-w-0 bg-[#1E1611]/[0.015] p-4 rounded-[6px] border border-[#1E1611]/5">
-              <div className="flex-1 flex flex-col gap-3 overflow-y-auto">
-                {col.tasks.map((t, j) => (
-                  <div key={j} className="bg-white p-4 rounded-[5px] border border-[#1E1611]/4 shadow-[0_1px_3px_rgba(30,22,17,0.02)] hover:shadow-md transition-shadow cursor-grab">
-                    <div className="text-[9.5px] text-[#1E1611]/40 font-mono mb-1.5">{t.time}</div>
-                    <div className="text-[13px] text-[#1E1611] font-medium leading-snug">{t.title}</div>
-                    {"suggest" in t && t.suggest && (
-                      <div className="mt-3 pt-2.5 border-t border-dashed border-[#1E1611]/8">
-                        <ActionText>Assign to {t.suggest}</ActionText>
-                      </div>
-                    )}
-                  </div>
-                ))}
+      <div className="flex-1 px-10 py-8 flex gap-8 min-w-0">
+        {TEAM_COLUMNS.map((col, i) => (
+          <div key={i} className="flex-1 flex flex-col gap-5 min-w-0 bg-[#1E1611]/[0.015] p-5 rounded-[6px] border border-[#1E1611]/5">
+            {/* Column Header */}
+            <div>
+              <OwnerToken initials={col.name.slice(0, 2).toUpperCase()} name={col.name} tone={col.tone} image={col.image} />
+              <div className="flex items-center justify-between mt-3 pb-3.5 border-b border-[#1E1611]/6">
+                <span className="text-[10px] uppercase font-sans tracking-[0.12em] font-medium text-[#1E1611]/50">{col.status}</span>
+                {!col.reassign && (
+                  <span className="font-mono text-[10px] text-[#1E1611]/50" style={{ fontVariantNumeric: "lining-nums" }}>
+                    {Math.round(((col as { capacity: number }).capacity / 100) * 5)}/5 Tasks
+                  </span>
+                )}
               </div>
-              {col.dropzone && (
-                <div className="py-4.5 rounded-[5px] border border-dashed border-[#2F483A]/30 text-center text-[11px] text-[#2F483A] font-medium bg-[#2F483A]/[0.01] hover:bg-[#2F483A]/[0.03] transition-colors cursor-pointer mt-auto">
-                  Assign Remaining Service Tasks
-                </div>
-              )}
             </div>
-          ))}
-        </div>
+
+            {/* Task Cards List */}
+            <div className="flex-1 flex flex-col gap-3 overflow-y-auto min-h-0">
+              {col.tasks.map((t, j) => (
+                <div key={j} className="bg-[#FAF8F5] p-4 rounded-[5px] border border-[#1E1611]/6 shadow-[0_1px_3px_rgba(30,22,17,0.02)] hover:shadow-md transition-shadow cursor-grab">
+                  <div className="text-[9.5px] text-[#1E1611]/40 font-mono mb-1.5">{t.time}</div>
+                  <div className="text-[13px] text-[#1E1611] font-medium leading-snug">{t.title}</div>
+                  {"suggest" in t && t.suggest && (
+                    <div className="mt-3 pt-2.5 border-t border-dashed border-[#1E1611]/8">
+                      <ActionText>Assign to {t.suggest}</ActionText>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Reassign / Drop Action */}
+            {col.dropzone && (
+              <div className="py-4.5 rounded-[5px] border border-dashed border-[#2F483A]/30 text-center text-[11px] text-[#2F483A] font-medium bg-[#2F483A]/[0.01] hover:bg-[#2F483A]/[0.03] transition-colors cursor-pointer mt-auto">
+                Assign Remaining Service Tasks
+              </div>
+            )}
+          </div>
+        ))}
       </div>
     </div>
   </PulseShell>

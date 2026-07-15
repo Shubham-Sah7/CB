@@ -368,7 +368,8 @@ export const OwnerToken = ({ initials, name, role, tone, image }: { initials: st
       </div>
     )}
     <div className="leading-tight">
-      <div className="text-[13px] font-medium text-[#1E1611]">{name.split(' · ')[0]}</div>
+      <div className="text-[13.5px] font-medium text-[#1E1611]">{name.split(' · ')[0]}</div>
+      {role && <div className="text-[11px] text-[#1E1611]/45 mt-0.5">{role}</div>}
     </div>
   </div>
 )
@@ -392,7 +393,7 @@ export const ServiceSheet = ({ items }: { items: { label: string; done: boolean 
 )
 
 export const ActionText = ({ children, muted = false }: { children: ReactNode; muted?: boolean }) => (
-  <button className={`text-[12px] font-medium transition-opacity hover:opacity-70 ${muted ? "text-[#1E1611]/55" : "text-[#2F483A]"}`}>
+  <button className={`text-[12px] font-medium transition-colors hover:text-[#1E1611] ${muted ? "text-[#1E1611]/45" : "text-[#2F483A]"}`}>
     {children} ›
   </button>
 )
@@ -403,14 +404,14 @@ export const ActionText = ({ children, muted = false }: { children: ReactNode; m
 // what ties Pulse's primary actions to the Host app's own buttons.
 export const PrimaryAction = ({ children, className = "" }: { children: ReactNode; className?: string }) => (
   <button
-    className={`paper-grain tactile-switch h-12 px-7 rounded-full bg-[#2F483A] hover:bg-[#26392E] active:translate-y-[0.5px] transition-all text-[#FAF8F5] font-sans text-[11px] uppercase tracking-[0.15em] font-bold border border-[#2F483A]/20 shadow-[0_4px_14px_rgba(47,72,58,0.28)] ${className}`}
+    className={`paper-grain tactile-switch h-12 px-7 rounded-full bg-[#2F483A] hover:bg-[#23372B] active:translate-y-[0.5px] transition-all text-[#FAF8F5] font-sans text-[11.5px] uppercase tracking-[0.18em] font-bold border border-[#2F483A]/20 shadow-[0_2px_8px_rgba(47,72,58,0.15)] ${className} cursor-pointer`}
   >
     {children}
   </button>
 )
 
 export const SecondaryAction = ({ children }: { children: ReactNode }) => (
-  <button className="tactile-switch h-12 px-7 rounded-full border border-[#1E1611]/18 text-[#1E1611]/70 font-sans text-[11px] uppercase tracking-[0.15em] font-bold hover:border-[#1E1611]/35 transition-all">
+  <button className="tactile-switch h-12 px-7 rounded-full border border-[#1E1611]/15 text-[#1E1611]/70 font-sans text-[11.5px] uppercase tracking-[0.18em] font-bold hover:border-[#1E1611]/30 hover:text-[#1E1611] transition-all cursor-pointer">
     {children}
   </button>
 )
