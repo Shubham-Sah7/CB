@@ -102,10 +102,10 @@ export const PulseDesignSystemArtboard = () => {
   const [activeTab, setActiveTab] = useState("foundation")
 
   return (
-    <div className="w-[1360px] bg-[#FAF8F5] paper-grain rounded-[8px] overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.3)] border border-[#1E1611]/10 flex flex-col relative text-[#1E1611] font-sans">
+    <div data-name="Foundation / Artboard" className="w-[1360px] bg-[#FAF8F5] paper-grain rounded-[8px] overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.3)] border border-[#1E1611]/10 flex flex-col relative text-[#1E1611] font-sans">
       
       {/* Editorial Header */}
-      <div className="px-12 pt-12 pb-8 border-b border-[#1E1611]/8 flex items-baseline justify-between">
+      <div data-name="Header / Editorial" className="px-12 pt-12 pb-8 border-b border-[#1E1611]/8 flex items-baseline justify-between">
         <div>
           <span className="font-serif text-[13px] tracking-[0.18em] text-[#8A6D3B] uppercase font-semibold">Aurelia Swiss Alps Resort</span>
           <h1 className="font-serif text-[38px] font-light tracking-wide text-[#1E1611] mt-1.5">Design Foundation Specifications</h1>
@@ -124,7 +124,7 @@ export const PulseDesignSystemArtboard = () => {
         <div className="flex-1 px-12 py-10 flex flex-col gap-16">
           
           {/* ==================== SECTION 01: FOUNDATION ==================== */}
-          <section className="flex flex-col gap-6">
+          <div data-name="Foundation / BrandPrinciples" className="flex flex-col gap-6">
             <div className="border-b border-[#1E1611]/6 pb-2">
               <span className="font-mono text-[11px] text-[#8A6D3B]">SECTION 01 / FOUNDATION</span>
               <h2 className="font-serif text-[22px] font-light text-[#1E1611] mt-0.5">Aurelia Design Foundation</h2>
@@ -156,10 +156,10 @@ export const PulseDesignSystemArtboard = () => {
                 </p>
               </div>
             </div>
-          </section>
+          </div>
 
           {/* ==================== SECTION 02: DESIGN PHILOSOPHY ==================== */}
-          <section className="flex flex-col gap-6">
+          <div data-name="Foundation / DesignPhilosophy" className="flex flex-col gap-6">
             <div className="border-b border-[#1E1611]/6 pb-2">
               <span className="font-mono text-[11px] text-[#8A6D3B]">SECTION 02 / PHILOSOPHY</span>
               <h2 className="font-serif text-[22px] font-light text-[#1E1611] mt-0.5">Design Philosophy & System Divergence</h2>
@@ -205,10 +205,10 @@ export const PulseDesignSystemArtboard = () => {
 
               </div>
             </div>
-          </section>
+          </div>
 
           {/* ==================== SECTION 03: TYPOGRAPHY ==================== */}
-          <section className="flex flex-col gap-6">
+          <div data-name="Foundation / Typography" className="flex flex-col gap-6">
             <div className="border-b border-[#1E1611]/6 pb-2">
               <span className="font-mono text-[11px] text-[#8A6D3B]">SECTION 03 / TYPOGRAPHY</span>
               <h2 className="font-serif text-[22px] font-light text-[#1E1611] mt-0.5">Typographic Hierarchy & Scaling</h2>
@@ -249,7 +249,7 @@ export const PulseDesignSystemArtboard = () => {
                 </div>
               ))}
             </div>
-          </section>
+          </div>
 
           {/* ==================== SECTION 04: COLOUR SYSTEM ==================== */}
           <section className="flex flex-col gap-6">

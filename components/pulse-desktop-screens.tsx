@@ -84,10 +84,10 @@ const OVERNIGHT_LOG = [
 
 export const PulseBriefDesktop = () => (
   <PulseShell active="brief">
-    <div className="flex-1 flex flex-col min-w-0">
+    <div data-name="Frame / ScreenContent" className="flex-1 flex flex-col min-w-0">
       <ScreenTitle title="Morning Brief" meta="Wednesday 15 July" />
       <div className="flex-1 flex min-w-0">
-        <div className="flex-1 flex flex-col px-10 py-8 min-w-0 gap-8">
+        <div data-name="Column / Main" className="flex-1 flex flex-col px-10 py-8 min-w-0 gap-8">
           <Card className="px-8 py-6 flex items-center justify-between gap-8">
             <RadialGauge value={95.5} valueLabel="86/90" label="Rooms Ready" />
             <RadialGauge value={100} valueLabel="100%" label="Occupancy" />
@@ -113,7 +113,7 @@ export const PulseBriefDesktop = () => (
           </Card>
         </div>
 
-        <div className="w-[320px] shrink-0 px-6 py-8 flex flex-col gap-6 overflow-y-auto border-l border-[#1E1611]/6">
+        <div data-name="Column / Sidebar" className="w-[320px] shrink-0 px-6 py-8 flex flex-col gap-6 overflow-y-auto border-l border-[#1E1611]/6">
           <Card className="px-6 py-6 flex flex-col gap-5">
             <SectionLabel>Handover Guidelines</SectionLabel>
             <RecommendationSection label="Immediate">
