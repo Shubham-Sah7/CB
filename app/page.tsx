@@ -1148,8 +1148,8 @@ export default function Page() {
         {/* ==================== ROW 1: THE PRODUCT THESIS & OPERATION ROADMAP ==================== */}
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 items-stretch">
           
-          {/* COLUMN 1.1: Product Thinking & Scribbles */}
-          <div className="bg-[#FAF8F5] border border-[#1E1611]/12 p-8 rounded-[8px] shadow-sm relative flex flex-col justify-between min-h-[380px]">
+          {/* COLUMN 1.1: Product Thinking & Evolution */}
+          <div className="bg-[#FAF8F5] border border-[#1E1611]/12 p-8 rounded-[8px] shadow-sm relative flex flex-col justify-between min-h-[380px] rotate-[-0.5deg]">
             <PushPin className="top-2 left-12 bg-red-500 border-red-600" />
             <MaskingTape className="-top-3 right-10 rotate-[5deg] w-16 h-4" />
             
@@ -1157,122 +1157,155 @@ export default function Page() {
               <span>05 // UX Thesis & Evolution</span>
             </div>
 
-            {/* Crossed-out Evolution Journey */}
-            <div className="flex flex-col gap-4 my-2 text-[10.5px] font-sans">
+            {/* Evolution Journey */}
+            <div className="flex flex-col gap-4 text-[10.5px] font-sans">
               <div>
-                <span className="text-red-500 line-through block font-bold text-[8px] uppercase tracking-wider">❌ Option A (Traditional)</span>
-                <p className="line-through opacity-45 font-serif italic" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>&ldquo;Load the app home dashboard and show weather, news, hotel amenities menu.&rdquo;</p>
+                <span className="text-red-500 line-through block font-bold text-[8px] uppercase tracking-wider">❌ Initial Thought</span>
+                <p className="line-through opacity-45 font-serif italic mt-0.5" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
+                  Guest arrives → Reception → Check-in → Room
+                </p>
+                <div className="text-[7.5px] font-mono text-red-500 mt-1 pl-2">
+                  <p>• Waiting after a long journey</p>
+                  <p>• Repeating information already provided</p>
+                  <p>• Creates unnecessary cognitive load</p>
+                </div>
               </div>
-              <div className="pl-4">
-                <span className="text-[#2F483A] block font-bold text-[8px] uppercase tracking-wider">✓ Option B (Anticipated)</span>
-                <p className="text-[#1E1611] font-serif italic font-bold" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>&ldquo;Immediate check-in. Zero clicks. Funicular triggers keycard delivery.&rdquo;</p>
+
+              <div className="border-t border-[#1E1611]/10 pt-3">
+                <span className="text-[#2F483A] block font-bold text-[8px] uppercase tracking-wider">✓ Final Decision</span>
+                <p className="text-[#1E1611] font-serif italic font-bold text-[11px] mt-0.5" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
+                  Arrival → Invisible Check-in → Guided Room Access
+                </p>
+                <blockquote className="border-l-2 border-[#2F483A] pl-2 py-0.5 mt-1.5 text-[9px] text-[#1E1611]/70 italic">
+                  &ldquo;The guest should feel welcomed before they feel processed.&rdquo;
+                </blockquote>
               </div>
             </div>
 
-            {/* Diagram: How we reached simplicity */}
+            {/* Logic Diagram */}
             <div className="border-t border-[#1E1611]/10 pt-4 mt-2 flex flex-col gap-2.5">
-              <span className="font-sans text-[8px] uppercase tracking-[0.15em] text-[#1E1611]/55 font-bold">Logic Diagram</span>
-              <div className="flex flex-wrap items-center gap-1 text-[9px] font-mono text-[#1E1611]/80">
-                <span>Guest Arrives</span>
-                <span className="text-[#1E1611]/40">→</span>
-                <span className="bg-orange-100 px-1 text-orange-800 font-bold">Exhausted</span>
-                <span className="text-[#1E1611]/40">→</span>
-                <span className="underline">No Forms</span>
-                <span className="text-[#1E1611]/40">→</span>
-                <span className="bg-green-100 px-1 text-green-800 font-bold">1-Click Room Entry</span>
+              <span className="font-sans text-[8px] uppercase tracking-[0.15em] text-[#1E1611]/55 font-bold">Simplicity Logic Path</span>
+              <div className="flex flex-col gap-1 text-[9px] font-mono text-[#1E1611]/80">
+                <div className="flex items-center gap-1.5">
+                  <span>Flight Delayed</span>
+                  <span className="text-[#1E1611]/30">↓</span>
+                  <span className="bg-orange-50 text-orange-800 px-1 font-bold">Guest Exhausted</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span>Remove Forms</span>
+                  <span className="text-[#1E1611]/30">↓</span>
+                  <span className="bg-yellow-50 text-yellow-800 px-1 font-bold">No Reception Queue</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span>Digital Key Ready</span>
+                  <span className="text-[#1E1611]/30">↓</span>
+                  <span className="bg-green-50 text-green-800 px-1 font-bold">One Tap Arrival</span>
+                </div>
               </div>
-              
-              {/* Hand-drawn side comment */}
-              <p className="font-serif italic text-xs text-[#C2410C] mt-2 leading-relaxed" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
-                * &ldquo;Can we completely replace the front desk? Validate with local Swiss laws.&rdquo;
+            </div>
+
+            {/* Open Question */}
+            <div className="border-t border-[#1E1611]/10 pt-3 mt-1 text-[8.5px] font-sans">
+              <span className="font-bold text-[#C2410C] block uppercase text-[7.5px] tracking-wide">Open Question:</span>
+              <p className="font-medium">Can every guest bypass reception?</p>
+              <p className="opacity-70 mt-0.5 font-serif italic text-[#1E1611]/85" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
+                → Only if KYC + payment + identity verification are completed before arrival.
               </p>
             </div>
           </div>
 
           {/* COLUMN 1.2: Validated Assumptions (Sticky Notes Stack) */}
-          <div className="bg-[#FAF8F5] border border-[#1E1611]/12 p-8 rounded-[8px] shadow-sm relative flex flex-col justify-between min-h-[380px]">
+          <div className="bg-[#FAF8F5] border border-[#1E1611]/12 p-8 rounded-[8px] shadow-sm relative flex flex-col justify-between min-h-[380px] rotate-[1deg]">
             <PushPin className="top-2 left-1/2 bg-blue-500 border-blue-600" />
             
             <div className="flex items-center gap-1.5 text-[8.5px] uppercase tracking-widest font-semibold text-[#1E1611]/45 mb-4">
-              <span>06 // Operational Assumptions</span>
+              <span>06 // Validated Assumptions</span>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 my-2 text-[10px]">
+            <div className="grid grid-cols-2 gap-3 my-2 text-[9px] font-sans">
               
-              <div className="p-3 bg-[#FEF9C3] border border-[#EFE5A3] shadow-xs rotate-[-1.5deg] flex flex-col gap-1 relative">
-                <span className="font-bold text-[#1E1611]">Assump 01</span>
-                <p className="opacity-70 leading-tight">KYC / Payment completed during booking phase.</p>
-                <span className="text-[7px] text-[#2F483A] font-mono uppercase mt-1">Confidence: High</span>
+              {/* Sticky 01: Identity */}
+              <div className="p-3 bg-[#FEF9C3] border border-[#EFE5A3] shadow-xs rotate-[-1.5deg] flex flex-col justify-between min-h-[95px] relative">
+                <div className="w-1.5 h-1.5 rounded-full bg-black/10 absolute top-1 left-1" />
+                <div>
+                  <span className="font-bold block uppercase text-[7px] text-[#1E1611]/50">01 / Identity</span>
+                  <p className="leading-tight mt-0.5 font-medium">✓ Passport verified before arrival</p>
+                </div>
+                <span className="text-[6.5px] font-mono uppercase text-[#2F483A] font-bold mt-1">Confidence: HIGH</span>
               </div>
 
-              <div className="p-3 bg-[#D1F2FF] border border-[#B0E2FA] shadow-xs rotate-[2deg] flex flex-col gap-1 relative">
-                <span className="font-bold text-[#1E1611]">Assump 02</span>
-                <p className="opacity-70 leading-tight">Door locks support active Bluetooth BLE unlock.</p>
-                <span className="text-[7px] text-[#C2410C] font-mono uppercase mt-1">Verify locks!</span>
+              {/* Sticky 02: Door Access */}
+              <div className="p-3 bg-[#E2FFE2] border border-[#C2F5C2] shadow-xs rotate-[2deg] flex flex-col justify-between min-h-[95px] relative">
+                <div className="w-1.5 h-1.5 rounded-full bg-black/10 absolute top-1 left-1" />
+                <div>
+                  <span className="font-bold block uppercase text-[7px] text-[#1E1611]/50">02 / Door Access</span>
+                  <p className="leading-tight mt-0.5 font-medium">Bluetooth Low Energy digital key supported by room locks</p>
+                </div>
+                <span className="text-[6.5px] font-mono uppercase text-[#2F483A] font-bold mt-1">Confidence: HIGH</span>
               </div>
 
-              <div className="p-3 bg-[#FFE2E2] border border-[#F5C2C2] shadow-xs rotate-[-1deg] flex flex-col gap-1 relative">
-                <span className="font-bold text-[#1E1611]">Assump 03</span>
-                <p className="opacity-70 leading-tight">Geofence detects GVA flight arrival & funicular exit.</p>
-                <span className="text-[7px] text-[#2F483A] font-mono uppercase mt-1">Confidence: Med</span>
+              {/* Sticky 03: Arrival Detection */}
+              <div className="p-3 bg-[#D1F2FF] border border-[#B0E2FA] shadow-xs rotate-[-1deg] flex flex-col justify-between min-h-[95px] relative">
+                <div className="w-1.5 h-1.5 rounded-full bg-black/10 absolute top-1 left-1" />
+                <div>
+                  <span className="font-bold block uppercase text-[7px] text-[#1E1611]/50">03 / Arrival</span>
+                  <p className="leading-tight mt-0.5 font-medium">Geofence detects guest exiting the funicular station</p>
+                </div>
+                <span className="text-[6.5px] font-mono uppercase text-[#C2410C] font-bold mt-1">Confidence: MEDIUM</span>
               </div>
 
-              <div className="p-3 bg-[#E2FFE2] border border-[#C2F5C2] shadow-xs rotate-[1.5deg] flex flex-col gap-1 relative">
-                <span className="font-bold text-[#1E1611]">Assump 04</span>
-                <p className="opacity-70 leading-tight">Staff can prep late supper & luggage before 23:40.</p>
-                <span className="text-[7px] text-[#2F483A] font-mono uppercase mt-1">Confidence: High</span>
+              {/* Sticky 04: Kitchen */}
+              <div className="p-3 bg-[#FEF9C3] border border-[#EFE5A3] shadow-xs rotate-[1.5deg] flex flex-col justify-between min-h-[95px] relative">
+                <div className="w-1.5 h-1.5 rounded-full bg-black/10 absolute top-1 left-1" />
+                <div>
+                  <span className="font-bold block uppercase text-[7px] text-[#1E1611]/50">04 / Kitchen</span>
+                  <p className="leading-tight mt-0.5 font-medium">Late-night comfort menu available until 00:00</p>
+                </div>
+                <span className="text-[6.5px] font-mono uppercase text-[#2F483A] font-bold mt-1">Confidence: HIGH</span>
               </div>
 
             </div>
 
             {/* Note to the operations team */}
             <div className="border-t border-[#1E1611]/10 pt-4 mt-2">
-              <span className="font-sans text-[7.5px] uppercase tracking-widest text-[#C2410C] font-bold block">Action Item:</span>
-              <p className="font-serif italic text-xs text-[#1E1611]/70 leading-relaxed" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
-                &ldquo;Need to confirm if geofencing is legal under Canton hospitality rules.&rdquo;
+              <span className="font-sans text-[7.5px] uppercase tracking-widest text-[#C2410C] font-bold block">Action Item & Verification:</span>
+              <p className="font-serif italic text-xs text-[#1E1611]/75 leading-relaxed" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
+                &ldquo;Confirm Swiss privacy requirements for passive geofencing. Validate geofence station accuracy during snow with engineering.&rdquo;
               </p>
             </div>
           </div>
 
-          {/* COLUMN 1.3: Service Blueprint & Data Flow */}
-          <div className="bg-[#FAF8F5] border border-[#1E1611]/12 p-8 rounded-[8px] shadow-sm relative flex flex-col justify-between min-h-[380px]">
+          {/* COLUMN 1.3: Service Blueprint & System Map */}
+          <div className="bg-[#FAF8F5] border border-[#1E1611]/12 p-8 rounded-[8px] shadow-sm relative flex flex-col justify-between min-h-[380px] rotate-[-0.5deg]">
             <PushPin className="top-2 right-12 bg-green-500 border-green-600" />
             
             <div className="flex items-center gap-1.5 text-[8.5px] uppercase tracking-widest font-semibold text-[#1E1611]/45 mb-4">
-              <span>07 // Service Blueprint Data Flow</span>
+              <span>07 // Service Blueprint Flow</span>
             </div>
 
             {/* Flowchart list */}
-            <div className="flex flex-col gap-3 font-mono text-[9px] text-[#1E1611]/80 my-2 leading-relaxed">
+            <div className="flex flex-col gap-2 font-mono text-[8.5px] text-[#1E1611]/80 my-2 leading-relaxed">
               <div className="p-2 border border-[#1E1611]/10 rounded bg-[#FAF8F5] flex flex-col gap-0.5">
-                <div className="flex justify-between items-center">
-                  <span className="font-bold text-black uppercase text-[7.5px]">01 / Bluetooth Unlock Trigger</span>
-                  <span className="text-[#2F483A] font-bold">App</span>
-                </div>
-                <p className="opacity-70">BLE signal exchanges token with door unit on approach.</p>
+                <span className="font-bold text-black uppercase text-[7px]">Guest Journey Flow</span>
+                <p className="opacity-75">
+                  Guest arrives → Host detects location → PMS confirms reservation → Room status = Ready → Bluetooth key activated → Housekeeping notified → Kitchen preps suggested supper → Guest unlocks room → Stay begins.
+                </p>
               </div>
 
               <div className="p-2 border border-[#1E1611]/10 rounded bg-[#FAF8F5] flex flex-col gap-0.5">
-                <div className="flex justify-between items-center">
-                  <span className="font-bold text-black uppercase text-[7.5px]">02 / PMS Sync Status</span>
-                  <span className="text-[#2F483A] font-bold">PMS Server</span>
-                </div>
-                <p className="opacity-70">Validates room 214 check-in status, logs timestamp.</p>
-              </div>
-
-              <div className="p-2 border border-[#1E1611]/10 rounded bg-[#FAF8F5] flex flex-col gap-0.5">
-                <div className="flex justify-between items-center">
-                  <span className="font-bold text-black uppercase text-[7.5px]">03 / Hearth & Kitchen Prep</span>
-                  <span className="text-[#2F483A] font-bold">Hotel Ops</span>
-                </div>
-                <p className="opacity-70">Notifies in-room fireplace & kitchen tray placement.</p>
+                <span className="font-bold text-black uppercase text-[7px]">System Connections</span>
+                <p className="opacity-75">
+                  Host App → PMS (Property Management) → Door Lock API → Kitchen Display System → Housekeeping Console.
+                </p>
               </div>
             </div>
 
-            {/* Hand-drawn blueprint scribble */}
-            <p className="font-serif italic text-xs text-[#2F483A] border-t border-[#1E1611]/10 pt-4 mt-2" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
-              &ldquo;Data flows automatically. Front-end is just a mirror of the room state.&rdquo;
-            </p>
+            <div className="border-t border-[#1E1611]/10 pt-4 mt-2">
+              <span className="font-mono text-[7px] uppercase font-bold text-[#2F483A]">Core Architecture Note:</span>
+              <p className="font-serif italic text-xs text-[#1E1611]/70 leading-relaxed" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
+                &ldquo;Front-end never asks. Back-end already knows. The UI serves only to reassure.&rdquo;
+              </p>
+            </div>
           </div>
 
         </div>
@@ -1281,55 +1314,53 @@ export default function Page() {
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 items-stretch">
           
           {/* COLUMN 2.1: Component Anatomy Specification */}
-          <div className="bg-[#FAF8F5] border border-[#1E1611]/12 p-8 rounded-[8px] shadow-sm relative flex flex-col justify-between min-h-[380px]">
+          <div className="bg-[#FAF8F5] border border-[#1E1611]/12 p-8 rounded-[8px] shadow-sm relative flex flex-col justify-between min-h-[380px] rotate-[0.5deg]">
             <PushPin className="top-2 left-10 bg-yellow-500 border-yellow-600" />
             
             <div className="flex items-center gap-1.5 text-[8.5px] uppercase tracking-widest font-semibold text-[#1E1611]/45 mb-4">
-              <span>13 // Component Anatomy Specs</span>
+              <span>13 // Component Anatomy</span>
             </div>
 
             {/* Component Anatomy Layout */}
-            <div className="flex flex-col gap-4 my-2 text-[10px] font-sans">
-              <div className="p-3 bg-[#FAF8F5] border border-[#1E1611]/15 rounded flex flex-col gap-2 shadow-xs">
-                <span className="font-bold text-[8.5px] uppercase tracking-wider text-[#2F483A]">Primary Button Specs</span>
-                <div className="flex justify-between text-[8px] font-mono border-b border-[#1E1611]/5 pb-1">
-                  <span>Padding:</span>
-                  <span>16px Y / 24px X</span>
+            <div className="flex flex-col gap-4 my-2 text-[9.5px] font-sans">
+              <div className="p-3 bg-[#FAF8F5] border border-[#1E1611]/15 rounded flex flex-col gap-1.5 shadow-xs">
+                <span className="font-bold text-[8px] uppercase tracking-wider text-[#2F483A]">Primary Button Specs</span>
+                <div className="grid grid-cols-2 gap-y-1 font-mono text-[8px] border-b border-[#1E1611]/5 pb-1 text-[#1E1611]/80">
+                  <div>Height: 56px</div>
+                  <div>Radius: 999px (Pill)</div>
+                  <div>Horizontal Padding: 24</div>
+                  <div>Vertical Padding: 16</div>
+                  <div>Font: 14 Medium</div>
+                  <div>Touch Target: 56px</div>
+                  <div>Shadow: Soft / 8%</div>
                 </div>
-                <div className="flex justify-between text-[8px] font-mono border-b border-[#1E1611]/5 pb-1">
-                  <span>Radius:</span>
-                  <span>999px (Pill style)</span>
-                </div>
-                <div className="flex justify-between text-[8px] font-mono border-b border-[#1E1611]/5 pb-1">
-                  <span>Touch target:</span>
-                  <span>Min 44px conforming to WCAG AA</span>
-                </div>
-                <div className="flex justify-between text-[8px] font-mono">
-                  <span>Shadow:</span>
-                  <span>Soft blur #1E1611/8 offset-y 4px</span>
+                <div className="text-[7.5px] font-mono text-[#1E1611]/60">
+                  States: Default · Pressed · Disabled · Loading
                 </div>
               </div>
 
-              <div className="p-3 bg-[#FAF8F5] border border-[#1E1611]/15 rounded flex flex-col gap-2 shadow-xs">
-                <span className="font-bold text-[8.5px] uppercase tracking-wider text-[#2F483A]">Sanctuary Card Spec</span>
-                <div className="flex justify-between text-[8px] font-mono border-b border-[#1E1611]/5 pb-1">
-                  <span>Corner Radius:</span>
-                  <span>38px luxury soft corner</span>
-                </div>
-                <div className="flex justify-between text-[8px] font-mono">
-                  <span>Borders:</span>
-                  <span>0.5px hairline outline #1E1611/12</span>
+              <div className="p-3 bg-[#FAF8F5] border border-[#1E1611]/15 rounded flex flex-col gap-1.5 shadow-xs">
+                <span className="font-bold text-[8px] uppercase tracking-wider text-[#2F483A]">Sanctuary Card Spec</span>
+                <div className="grid grid-cols-2 gap-y-1 font-mono text-[8px] text-[#1E1611]/80">
+                  <div>Padding: 24px</div>
+                  <div>Card Radius: 24px</div>
+                  <div>Image Radius: 18px</div>
+                  <div>Surface: Parchment</div>
+                  <div className="col-span-2">Shadow: Paper Elevation 02</div>
                 </div>
               </div>
             </div>
 
-            <p className="font-serif italic text-xs text-[#C2410C]" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
-              * &ldquo;Make sure button corners don&apos;t look too sharp on screens.&rdquo;
-            </p>
+            <div className="border-t border-[#1E1611]/10 pt-3">
+              <span className="font-sans text-[7.5px] uppercase font-bold tracking-wider text-[#2F483A] block">Design Note:</span>
+              <p className="font-serif italic text-[11.5px] text-[#1E1611]/75" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
+                &ldquo;Corners are intentionally softer than iOS default values to reinforce warm hospitality.&rdquo;
+              </p>
+            </div>
           </div>
 
           {/* COLUMN 2.2: Naming Naming Tokens & Engineering Spec */}
-          <div className="bg-[#FAF8F5] border border-[#1E1611]/12 p-8 rounded-[8px] shadow-sm relative flex flex-col justify-between min-h-[380px]">
+          <div className="bg-[#FAF8F5] border border-[#1E1611]/12 p-8 rounded-[8px] shadow-sm relative flex flex-col justify-between min-h-[380px] rotate-[-0.5deg]">
             <PushPin className="top-2 right-12 bg-purple-500 border-purple-600" />
             <MaskingTape className="bottom-4 left-6 rotate-[12deg] w-14 h-4" />
             
@@ -1338,138 +1369,170 @@ export default function Page() {
             </div>
 
             {/* Token Table */}
-            <div className="flex flex-col gap-2 font-mono text-[9px] my-auto">
-              <div className="flex justify-between border-b border-[#1E1611]/8 pb-1">
-                <span className="font-bold">Spacing Scale:</span>
-                <span>4px · 8px · 16px · 24px · 32px · 48px</span>
-              </div>
-              <div className="flex justify-between border-b border-[#1E1611]/8 pb-1">
-                <span className="font-bold">Typography:</span>
-                <span>Display / Heading / Body / Caption</span>
-              </div>
-              <div className="flex justify-between border-b border-[#1E1611]/8 pb-1">
-                <span className="font-bold">Primary Button:</span>
-                <span>Host/Button/Primary</span>
-              </div>
-              <div className="flex justify-between border-b border-[#1E1611]/8 pb-1">
-                <span className="font-bold">Room Card:</span>
-                <span>Host/Card/Room</span>
-              </div>
-              <div className="flex justify-between border-b border-[#1E1611]/8 pb-1">
-                <span className="font-bold">Status Tag:</span>
-                <span>Host/Tag/Status</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="font-bold">Easing motion:</span>
-                <span>cubic-bezier(0.16, 1, 0.3, 1)</span>
-              </div>
+            <div className="flex flex-col gap-1 font-mono text-[8px] my-auto leading-relaxed overflow-y-auto max-h-[220px] scrollbar-thin">
+              <p className="text-[#2F483A] font-bold">// Color Tokens</p>
+              <p>color.surface.parchment · color.surface.elevated</p>
+              <p>color.text.primary · color.text.secondary</p>
+              <p>color.accent.spruce · color.border.soft · color.shadow.paper</p>
+              
+              <p className="text-[#2F483A] font-bold mt-1.5">// Radius Tokens</p>
+              <p>radius.sm = 12 · radius.md = 16 · radius.lg = 24 · radius.full = 999</p>
+
+              <p className="text-[#2F483A] font-bold mt-1.5">// Spacing scale</p>
+              <p>space.4 · space.8 · space.16 · space.24 · space.32 · space.48 · space.64</p>
+
+              <p className="text-[#2F483A] font-bold mt-1.5">// Typography</p>
+              <p>font.display · font.heading · font.body · font.caption</p>
+
+              <p className="text-[#2F483A] font-bold mt-1.5">// Motion Easing</p>
+              <p>motion.fast · motion.normal · motion.slow</p>
             </div>
 
-            <p className="font-serif italic text-xs text-[#2F483A] border-t border-[#1E1611]/10 pt-4 mt-2" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
-              &ldquo;Engineering: keep CSS values mapped to root design-system variables.&rdquo;
-            </p>
+            <div className="border-t border-[#1E1611]/10 pt-3 mt-2 text-[8px] font-sans">
+              <span className="font-bold text-black uppercase tracking-wider text-[7px] block">Engineering Notes:</span>
+              <ul className="list-disc pl-3 text-[#1E1611]/70 leading-normal font-mono">
+                <li>All components use Auto Layout.</li>
+                <li>8pt spacing grid.</li>
+                <li>Semantic color tokens only; no hard-coded values.</li>
+                <li>Motion follows shared easing curve.</li>
+              </ul>
+            </div>
           </div>
 
           {/* COLUMN 2.3: Edge Cases Scenario Planning */}
-          <div className="bg-[#FAF8F5] border border-[#1E1611]/12 p-8 rounded-[8px] shadow-sm relative flex flex-col justify-between min-h-[380px]">
+          <div className="bg-[#FAF8F5] border border-[#1E1611]/12 p-8 rounded-[8px] shadow-sm relative flex flex-col justify-between min-h-[380px] rotate-[1.5deg]">
             <PushPin className="top-2 left-1/3 bg-red-500 border-red-600" />
             
             <div className="flex items-center gap-1.5 text-[8.5px] uppercase tracking-widest font-semibold text-[#1E1611]/45 mb-4">
               <span>10 // Fallback Scenarios</span>
             </div>
 
-            <div className="flex flex-col gap-4 text-[9.5px] my-2 font-mono">
-              <div className="p-2 border border-red-200 bg-red-50 rounded">
-                <strong className="block text-red-800 text-[8px] uppercase">Scenario 01: Battery Dies</strong>
-                <p className="opacity-85 mt-0.5">Concierge waiting at station with physical room key card.</p>
+            <div className="flex flex-col gap-3.5 text-[9px] my-2 font-mono">
+              <div className="p-2 border border-dashed border-[#1E1611]/25 bg-white/40 rounded flex flex-col gap-1">
+                <span className="font-bold text-black uppercase text-[7.5px]">Scenario 01: Phone battery dead</span>
+                <span className="text-[#C2410C]">↓ Fallback: Night concierge prints physical room card.</span>
+                <span className="opacity-75">Guest never waits.</span>
               </div>
 
-              <div className="p-2 border border-red-200 bg-red-50 rounded">
-                <strong className="block text-red-800 text-[8px] uppercase">Scenario 02: BLE Key Fail</strong>
-                <p className="opacity-85 mt-0.5">Local offline lock decrypts fallback protocol; staff handles entry.</p>
+              <div className="p-2 border border-dashed border-[#1E1611]/25 bg-white/40 rounded flex flex-col gap-1">
+                <span className="font-bold text-black uppercase text-[7.5px]">Scenario 02: Bluetooth unlock fails</span>
+                <span className="text-[#C2410C]">↓ Fallback: NFC card already prepared in welcome envelope.</span>
+                <span className="opacity-75">Guest enters room normally.</span>
               </div>
 
-              <div className="p-2 border border-red-200 bg-red-50 rounded">
-                <strong className="block text-red-800 text-[8px] uppercase">Scenario 03: Late Kitchen Close</strong>
-                <p className="opacity-85 mt-0.5">Deliver a dry-aged local cheese plate with red wine directly in-room.</p>
+              <div className="p-2 border border-dashed border-[#1E1611]/25 bg-white/40 rounded flex flex-col gap-1">
+                <span className="font-bold text-black uppercase text-[7.5px]">Scenario 03: Kitchen closed</span>
+                <span className="text-[#C2410C]">↓ Fallback: Fresh breakfast reservation automatically suggested.</span>
+                <span className="opacity-75">Chamomile tea already waiting.</span>
               </div>
             </div>
 
-            <p className="font-serif italic text-xs text-[#C2410C]" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
-              * &ldquo;Confirm room keycard can be printed under 30 seconds at the gate.&rdquo;
-            </p>
+            <div className="border-t border-[#1E1611]/10 pt-3">
+              <span className="font-bold uppercase tracking-wider text-[7px] text-[#2F483A] block">Note:</span>
+              <p className="font-serif italic text-xs text-[#1E1611]/70 leading-relaxed" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
+                &ldquo;Every failure should still feel premium.&rdquo;
+              </p>
+            </div>
           </div>
 
         </div>
 
         {/* ==================== ROW 3: INTERACTION ROADMAP & FUTURE ==================== */}
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 items-stretch">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 items-stretch">
           
           {/* COLUMN 3.1: Future Opportunities Roadmap */}
-          <div className="bg-[#FAF8F5] border border-[#1E1611]/12 p-8 rounded-[8px] shadow-sm relative flex flex-col justify-between min-h-[320px]">
+          <div className="bg-[#FAF8F5] border border-[#1E1611]/12 p-8 rounded-[8px] shadow-sm relative flex flex-col justify-between min-h-[320px] rotate-[-0.5deg]">
             <PushPin className="top-2 left-12" />
             
             <div className="flex items-center gap-1.5 text-[8.5px] uppercase tracking-widest font-semibold text-[#1E1611]/45 mb-4">
-              <span>16 // Future Roadmap Opportunities</span>
+              <span>16 // Future Roadmap</span>
             </div>
 
-            <div className="flex items-center justify-between gap-2 text-[10px] font-mono my-auto">
-              <div className="p-3 bg-white border border-[#1E1611]/10 rounded flex-1 text-center shadow-xs">
-                <span className="font-bold text-[#2F483A]">Now</span>
-                <p className="text-[8px] opacity-75 mt-1">Late Arrival entry, digital keys, geofenced triggers.</p>
+            <div className="flex flex-col gap-3 font-mono text-[8px] my-auto">
+              <div className="flex items-start gap-2">
+                <span className="font-bold text-[#2F483A] uppercase text-[7.5px] w-12 flex-shrink-0">NOW:</span>
+                <p className="opacity-80">Invisible Arrival → Digital Key → Wayfinding → Curated Supper → Morning Greeting</p>
               </div>
-              <span className="text-[#1E1611]/30">→</span>
-              <div className="p-3 bg-white border border-[#1E1611]/10 rounded flex-1 text-center shadow-xs">
-                <span className="font-bold text-[#2F483A]">Stay</span>
-                <p className="text-[8px] opacity-75 mt-1">Fireplace active control, ambient lighting levels, butler messaging.</p>
+              <div className="h-[0.5px] bg-[#1E1611]/10" />
+              <div className="flex items-start gap-2">
+                <span className="font-bold text-[#2F483A] uppercase text-[7.5px] w-12 flex-shrink-0">NEXT:</span>
+                <p className="opacity-80">Room Controls (Lighting, Fireplace, Temperature) · Spa Booking</p>
               </div>
-              <span className="text-[#1E1611]/30">→</span>
-              <div className="p-3 bg-white border border-[#1E1611]/10 rounded flex-1 text-center shadow-xs">
-                <span className="font-bold text-[#2F483A]">Future</span>
-                <p className="text-[8px] opacity-75 mt-1">Pre-checkout invoice details, spa booking slots, transport scheduling.</p>
+              <div className="h-[0.5px] bg-[#1E1611]/10" />
+              <div className="flex items-start gap-2">
+                <span className="font-bold text-[#2F483A] uppercase text-[7.5px] w-12 flex-shrink-0">LATER:</span>
+                <p className="opacity-80">AI Butler · Voice Concierge · VR Resort Guide · Predictive Dining · Transport · Personal Wellness</p>
               </div>
             </div>
 
-            <p className="font-serif italic text-xs text-[#1E1611]/70 border-t border-[#1E1611]/10 pt-4 mt-2" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
-              &ldquo;Start simple. Solve the exhaustion phase before scaling stay features.&rdquo;
-            </p>
+            <div className="border-t border-[#1E1611]/10 pt-3">
+              <span className="font-mono text-[7px] uppercase font-bold text-black">Product Vision:</span>
+              <p className="font-serif italic text-xs text-[#1E1611]/75 leading-relaxed" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
+                &ldquo;Solve check-in arrival first. Expand delight features later.&rdquo;
+              </p>
+            </div>
           </div>
 
           {/* COLUMN 3.2: Motion Storyboard & Timing */}
-          <div className="bg-[#FAF8F5] border border-[#1E1611]/12 p-8 rounded-[8px] shadow-sm relative flex flex-col justify-between min-h-[320px]">
+          <div className="bg-[#FAF8F5] border border-[#1E1611]/12 p-8 rounded-[8px] shadow-sm relative flex flex-col justify-between min-h-[320px] rotate-[1deg]">
             <PushPin className="top-2 right-12 bg-blue-500 border-blue-600" />
             <MaskingTape className="-top-2 left-20 rotate-[-10deg] w-14 h-4" />
             
             <div className="flex items-center gap-1.5 text-[8.5px] uppercase tracking-widest font-semibold text-[#1E1611]/45 mb-4">
-              <span>14 // Motion Storyboard spec</span>
+              <span>14 // Motion Storyboard</span>
             </div>
 
-            <div className="grid grid-cols-4 gap-2 text-[9px] text-center font-mono my-auto">
-              <div className="p-2 border border-[#1E1611]/10 rounded bg-[#FAF8F5] flex flex-col justify-between min-h-[100px]">
-                <strong className="text-black">1. Tap</strong>
-                <p className="text-[8px] opacity-70">Wax seal on envelope</p>
-                <span className="text-[7.5px] text-[#2F483A] font-bold">200ms</span>
+            <div className="grid grid-cols-4 gap-2 text-[8px] text-center font-mono my-auto">
+              <div className="p-2 border border-[#1E1611]/10 rounded bg-[#FAF8F5] flex flex-col justify-between min-h-[110px] shadow-xs">
+                <strong className="text-black uppercase text-[7px]">01 / Tap Seal</strong>
+                <p className="opacity-75">Tap wax seal. Envelope compresses.</p>
+                <span className="text-[#2F483A] font-bold">200ms</span>
               </div>
-              <div className="p-2 border border-[#1E1611]/10 rounded bg-[#FAF8F5] flex flex-col justify-between min-h-[100px]">
-                <strong className="text-black">2. Break</strong>
-                <p className="text-[8px] opacity-70">Seal breaks into letter</p>
-                <span className="text-[7.5px] text-[#2F483A] font-bold">350ms</span>
+              <div className="p-2 border border-[#1E1611]/10 rounded bg-[#FAF8F5] flex flex-col justify-between min-h-[110px] shadow-xs">
+                <strong className="text-black uppercase text-[7px]">02 / Breaks</strong>
+                <p className="opacity-75">Seal breaks. Card unfolds, key glows.</p>
+                <span className="text-[#2F483A] font-bold">350ms</span>
               </div>
-              <div className="p-2 border border-[#1E1611]/10 rounded bg-[#FAF8F5] flex flex-col justify-between min-h-[100px]">
-                <strong className="text-black">3. Glow</strong>
-                <p className="text-[8px] opacity-70">Keycard glows green</p>
-                <span className="text-[7.5px] text-[#2F483A] font-bold">400ms</span>
+              <div className="p-2 border border-[#1E1611]/10 rounded bg-[#FAF8F5] flex flex-col justify-between min-h-[110px] shadow-xs">
+                <strong className="text-black uppercase text-[7px]">03 / Map</strong>
+                <p className="opacity-75">Route fades in. Camera zooms.</p>
+                <span className="text-[#2F483A] font-bold">400ms</span>
               </div>
-              <div className="p-2 border border-[#1E1611]/10 rounded bg-[#FAF8F5] flex flex-col justify-between min-h-[100px]">
-                <strong className="text-black">4. Enter</strong>
-                <p className="text-[8px] opacity-70">Room lock turns green</p>
-                <span className="text-[7.5px] text-[#2F483A] font-bold">Ease Out</span>
+              <div className="p-2 border border-[#1E1611]/10 rounded bg-[#FAF8F5] flex flex-col justify-between min-h-[110px] shadow-xs">
+                <strong className="text-black uppercase text-[7px]">04 / Unlock</strong>
+                <p className="opacity-75">Lights fade on. Fireplace starts.</p>
+                <span className="text-[#2F483A] font-bold">Ease Out</span>
               </div>
             </div>
 
-            <p className="font-serif italic text-xs text-[#C2410C]" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
-              * &ldquo;Test haptics: medium impact click on breaking the wax seal.&rdquo;
-            </p>
+            <div className="border-t border-[#1E1611]/10 pt-3">
+              <span className="font-sans text-[7.5px] uppercase font-bold text-black block">Motion Principles:</span>
+              <p className="font-serif italic text-xs text-[#1E1611]/70 leading-normal" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
+                &ldquo;Never dramatic. Everything should feel calm and reassure. Motion never distracts.&rdquo;
+              </p>
+            </div>
+          </div>
+
+          {/* COLUMN 3.3: Small Handwritten Review Notes (Pinned at the Bottom-Right Corner) */}
+          <div className="bg-[#FEF9C3] border border-[#EFE5A3] p-7 rounded-[4px] shadow-md relative flex flex-col justify-between min-h-[320px] rotate-[-2deg] max-w-full">
+            <PushPin className="top-2 left-1/2 bg-red-500 border-[#EF4444]" />
+            <MaskingTape className="-top-3 right-6 rotate-[15deg] w-12 h-3.5" />
+            
+            <div className="flex items-center gap-1.5 text-[8.5px] uppercase tracking-widest font-semibold text-[#1E1611]/50 mb-3">
+              <span>Review Notes (Alexander & Lukas)</span>
+            </div>
+
+            <div className="font-serif text-[12.5px] italic text-[#1E1611] leading-relaxed flex flex-col gap-2 my-auto pl-2 border-l border-red-300/40" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
+              <p>• Test with first-time guests (not only returning VIP guests).</p>
+              <p>• Validate geofence accuracy during high Swiss snow storms.</p>
+              <p>• Confirm BLE lock latency and offline fallbacks with engineering.</p>
+              <p>• User testing: Is &ldquo;Show Me the Way&rdquo; clearer than &ldquo;Begin Arrival&rdquo;?</p>
+              <p>• Check typography contrast in low-light night conditions.</p>
+            </div>
+            
+            <div className="text-[7.5px] font-mono uppercase text-[#1E1611]/55 text-right border-t border-[#1E1611]/10 pt-3">
+              Figma Review Notes · July 2026
+            </div>
           </div>
 
         </div>
