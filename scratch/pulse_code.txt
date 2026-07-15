@@ -3,1103 +3,801 @@ activeProduct === "pulse" && (
           {/* ==================== PULSE SYSTEM: OPERATIONAL COMMAND CENTER ==================== */}
           <div className="max-w-[1650px] mx-auto w-full flex flex-col gap-10">
             
-            {/* Top Workspace Switching Intro Banner */}
-            <div className="flex justify-between items-end border-b border-[#2E2718]/15 pb-4 text-[#2E2718]">
-              <div>
-                <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#9A8E72] font-semibold block">Fig. 03 // Workspace Command</span>
-                <h1 className="font-serif text-[28px] font-bold mt-1">Pulse Operations Center</h1>
+            {/* Telemetry Header */}
+            <div className="bg-[#EBE3D2] border border-[#2E2718]/15 p-6 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 shadow-sm text-[#2E2718]">
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded bg-[#4E6A57] flex items-center justify-center text-[#FAF8F5] font-serif text-lg font-bold">P</div>
+                <div>
+                  <h1 className="font-serif text-xl font-bold tracking-wider">PULSE // Command Center</h1>
+                  <p className="font-sans text-[10.5px] uppercase tracking-wider text-[#2E2718]/60">Aurelia Swiss Alps Resort · 7:00 AM Handover</p>
+                </div>
               </div>
-              <div className="font-sans text-[11px] text-[#9A8E72] max-w-[340px] text-right leading-relaxed">
-                Elena&apos;s morning lead dashboard. Fully interactive prototype. Click sidebar tabs to switch screens; click choices, checkboxes, and rebalancers to resolve issues.
+              
+              {/* Live Telemetry Info */}
+              <div className="flex flex-wrap items-center gap-6 font-sans text-[11px]">
+                <div className="flex flex-col">
+                  <span className="opacity-50 text-[9px] uppercase tracking-wider">SYSTEM TIME</span>
+                  <span className="font-bold">07:00 AM CET</span>
+                </div>
+                <div className="w-px h-6 bg-[#2E2718]/15" />
+                <div className="flex flex-col">
+                  <span className="opacity-50 text-[9px] uppercase tracking-wider">WEATHER</span>
+                  <span className="font-bold text-[#B4553F]">-2°C · Heavy Snow</span>
+                </div>
+                <div className="w-px h-6 bg-[#2E2718]/15" />
+                <div className="flex flex-col">
+                  <span className="opacity-50 text-[9px] uppercase tracking-wider">SHIFT STATUS</span>
+                  <span className="font-bold text-[#B0813A]">{isStaffReallocated ? "4 / 4 Balanced" : "3 / 4 Understaffed"}</span>
+                </div>
+                <div className="w-px h-6 bg-[#2E2718]/15" />
+                <div className="flex flex-col">
+                  <span className="opacity-50 text-[9px] uppercase tracking-wider">STATUS</span>
+                  <span className="font-bold text-[#4E6A57]">{overbookingResolution !== 'pending' && isStaffReallocated ? "Handover Ready" : "Actions Required"}</span>
+                </div>
               </div>
             </div>
 
-            {/* Tactile Desktop Application Frame */}
-            <div className="w-full min-h-[720px] bg-[#F4EFE4] border border-[#2E2718]/20 rounded-[28px] shadow-2xl flex overflow-hidden text-[#2E2718] paper-grain">
+            {/* Mobile Mockups Showcase Track (3x2 grid to match Host app style) */}
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 py-8 px-6 gap-x-8 gap-y-12 bg-[#FAF8F5]/30 border border-[#2E2718]/6 rounded-[40px] shadow-[inset_0_2px_8px_rgba(30,22,17,0.02)] justify-items-center">
               
-              {/* DESKTOP SIDEBAR */}
-              <div className="w-[220px] bg-[#EBE3D2] border-r border-[#2E2718]/10 flex flex-col justify-between p-5 flex-shrink-0">
-                <div className="flex flex-col gap-6">
-                  {/* Brand Header */}
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-[#4E6A57] flex items-center justify-center text-white font-serif text-[15px]">A</div>
-                    <div>
-                      <strong className="font-serif text-[16px] tracking-wider block">Pulse</strong>
-                      <span className="font-sans text-[8.5px] uppercase tracking-widest text-[#9A8E72]">Aurelia Ops</span>
+              {/* ==================== SCREEN 01: MORNING BRIEF ==================== */}
+              <div id="pulse-screen-0" className="flex-shrink-0 flex flex-col gap-3 group">
+                <div className="flex justify-between items-center px-2 text-[#2E2718]">
+                  <span className="font-sans text-[10px] tracking-widest text-[#2E2718]/50 uppercase font-semibold">Screen 01</span>
+                  <span className="font-serif text-xs italic">07:00 AM · Morning Brief</span>
+                </div>
+
+                <div className="relative p-3 rounded-[50px] bg-[#2E2718] shadow-[0_25px_60px_-15px_rgba(30,22,17,0.25)] border-[0.5px] border-[#F6F2EA]/20">
+                  {/* Speaker Notch */}
+                  <div className="absolute top-5 left-1/2 -translate-x-1/2 w-32 h-4 rounded-full bg-[#2E2718] z-30 flex items-center justify-center gap-1.5 px-4">
+                    <div className="w-1.5 h-1.5 rounded-full bg-black/60" />
+                    <div className="h-0.5 flex-grow rounded-full bg-[#261E1A]" />
+                  </div>
+
+                  {/* Screen Viewport */}
+                  <div className="w-[390px] h-[844px] rounded-[38px] overflow-hidden bg-[#F4EFE4] relative paper-grain select-none flex flex-col justify-between text-[#2E2718]">
+                    
+                    {/* Top status bar */}
+                    <div className="pt-9 px-6 flex justify-between items-center font-sans text-[9px] opacity-60">
+                      <span>07:00</span>
+                      <div className="flex items-center gap-1.5">
+                        <span>PULSE 1G</span>
+                        <div className="w-4 h-2.5 bg-current opacity-70 rounded-xs" />
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Sidebar Navigation Links */}
-                  <div className="flex flex-col gap-1">
-                    {[
-                      { name: "Morning Brief", badge: "5", index: 0 },
-                      { name: "Conflicts", badge: null, index: 1 },
-                      { name: "Overbooking", badge: overbookingResolution === "pending" ? "1" : null, index: 2 },
-                      { name: "VIP Arrival", badge: null, index: 3 },
-                      { name: "Team", badge: isStaffReallocated ? null : "1", index: 4 },
-                      { name: "Handled", badge: null, index: 5 }
-                    ].map((item) => (
-                      <button
-                        key={item.name}
-                        onClick={() => setActivePulseScreenIndex(item.index)}
-                        className={`flex items-center justify-between px-3 py-2 rounded-lg font-sans text-[12.5px] transition-all text-left ${
-                          activePulseScreenIndex === item.index 
-                            ? "bg-[#FBF8F1] text-[#4E6A57] font-semibold shadow-xs" 
-                            : "text-[#6E634C] hover:bg-[#FBF8F1]/50"
-                        }`}
-                      >
-                        <span>{item.name}</span>
-                        {item.badge && (
-                          <span className={`text-[9.5px] font-bold px-2 py-0.2 rounded-full ${
-                            item.index === 0 || item.index === 2
-                              ? "bg-[#B4553F]/14 text-[#B4553F]"
-                              : "bg-[#B0813A]/14 text-[#B0813A]"
-                          }`}>
-                            {item.badge}
-                          </span>
-                        )}
-                      </button>
-                    ))}
-                  </div>
-                </div>
+                    {/* App Header */}
+                    <div className="px-6 pt-4 flex justify-between items-center border-b border-[#2E2718]/8 pb-3">
+                      <div>
+                        <h2 className="font-serif text-[22px] font-bold">Morning Brief</h2>
+                        <span className="font-sans text-[9px] uppercase tracking-wider text-[#9A8E72]">Elena Moser · Lead on shift</span>
+                      </div>
+                      <span className="bg-[#B4553F]/14 text-[#B4553F] font-sans text-[9px] px-2.5 py-0.5 rounded-full font-bold">5 Tasks</span>
+                    </div>
 
-                {/* Sidebar Footer Profile */}
-                <div className="border-t border-[#2E2718]/10 pt-4 flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-[#D8CDB4] border border-[#2E2718]/15 flex items-center justify-center font-bold text-[11px]">EM</div>
-                  <div className="flex-grow">
-                    <div className="font-sans text-[11.5px] font-bold leading-tight">Elena Moser</div>
-                    <span className="font-sans text-[9px] text-[#9A8E72]">Morning Lead · active</span>
-                  </div>
-                  <span className="w-2 h-2 rounded-full bg-[#4E6A57]" />
-                </div>
-              </div>
+                    {/* App Content */}
+                    <div className="px-6 py-4 flex-grow flex flex-col gap-3 overflow-y-auto scrollbar-none">
+                      
+                      <div className="text-[10px] font-sans opacity-70 mb-1">
+                        Wednesday · 15 July · Order of urgency:
+                      </div>
 
-              {/* DESKTOP MAIN SECTION */}
-              <div className="flex-grow flex flex-col justify-between min-w-0 bg-[#F4EFE4]">
-                
-                {/* Header Top Bar */}
-                <div className="height-[70px] border-b border-[#2E2718]/8 px-8 py-4 flex justify-between items-center bg-[#FAF8F5]/30">
-                  <div className="flex items-center gap-4">
-                    <h2 className="font-serif text-[22px] font-bold">
-                      {activePulseScreenIndex === 0 && "Morning Brief"}
-                      {activePulseScreenIndex === 1 && "Conflicts & Dependencies"}
-                      {activePulseScreenIndex === 2 && "Overbooking Resolution"}
-                      {activePulseScreenIndex === 3 && "VIP Turnaround Room 208"}
-                      {activePulseScreenIndex === 4 && "Team Shift Allocation"}
-                      {activePulseScreenIndex === 5 && "Handover Overview"}
-                    </h2>
-                    <span className="w-1.5 h-1.5 bg-[#9A8E72] rounded-full" />
-                    <span className="font-sans text-[11.5px] text-[#9A8E72]">
-                      {activePulseScreenIndex === 0 && "Wednesday · 15 July · 07:00 AM CET"}
-                      {activePulseScreenIndex === 1 && "One root cause, four consequences"}
-                      {activePulseScreenIndex === 2 && "Resolve tonight's sell-out overflow"}
-                      {activePulseScreenIndex === 3 && "Herr & Frau Brandt · 6th Stay"}
-                      {activePulseScreenIndex === 4 && "6 tasks outstanding due to Léa sick call"}
-                      {activePulseScreenIndex === 5 && "Handover checklist for day team"}
-                    </span>
-                  </div>
-
-                  {/* Desktop Search Bar Mock */}
-                  <div className="flex items-center gap-2 bg-[#FBF8F1] border border-[#2E2718]/12 rounded-lg px-3 py-1.5 text-[11px] text-[#9A8E72] w-[250px]">
-                    <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.4"><circle cx="6" cy="6" r="4.2"/><line x1="9.2" y1="9.2" x2="12.5" y2="12.5"/></svg>
-                    <span className="flex-grow">Search or run command</span>
-                    <span className="text-[9px] bg-[#EFE8DA] px-1.5 py-0.2 rounded">⌘K</span>
-                  </div>
-                </div>
-
-                {/* Interactive Inner Content Tab Pages */}
-                <div className="flex-grow flex min-h-0">
-                  
-                  {/* TAB 0: MORNING BRIEF */}
-                  {activePulseScreenIndex === 0 && (
-                    <div className="flex-grow flex">
-                      {/* Left list panel */}
-                      <div className="flex-grow p-8 flex flex-col gap-4 overflow-y-auto max-h-[600px] scrollbar-none">
-                        
-                        {/* Summary Bar */}
-                        <div className="flex items-center gap-4 bg-[#EBE3D2] border border-[#2E2718]/8 rounded-xl p-3.5 text-[12.5px]">
-                          <span className="font-mono text-[9px] font-bold text-[#9A8E72] tracking-wider uppercase">OVERNIGHT LOG</span>
-                          <div className="w-px h-4 bg-[#2E2718]/15" />
-                          <span className="text-[#6E634C]">
-                            1 incident logged · <strong className="text-[#B4553F]">5 items need you</strong> · 14 arrivals today
-                          </span>
-                        </div>
-
-                        <span className="font-mono text-[8px] uppercase tracking-wider text-[#9A8E72] mt-2 block">Priority Action Required</span>
-
-                        {/* Task Row 1: Leak */}
-                        <div className="bg-[#FBF8F1] border border-[#2E2718]/10 rounded-xl p-4 flex items-center justify-between shadow-xs">
-                          <div className="flex items-center gap-3.5">
-                            <div className="w-1 bg-[#B4553F] h-10 rounded-full" />
-                            <div>
-                              <div className="flex items-center gap-2">
-                                <span className="font-serif text-[14.5px] font-bold">Room 304 flooded — relocated to 217</span>
-                                <span className="bg-[#B4553F]/10 text-[#B4553F] font-mono text-[7px] px-1.5 py-0.2 rounded font-bold">CRITICAL</span>
-                              </div>
-                              <p className="font-sans text-[11px] text-[#6E634C] mt-0.5">
-                                Pipe leak at 02:00 AM. relocate couple, expressed frustration. Room offline indefinitely.
-                              </p>
-                            </div>
+                      {/* Issue 1: Room 304 Flooded */}
+                      <div className="p-3 bg-[#FBF8F1] border border-[#2E2718]/10 rounded shadow-xs flex flex-col gap-1.5">
+                        <div className="flex justify-between items-center">
+                          <div className="flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 bg-[#B4553F] rounded-full" />
+                            <span className="font-serif text-[13px] font-bold">Room 304 flooded</span>
                           </div>
-                          <button className="px-4 py-2 border border-[#4E6A57]/30 text-[#4E6A57] bg-[#4E6A57]/5 rounded-lg font-sans text-[11.5px] font-semibold">
-                            Send apology amenity
+                          <span className="text-[#B4553F] font-mono text-[8px] font-bold">CRITICAL</span>
+                        </div>
+                        <p className="font-sans text-[9.5px] text-[#6E634C] leading-relaxed">
+                          Guests relocated to 217 at 02:40 AM. Frustrated. Room offline indefinitely.
+                        </p>
+                        <div className="flex justify-between items-center border-t border-[#2E2718]/5 pt-2 mt-1">
+                          <span className="font-mono text-[8.5px] text-[#9A8E72]">OWNER: Unassigned</span>
+                          <button className="font-sans text-[9px] font-bold text-[#4E6A57] border border-[#4E6A57]/30 px-2 py-0.5 rounded bg-[#4E6A57]/5">
+                            Apology note
                           </button>
                         </div>
+                      </div>
 
-                        {/* Task Row 2: Overbooking */}
-                        <div className="bg-[#FBF8F1] border border-[#2E2718]/10 rounded-xl p-4 flex items-center justify-between shadow-xs">
-                          <div className="flex items-center gap-3.5">
-                            <div className="w-1 bg-[#B4553F] h-10 rounded-full" />
-                            <div>
-                              <div className="flex items-center gap-2">
-                                <span className="font-serif text-[14.5px] font-bold">Overbooked by one room tonight</span>
-                                <span className="bg-[#B4553F]/10 text-[#B4553F] font-mono text-[7px] px-1.5 py-0.2 rounded font-bold">09:00 AM DEADLINE</span>
-                              </div>
-                              <p className="font-sans text-[11px] text-[#6E634C] mt-0.5">
-                                Sold-out night. Lost 304 inventory pushes hotel one over. A relocation decision is needed.
-                              </p>
-                            </div>
+                      {/* Issue 2: Overbooked */}
+                      <div className="p-3 bg-[#FBF8F1] border border-[#2E2718]/10 rounded shadow-xs flex flex-col gap-1.5">
+                        <div className="flex justify-between items-center">
+                          <div className="flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 bg-[#B4553F] rounded-full" />
+                            <span className="font-serif text-[13px] font-bold">Overbooked by one room</span>
                           </div>
+                          <span className="text-[#B4553F] font-mono text-[8px] font-bold">09:00 DEADLINE</span>
+                        </div>
+                        <p className="font-sans text-[9.5px] text-[#6E634C] leading-relaxed">
+                          Sold-out night. Lost 304 inventory leaves hotel one over tonight.
+                        </p>
+                        <div className="flex justify-between items-center border-t border-[#2E2718]/5 pt-2 mt-1">
+                          <span className="font-mono text-[8.5px] text-[#2E2718] font-bold">OWNER: Elena (You)</span>
                           <button 
                             onClick={() => setActivePulseScreenIndex(2)}
-                            className="px-4 py-2 bg-[#4E6A57] text-[#FAF8F5] rounded-lg font-sans text-[11.5px] font-semibold shadow-xs"
+                            className="font-sans text-[9px] font-bold text-[#4E6A57] border border-[#4E6A57]/30 px-2 py-0.5 rounded bg-[#4E6A57]/5"
                           >
                             Resolve overbooking
                           </button>
                         </div>
+                      </div>
 
-                        {/* Task Row 3: VIP early check-in */}
-                        <div className="bg-[#FBF8F1] border border-[#2E2718]/10 rounded-xl p-4 flex items-center justify-between shadow-xs">
-                          <div className="flex items-center gap-3.5">
-                            <div className="w-1 bg-[#B0813A] h-10 rounded-full" />
-                            <div>
-                              <div className="flex items-center gap-2">
-                                <span className="font-serif text-[14.5px] font-bold">VIP early arrival Room 208 preparation</span>
-                                <span className="bg-[#B0813A]/10 text-[#B0813A] font-mono text-[7px] px-1.5 py-0.2 rounded font-bold">11:00 AM ETA</span>
-                              </div>
-                              <p className="font-sans text-[11px] text-[#6E634C] mt-0.5">
-                                Brandt (6th stay) arriving early. Room checks out 12:00. Under an hour to turn it around.
-                              </p>
-                            </div>
+                      {/* Issue 3: VIP early check-in */}
+                      <div className="p-3 bg-[#FBF8F1] border border-[#2E2718]/10 rounded shadow-xs flex flex-col gap-1.5">
+                        <div className="flex justify-between items-center">
+                          <div className="flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 bg-[#B0813A] rounded-full" />
+                            <span className="font-serif text-[13px] font-bold">VIP early arrival check-in</span>
                           </div>
+                          <span className="text-[#B0813A] font-mono text-[8px] font-bold">11:00 ARRIVAL</span>
+                        </div>
+                        <p className="font-sans text-[9.5px] text-[#6E634C] leading-relaxed">
+                          Brandt Couple (6th stay). Room 208 checkout is noon. Housekeeping has under 1hr window.
+                        </p>
+                        <div className="flex justify-between items-center border-t border-[#2E2718]/5 pt-2 mt-1">
+                          <span className="font-mono text-[8.5px] text-[#2E2718]">OWNER: Sofia</span>
                           <button 
                             onClick={() => setActivePulseScreenIndex(3)}
-                            className="px-4 py-2 border border-[#2E2718]/15 text-[#2E2718] bg-white rounded-lg font-sans text-[11.5px] font-semibold"
+                            className="font-sans text-[9px] font-bold text-[#4E6A57] border border-[#4E6A57]/30 px-2 py-0.5 rounded bg-[#4E6A57]/5"
                           >
-                            Prepare room
+                            Prepare arrival
                           </button>
                         </div>
+                      </div>
 
-                        {/* Task Row 4: Short staffed */}
-                        <div className="bg-[#FBF8F1] border border-[#2E2718]/10 rounded-xl p-4 flex items-center justify-between shadow-xs">
-                          <div className="flex items-center gap-3.5">
-                            <div className="w-1 bg-[#B0813A] h-10 rounded-full" />
-                            <div>
-                              <div className="flex items-center gap-2">
-                                <span className="font-serif text-[14.5px] font-bold">Front office short-staffed today</span>
-                                <span className="bg-[#B0813A]/10 text-[#B0813A] font-mono text-[7px] px-1.5 py-0.2 rounded font-bold">ATTENTION</span>
-                              </div>
-                              <p className="font-sans text-[11px] text-[#6E634C] mt-0.5">
-                                Léa sick. 3 of 4 staff active. Arrivals and group check-ins at 15:00 require re-planning.
-                              </p>
-                            </div>
+                      {/* Issue 4: Front Office Sick */}
+                      <div className="p-3 bg-[#FBF8F1] border border-[#2E2718]/10 rounded shadow-xs flex flex-col gap-1.5">
+                        <div className="flex justify-between items-center">
+                          <div className="flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 bg-[#B0813A] rounded-full" />
+                            <span className="font-serif text-[13px] font-bold">Front office short-staffed</span>
                           </div>
+                          <span className="text-[#B0813A] font-mono text-[8px] font-bold">ATTENTION</span>
+                        </div>
+                        <p className="font-sans text-[9.5px] text-[#6E634C] leading-relaxed">
+                          Léa called sick. 3 of 4 staff active. Arrivals, departures, and 15:00 group need shift coverage.
+                        </p>
+                        <div className="flex justify-between items-center border-t border-[#2E2718]/5 pt-2 mt-1">
+                          <span className="font-mono text-[8.5px] text-[#2E2718]">OWNER: Elena (You)</span>
                           <button 
                             onClick={() => setActivePulseScreenIndex(4)}
-                            className="px-4 py-2 border border-[#2E2718]/15 text-[#2E2718] bg-white rounded-lg font-sans text-[11.5px] font-semibold"
+                            className="font-sans text-[9px] font-bold text-[#4E6A57] border border-[#4E6A57]/30 px-2 py-0.5 rounded bg-[#4E6A57]/5"
                           >
-                            Rebalance shift
-                          </button>
-                        </div>
-
-                      </div>
-
-                      {/* Right recommended panel */}
-                      <div className="w-[300px] border-l border-[#2E2718]/10 p-6 flex flex-col justify-between bg-[#F2ECDE] flex-shrink-0">
-                        <div className="flex flex-col gap-6">
-                          <div>
-                            <span className="font-mono text-[8px] uppercase tracking-wider text-[#9A8E72]">RECOMMENDED FIRST 15 MINS</span>
-                            <div className="flex flex-col gap-4 mt-3">
-                              <div className="flex gap-2">
-                                <span className="w-5 h-5 rounded-full bg-[#4E6A57] text-[#FAF8F5] font-bold text-[10px] flex items-center justify-center flex-shrink-0">1</span>
-                                <div className="text-[11px]">
-                                  <strong className="block font-bold">Apologise to 304 guests</strong>
-                                  <span className="text-[#9A8E72]">Amenity note to Room 217 · 2m</span>
-                                </div>
-                              </div>
-                              <div className="flex gap-2">
-                                <span className="w-5 h-5 rounded-full bg-[#4E6A57] text-[#FAF8F5] font-bold text-[10px] flex items-center justify-center flex-shrink-0">2</span>
-                                <div className="text-[11px]">
-                                  <strong className="block font-bold">Resolve the overbooking</strong>
-                                  <span className="text-[#9A8E72]">Clears downstream items · 3m</span>
-                                </div>
-                              </div>
-                              <div className="flex gap-2">
-                                <span className="w-5 h-5 rounded-full bg-[#4E6A57] text-[#FAF8F5] font-bold text-[10px] flex items-center justify-center flex-shrink-0">3</span>
-                                <div className="text-[11px]">
-                                  <strong className="block font-bold">Green-light VIP turnaround</strong>
-                                  <span className="text-[#9A8E72]">Request early checkout · 2m</span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="border-t border-[#2E2718]/10 pt-4">
-                            <span className="font-mono text-[8px] uppercase tracking-wider text-[#9A8E72]">OVERNIGHT LOG</span>
-                            <div className="flex flex-col gap-2.5 mt-3 font-sans text-[10px] text-[#6E634C]">
-                              <p>• <strong>02:00</strong> Leak sensor room 304 triggered</p>
-                              <p>• <strong>02:40</strong> Relocated guests to 217</p>
-                              <p>• <strong>03:10</strong> Isolated riser; 304 offline</p>
-                              <p>• <strong>06:15</strong> Léa reported out sick</p>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="font-mono text-[7px] text-[#9A8E72] uppercase tracking-widest text-right mt-4">
-                          Aurelia Command Module v1.0
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* TAB 1: CONFLICTS */}
-                  {activePulseScreenIndex === 1 && (
-                    <div className="flex-grow flex">
-                      <div className="flex-grow p-8 flex flex-col justify-between overflow-y-auto max-h-[600px] scrollbar-none">
-                        <div>
-                          <span className="font-mono text-[8px] uppercase tracking-wider text-[#9A8E72] mb-4 block">Problem Dependency Matrix</span>
-                          
-                          {/* Desktop cascading node flow */}
-                          <div className="flex items-center gap-1 mt-4">
-                            {/* Node 1: Root Cause */}
-                            <div className="flex-1 bg-[#FBF8F1] border border-[#B4553F]/40 p-4 rounded-xl relative shadow-xs">
-                              <span className="absolute -top-2 left-4 bg-[#B4553F] text-white font-mono text-[6px] px-1.5 py-0.2 rounded font-bold uppercase tracking-wider">ROOT CAUSE</span>
-                              <h4 className="font-serif text-[15px] font-bold text-[#2E2718] mt-1">Room 304 Flooded</h4>
-                              <p className="font-sans text-[10.5px] text-[#6E634C] mt-1.5 leading-normal">
-                                Water line leak overnight. Room offline indefinitely.
-                              </p>
-                              <span className="text-[#9A8E72] font-mono text-[9px] block mt-2.5">—1 inventory room tonight</span>
-                            </div>
-
-                            {/* Arrow */}
-                            <div className="w-10 flex-shrink-0 flex flex-col items-center justify-center text-[#9A8E72]">
-                              <span className="text-[9px] font-mono mb-1">forces</span>
-                              <svg width="24" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor" strokeWidth="1.5">
-                                <path d="M1 6 H22 M17 2 L22 6 L17 10"/>
-                              </svg>
-                            </div>
-
-                            {/* Node 2: Overbooking */}
-                            <div className="flex-1 bg-[#FBF8F1] border-2 border-[#4E6A57] p-4 rounded-xl relative shadow-sm">
-                              <span className="absolute -top-2 left-4 bg-[#B4553F] text-white font-mono text-[6px] px-1.5 py-0.2 rounded font-bold uppercase tracking-wider">CRITICAL</span>
-                              <h4 className="font-serif text-[15px] font-bold text-[#2E2718] mt-1">Overbooked by One</h4>
-                              <p className="font-sans text-[10.5px] text-[#6E634C] mt-1.5 leading-normal">
-                                Fully booked Swiss summit night. A guest relocation is required.
-                              </p>
-                              <span className="text-[#4E6A57] font-mono text-[9px] block mt-2.5">Decision pending · 09:00</span>
-                            </div>
-
-                            {/* Arrow */}
-                            <div className="w-10 flex-shrink-0 flex flex-col items-center justify-center text-[#9A8E72]">
-                              <span className="text-[9px] font-mono mb-1">delays</span>
-                              <svg width="24" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor" strokeWidth="1.5">
-                                <path d="M1 6 H22 M17 2 L22 6 L17 10"/>
-                              </svg>
-                            </div>
-
-                            {/* Node 3: VIP Room Prep */}
-                            <div className="flex-1 bg-[#FBF8F1] border border-[#2E2718]/12 p-4 rounded-xl relative shadow-xs">
-                              <span className="absolute -top-2 left-4 bg-[#B0813A] text-white font-mono text-[6px] px-1.5 py-0.2 rounded font-bold uppercase tracking-wider">ATTENTION</span>
-                              <h4 className="font-serif text-[15px] font-bold text-[#2E2718] mt-1">VIP Prep Conflict</h4>
-                              <p className="font-sans text-[10.5px] text-[#6E634C] mt-1.5 leading-normal">
-                                Room 208 checkout is noon; VIP Brandt couple checks in 11:00.
-                              </p>
-                              <span className="text-[#9A8E72] font-mono text-[9px] block mt-2.5">&lt; 1hr prep window</span>
-                            </div>
-                          </div>
-
-                          {/* Compounding Sick call */}
-                          <div className="mt-8 flex justify-end">
-                            <div className="w-[300px] bg-[#FBF8F1] border border-dashed border-[#B0813A]/50 p-4 rounded-xl shadow-xs relative">
-                              <span className="absolute -top-2 left-4 bg-[#B0813A] text-white font-mono text-[6px] px-1.5 py-0.2 rounded font-bold uppercase tracking-wider">COMPOUNDING INFLUENCE</span>
-                              <h4 className="font-serif text-[13.5px] font-bold text-[#2E2718] mt-1">Front office short 1 staff</h4>
-                              <p className="font-sans text-[10px] text-[#6E634C] mt-1 leading-relaxed">
-                                Léa absence slows down check-in and luggage placement coordination. Auto-balance team tasks.
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="mt-6 flex justify-between items-center bg-[#EBE3D2] border border-[#2E2718]/8 p-4 rounded-xl">
-                          <span className="font-sans text-[11px] text-[#6E634C]">
-                            Root cause trace: Resolving the <strong>Overbooking Relocation</strong> clears 3 of 4 downstream issues.
-                          </span>
-                          <button 
-                            onClick={() => setActivePulseScreenIndex(2)}
-                            className="bg-[#4E6A57] text-[#FAF8F5] font-sans text-[11px] font-bold px-4 py-2 rounded-lg"
-                          >
-                            Resolve overbooking →
+                            Redistribute work
                           </button>
                         </div>
                       </div>
+
                     </div>
-                  )}
 
-                  {/* TAB 2: OVERBOOKING RESOLUTION */}
-                  {activePulseScreenIndex === 2 && (
-                    <div className="flex-grow flex">
-                      <div className="w-[280px] border-r border-[#2E2718]/10 p-6 flex flex-col gap-4 bg-[#F2ECDE] flex-shrink-0">
-                        <span className="font-mono text-[8px] uppercase tracking-wider text-[#9A8E72]">THE SITUATION</span>
-                        <h3 className="font-serif text-[20px] font-bold leading-tight">Tonight Capacity Squeeze</h3>
-                        
-                        <div className="flex gap-2 mt-2">
-                          <div className="flex-1 bg-[#FBF8F1] border border-[#2E2718]/10 p-3 rounded-lg text-center shadow-xs">
-                            <span className="font-serif text-[22px] font-bold block">90</span>
-                            <span className="text-[9.5px] font-mono text-[#9A8E72]">rooms sold</span>
-                          </div>
-                          <div className="flex-1 bg-[#FBF8F1] border border-[#2E2718]/10 p-3 rounded-lg text-center shadow-xs">
-                            <span className="font-serif text-[22px] font-bold block">89</span>
-                            <span className="text-[9.5px] font-mono text-[#9A8E72]">rooms usable</span>
-                          </div>
-                        </div>
+                    {/* Bottom Nav Tab */}
+                    <div className="px-6 pb-8 pt-3 border-t border-[#2E2718]/8 flex justify-between items-center font-sans text-[9px] font-bold text-[#2E2718]/60 bg-[#FAF8F5]">
+                      <span className="text-[#4E6A57]">01. Brief</span>
+                      <span className="cursor-pointer" onClick={() => setActivePulseScreenIndex(1)}>02. Conflicts</span>
+                      <span className="cursor-pointer" onClick={() => setActivePulseScreenIndex(2)}>03. Overbook</span>
+                      <span className="cursor-pointer" onClick={() => setActivePulseScreenIndex(3)}>04. VIP</span>
+                    </div>
 
-                        <div className="bg-[#FBF8F1] border border-[#B4553F]/35 p-3 rounded-lg text-center shadow-xs mt-1">
-                          <span className="font-serif text-[22px] text-[#B4553F] font-bold block">+1</span>
-                          <span className="text-[9.5px] font-mono text-[#B4553F] uppercase tracking-wider font-semibold">Overflow Relocation</span>
-                        </div>
+                  </div>
+                </div>
+              </div>
 
-                        <p className="font-sans text-[11.5px] text-[#6E634C] mt-2 leading-relaxed">
-                          Summit week. Relocate guest to competitor with comp transport to prevent reception delays.
-                        </p>
-                      </div>
+              {/* ==================== SCREEN 02: CONFLICTS ==================== */}
+              <div id="pulse-screen-1" className="flex-shrink-0 flex flex-col gap-3 group">
+                <div className="flex justify-between items-center px-2 text-[#2E2718]">
+                  <span className="font-sans text-[10px] tracking-widest text-[#2E2718]/50 uppercase font-semibold">Screen 02</span>
+                  <span className="font-serif text-xs italic">Conflicts &amp; Connections</span>
+                </div>
 
-                      {/* Right main comparisons panel */}
-                      <div className="flex-grow p-8 flex flex-col justify-between overflow-y-auto max-h-[600px] scrollbar-none">
-                        
-                        {overbookingResolution === "pending" ? (
-                          <div className="flex flex-col gap-4">
-                            <span className="font-mono text-[8px] uppercase tracking-wider text-[#9A8E72]">Select Relocation Path</span>
+                <div className="relative p-3 rounded-[50px] bg-[#2E2718] shadow-[0_25px_60px_-15px_rgba(30,22,17,0.25)] border-[0.5px] border-[#F6F2EA]/20">
+                  {/* Speaker Notch */}
+                  <div className="absolute top-5 left-1/2 -translate-x-1/2 w-32 h-4 rounded-full bg-[#2E2718] z-30 flex items-center justify-center gap-1.5 px-4">
+                    <div className="w-1.5 h-1.5 rounded-full bg-black/60" />
+                    <div className="h-0.5 flex-grow rounded-full bg-[#261E1A]" />
+                  </div>
 
-                            {/* Option 1 */}
-                            <div 
-                              onClick={() => setOverbookingResolution("rebooked")}
-                              className="p-4 bg-[#FBF8F1] border-2 border-[#4E6A57] rounded-xl flex items-center justify-between cursor-pointer shadow-sm"
-                            >
-                              <div className="flex-grow pr-4">
-                                <div className="flex items-center gap-2">
-                                  <strong className="font-serif text-[15px] text-[#4E6A57]">Rebook to sister property (Chalet Verbois)</strong>
-                                  <span className="bg-[#4E6A57] text-[#FAF8F5] font-mono text-[6.5px] px-1.5 py-0.2 rounded font-bold uppercase tracking-wider">RECOMMENDED</span>
-                                </div>
-                                <p className="font-sans text-[11px] text-[#6E634C] mt-1 leading-relaxed">
-                                  Comp luxury car transfers both ways (6 min away) + comp gourmet dining. Standard comp night returned.
-                                </p>
-                              </div>
-                              <div className="text-right flex-shrink-0">
-                                <span className="text-red-700 font-mono text-[11.5px] font-bold block">-CHF 1,400</span>
-                                <span className="text-[10px] font-sans text-[#4E6A57] block">Guest: Minimal</span>
-                              </div>
-                            </div>
-
-                            {/* Option 2 */}
-                            <div 
-                              onClick={() => setOverbookingResolution("consolidate")}
-                              className="p-4 bg-[#FBF8F1] border border-[#2E2718]/10 rounded-xl flex items-center justify-between cursor-pointer hover:bg-[#FBF8F1]/80 transition-all shadow-xs"
-                            >
-                              <div className="flex-grow pr-4">
-                                <strong className="font-serif text-[15px]">Consolidate flexible party</strong>
-                                <p className="font-sans text-[11px] text-[#6E634C] mt-1 leading-relaxed">
-                                  Move family booking into a suite. Freeing up a single room. Suite upgrade comped.
-                                </p>
-                              </div>
-                              <div className="text-right flex-shrink-0">
-                                <span className="text-[#4E6A57] font-mono text-[11.5px] font-bold block">CHF 0 (Comp)</span>
-                                <span className="text-[10px] font-sans text-[#6E634C] block">Guest: Moderate</span>
-                              </div>
-                            </div>
-
-                            {/* Option 3 */}
-                            <div 
-                              onClick={() => setOverbookingResolution("decline")}
-                              className="p-4 bg-[#FBF8F1] border border-[#2E2718]/10 rounded-xl flex items-center justify-between cursor-pointer hover:bg-[#FBF8F1]/80 transition-all shadow-xs"
-                            >
-                              <div className="flex-grow pr-4">
-                                <strong className="font-serif text-[15px]">Decline lowest-value booking</strong>
-                                <p className="font-sans text-[11px] text-[#6E634C] mt-1 leading-relaxed">
-                                  Full refund + standard apology gesture email.
-                                </p>
-                              </div>
-                              <div className="text-right flex-shrink-0">
-                                <span className="text-red-700 font-mono text-[11.5px] font-bold block">-CHF 980</span>
-                                <span className="text-[10px] font-sans text-red-600 block">Guest: High</span>
-                              </div>
-                            </div>
-                          </div>
-                        ) : (
-                          <div className="my-auto max-w-[450px] mx-auto p-6 bg-[#EAF0E4] border border-[#4E6A57]/30 rounded-2xl flex flex-col items-center text-center gap-4">
-                            <span className="w-10 h-10 rounded-full bg-[#4E6A57] flex items-center justify-center text-white text-lg font-bold">✓</span>
-                            <div>
-                              <h4 className="font-serif text-[18px] font-bold text-[#4E6A57]">Resolution Dispatched</h4>
-                              <p className="font-sans text-[11.5px] text-[#6E634C] mt-2 leading-relaxed">
-                                {overbookingResolution === "rebooked" && "Rebooked to Chalet Verbois. Shuttle guest dispatch alert sent to concierge desk."}
-                                {overbookingResolution === "consolidate" && "Consolidation complete. Suite upgrade note preloaded to front desk check-in queue."}
-                                {overbookingResolution === "decline" && "Last minute reservation cancelled. Refund notification sent."}
-                              </p>
-                            </div>
-                            <button 
-                              onClick={() => setOverbookingResolution("pending")}
-                              className="text-[10.5px] font-mono font-bold text-[#4E6A57] border-b border-[#4E6A57] tracking-wider uppercase mt-2"
-                            >
-                              Change decision
-                            </button>
-                          </div>
-                        )}
-
-                        <div className="border-t border-[#2E2718]/10 pt-4 flex justify-between items-center text-[10px] text-[#9A8E72]">
-                          <span>Double check competitor room blocks before committing.</span>
-                          <span>Locked by: Elena M.</span>
-                        </div>
+                  {/* Screen Viewport */}
+                  <div className="w-[390px] h-[844px] rounded-[38px] overflow-hidden bg-[#F4EFE4] relative paper-grain select-none flex flex-col justify-between text-[#2E2718]">
+                    
+                    {/* Top status bar */}
+                    <div className="pt-9 px-6 flex justify-between items-center font-sans text-[9px] opacity-60">
+                      <span>07:01</span>
+                      <div className="flex items-center gap-1.5">
+                        <span>PULSE 1G</span>
+                        <div className="w-4 h-2.5 bg-current opacity-70 rounded-xs" />
                       </div>
                     </div>
-                  )}
 
-                  {/* TAB 3: VIP ARRIVAL */}
-                  {activePulseScreenIndex === 3 && (
-                    <div className="flex-grow flex">
-                      {/* Left preferences panel */}
-                      <div className="w-[300px] border-r border-[#2E2718]/10 p-6 flex flex-col justify-between bg-[#F2ECDE] flex-shrink-0">
-                        <div className="flex flex-col gap-5">
-                          <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-full bg-[#4E6A57] flex items-center justify-center text-[#FAF8F5] font-serif text-[18px]">B</div>
-                            <div>
-                              <strong className="font-serif text-[15px] leading-tight block">Herr &amp; Frau Brandt</strong>
-                              <span className="font-sans text-[10px] text-[#9A8E72]">6th stay · Anniversary</span>
-                            </div>
-                          </div>
-                          <div className="h-px bg-[#2E2718]/10" />
-                          <div>
-                            <span className="font-mono text-[8px] uppercase tracking-wider text-[#9A8E72]">KNOWN PREFERENCES</span>
-                            <div className="flex flex-col gap-2 mt-2 font-sans text-[11px] text-[#6E634C]">
-                              <p>• High quiet floor — away from the lift</p>
-                              <p>• Still water only, extra espresso pods</p>
-                              <p>• Feather-free pillows &amp; duvet</p>
-                              <p>• Late dinner, table by the window</p>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div>
-                          <span className="font-mono text-[8px] uppercase tracking-wider text-[#9A8E72] block">ETA</span>
-                          <span className="font-serif text-[16px] font-bold block mt-1">Private Transfer, 10:45 AM</span>
-                        </div>
-                      </div>
-
-                      {/* Main checklist and actions panel */}
-                      <div className="flex-grow p-8 flex flex-col justify-between overflow-y-auto max-h-[600px] scrollbar-none">
-                        
-                        <div className="flex flex-col gap-4">
-                          <div className="flex justify-between items-center">
-                            <span className="font-mono text-[8px] uppercase tracking-wider text-[#9A8E72]">Welcome Amenities &amp; Checklist</span>
-                            <span className="font-mono text-[9px] text-[#4E6A57] font-bold">
-                              {[true, true, vipChampagne, vipFireplace, vipBedding].filter(Boolean).length} of 5 Ready
-                            </span>
-                          </div>
-
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-1">
-                            <label className="p-3 bg-[#FAF8F5] border border-[#2E2718]/8 rounded-lg flex items-center gap-3 text-[11.5px] cursor-pointer">
-                              <input type="checkbox" checked={true} readOnly className="rounded border-[#2E2718]/30 text-[#4E6A57] focus:ring-0" />
-                              <span className="text-[#6E634C] line-through">Alpine flowers arranged</span>
-                            </label>
-                            <label className="p-3 bg-[#FAF8F5] border border-[#2E2718]/8 rounded-lg flex items-center gap-3 text-[11.5px] cursor-pointer">
-                              <input type="checkbox" checked={true} readOnly className="rounded border-[#2E2718]/30 text-[#4E6A57] focus:ring-0" />
-                              <span className="text-[#6E634C] line-through">Handwritten welcome note</span>
-                            </label>
-                            <label className="p-3 bg-white border border-[#2E2718]/10 rounded-lg flex items-center gap-3 text-[11.5px] cursor-pointer hover:bg-[#FAF8F5]">
-                              <input 
-                                type="checkbox" 
-                                checked={vipChampagne} 
-                                onChange={(e) => setVipChampagne(e.target.checked)} 
-                                className="rounded border-[#2E2718]/30 text-[#4E6A57] focus:ring-0" 
-                              />
-                              <span>Champagne on ice (Anniversary comp)</span>
-                            </label>
-                            <label className="p-3 bg-white border border-[#2E2718]/10 rounded-lg flex items-center gap-3 text-[11.5px] cursor-pointer hover:bg-[#FAF8F5]">
-                              <input 
-                                type="checkbox" 
-                                checked={vipFireplace} 
-                                onChange={(e) => setVipFireplace(e.target.checked)} 
-                                className="rounded border-[#2E2718]/30 text-[#4E6A57] focus:ring-0" 
-                              />
-                              <span>Fireplace laid &amp; lit</span>
-                            </label>
-                            <label className="p-3 bg-white border border-[#2E2718]/10 rounded-lg flex items-center gap-3 text-[11.5px] cursor-pointer hover:bg-[#FAF8F5]">
-                              <input 
-                                type="checkbox" 
-                                checked={vipBedding} 
-                                onChange={(e) => setVipBedding(e.target.checked)} 
-                                className="rounded border-[#2E2718]/30 text-[#4E6A57] focus:ring-0" 
-                              />
-                              <span>Feather-free bedding set</span>
-                            </label>
-                          </div>
-                        </div>
-
-                        {/* Actions block */}
-                        <div className="border-t border-[#2E2718]/10 pt-6 mt-6 flex flex-col gap-4">
-                          <div className="flex gap-4">
-                            <button 
-                              onClick={() => setEarlyCheckoutRequested(true)}
-                              className={`flex-1 py-3 rounded-lg text-xs font-bold transition-all shadow-sm ${
-                                earlyCheckoutRequested 
-                                  ? "bg-[#4E6A57] text-[#FAF8F5]" 
-                                  : "bg-[#2E2718] text-[#FAF8F5] hover:bg-[#2E2718]/95"
-                              }`}
-                            >
-                              {earlyCheckoutRequested ? "✓ Checkout Requested at 11:00 AM" : "Request early checkout · 11:00 AM"}
-                            </button>
-                            <button 
-                              onClick={() => setSecondHousekeeperAdded(true)}
-                              className="flex-1 py-3 rounded-lg border border-[#4E6A57]/30 text-[#4E6A57] bg-white hover:bg-[#FAF8F5] text-xs font-bold transition-all"
-                            >
-                              {secondHousekeeperAdded ? "✓ 2nd Housekeeper assigned (-30 min)" : "Add 2nd housekeeper · −30 min"}
-                            </button>
-                          </div>
-
-                          <div className="flex items-center gap-3 bg-[#EBE3D2] border border-[#2E2718]/8 p-3 rounded-lg">
-                            <div className="w-8 h-8 rounded-full bg-[#D8CDB4] border border-[#2E2718]/15 flex items-center justify-center font-bold text-[10px]">MR</div>
-                            <div className="flex-grow">
-                              <span className="font-sans text-[11px] font-bold block text-[#2E2718]">Marta Ruiz · Floor 2 Housekeeper</span>
-                              <span className="text-[9px] text-[#9A8E72]">Finishing Room 204. Ready to turn Room 208.</span>
-                            </div>
-                            <span className="text-[9px] bg-[#4E6A57]/10 text-[#4E6A57] font-bold px-2 py-0.5 rounded-full">On Standby</span>
-                          </div>
-                        </div>
-
-                      </div>
+                    {/* App Header */}
+                    <div className="px-6 pt-4 border-b border-[#2E2718]/8 pb-3">
+                      <h2 className="font-serif text-[22px] font-bold">How these connect</h2>
+                      <span className="font-sans text-[9px] uppercase tracking-wider text-[#9A8E72]">1 Root Cause · 4 Consequences</span>
                     </div>
-                  )}
 
-                  {/* TAB 4: TEAM */}
-                  {activePulseScreenIndex === 4 && (
-                    <div className="flex-grow p-8 flex flex-col justify-between overflow-y-auto max-h-[600px] scrollbar-none">
+                    {/* App Content */}
+                    <div className="px-6 py-4 flex-grow flex flex-col gap-3.5 overflow-y-auto scrollbar-none justify-between">
                       
-                      <div>
-                        <span className="font-mono text-[8px] uppercase tracking-wider text-[#9A8E72] mb-4 block">Receptionist Shift Load Rebalancing</span>
+                      <div className="flex flex-col gap-3">
                         
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-2">
-                          
-                          {/* Sick column */}
-                          <div className="bg-[#F1EBDD] border border-dashed border-[#B4553F]/40 p-4 rounded-xl flex flex-col gap-3">
-                            <div className="flex items-center gap-2">
-                              <div className="w-7 h-7 rounded-full bg-[#E6D6C0] border border-[#2E2718]/10 flex items-center justify-center font-bold text-[10px] text-[#9A8560]">LÉ</div>
-                              <div>
-                                <span className="font-sans text-[11.5px] font-bold text-[#8A5040] block leading-tight">Léa</span>
-                                <span className="text-[7.5px] font-mono text-[#B4553F] uppercase tracking-wider font-semibold">OUT SICK</span>
-                              </div>
-                            </div>
-                            
-                            {!isStaffReallocated ? (
-                              <div className="flex flex-col gap-2 mt-1">
-                                <div className="p-2.5 bg-white border border-[#2E2718]/8 rounded-lg text-[9.5px]">
-                                  <span className="text-[#9A8E72] block">09:00 · Rm 217</span>
-                                  <strong className="block text-[#2E2718] mt-0.5">Apology delivery</strong>
-                                  <span className="text-[#4E6A57] font-bold block mt-1">→ Suggest: Anna</span>
-                                </div>
-                                <div className="p-2.5 bg-white border border-[#2E2718]/8 rounded-lg text-[9.5px]">
-                                  <span className="text-[#9A8E72] block">10:30 · Lobby</span>
-                                  <strong className="block text-[#2E2718] mt-0.5">Greet VIP Brandt</strong>
-                                  <span className="text-[#4E6A57] font-bold block mt-1">→ Suggest: Sofia</span>
-                                </div>
-                              </div>
-                            ) : (
-                              <div className="text-center text-[10px] text-[#9A8560] py-8 font-mono">
-                                All 6 tasks reassigned.
-                              </div>
-                            )}
-                          </div>
-
-                          {/* Anna */}
-                          <div className="bg-[#FBF8F1] border border-[#2E2718]/10 p-4 rounded-xl flex flex-col justify-between min-h-[220px]">
-                            <div>
-                              <div className="flex items-center gap-2 mb-2">
-                                <div className="w-7 h-7 rounded-full bg-[#D8CDB4] flex items-center justify-center font-bold text-[10px]">AN</div>
-                                <div>
-                                  <span className="font-sans text-[11.5px] font-bold block leading-tight">Anna</span>
-                                  <span className="text-[8px] text-[#9A8E72]">Front Desk</span>
-                                </div>
-                              </div>
-                              <span className="font-mono text-[9px] text-[#B0813A]">{isStaffReallocated ? "Workload: 95% (Full)" : "Workload: 88%"}</span>
-                              <div className="h-1 bg-[#EFE8DA] rounded-full overflow-hidden mt-1.5">
-                                <div className="h-full bg-[#B0813A]" style={{ width: isStaffReallocated ? "95%" : "88%" }} />
-                              </div>
-                            </div>
-                            <div className="font-sans text-[9px] text-[#6E634C] border-t border-[#2E2718]/5 pt-2 mt-4 leading-normal">
-                              {isStaffReallocated ? "• Relocation apology room 217 added" : "• 11 departures\n• Desk coverage"}
-                            </div>
-                          </div>
-
-                          {/* Marc */}
-                          <div className="bg-[#FBF8F1] border border-[#4E6A57]/35 p-4 rounded-xl flex flex-col justify-between min-h-[220px]">
-                            <div>
-                              <div className="flex items-center gap-2 mb-2">
-                                <div className="w-7 h-7 rounded-full bg-[#D8CDB4] flex items-center justify-center font-bold text-[10px]">MC</div>
-                                <div>
-                                  <span className="font-sans text-[11.5px] font-bold block leading-tight">Marc</span>
-                                  <span className="text-[8px] text-[#9A8E72]">Front Desk</span>
-                                </div>
-                              </div>
-                              <span className="font-mono text-[9px] text-[#4E6A57]">{isStaffReallocated ? "Workload: 80%" : "Workload: 42% (Under)"}</span>
-                              <div className="h-1 bg-[#EFE8DA] rounded-full overflow-hidden mt-1.5">
-                                <div className="h-full bg-[#4E6A57]" style={{ width: isStaffReallocated ? "80%" : "42%" }} />
-                              </div>
-                            </div>
-                            <div className="font-sans text-[9px] text-[#6E634C] border-t border-[#2E2718]/5 pt-2 mt-4 leading-normal">
-                              {isStaffReallocated ? "• group check-ins (15:00) added" : "• 14 standard arrivals"}
-                            </div>
-                          </div>
-
-                          {/* Sofia */}
-                          <div className="bg-[#FBF8F1] border border-[#2E2718]/10 p-4 rounded-xl flex flex-col justify-between min-h-[220px]">
-                            <div>
-                              <div className="flex items-center gap-2 mb-2">
-                                <div className="w-7 h-7 rounded-full bg-[#D8CDB4] flex items-center justify-center font-bold text-[10px]">SF</div>
-                                <div>
-                                  <span className="font-sans text-[11.5px] font-bold block leading-tight">Sofia</span>
-                                  <span className="text-[8px] text-[#9A8E72]">Concierge</span>
-                                </div>
-                              </div>
-                              <span className="font-mono text-[9px] text-[#6E634C]">{isStaffReallocated ? "Workload: 78%" : "Workload: 64%"}</span>
-                              <div className="h-1 bg-[#EFE8DA] rounded-full overflow-hidden mt-1.5">
-                                <div className="h-full bg-[#6E634C]" style={{ width: isStaffReallocated ? "78%" : "64%" }} />
-                              </div>
-                            </div>
-                            <div className="font-sans text-[9px] text-[#6E634C] border-t border-[#2E2718]/5 pt-2 mt-4 leading-normal">
-                              {isStaffReallocated ? "• VIP Brandt greeting added" : "• VIP amenities setup\n• Dinner bookings"}
-                            </div>
-                          </div>
-
-                        </div>
-                      </div>
-
-                      {/* Auto-balance trigger */}
-                      <div className="mt-8 flex justify-between items-center bg-[#EBE3D2] border border-[#2E2718]/8 p-4 rounded-xl">
-                        <span className="font-sans text-[11px] text-[#6E634C]">
-                          Rebalance outstanding workloads to protect the 11:00 AM VIP arrival and group arrivals.
-                        </span>
-                        <button 
-                          onClick={() => setIsStaffReallocated(!isStaffReallocated)}
-                          className="bg-[#4E6A57] text-[#FAF8F5] font-sans text-[11px] font-bold px-4 py-2 rounded-lg transition-all"
-                        >
-                          {isStaffReallocated ? "✓ Workloads Balanced" : "Confirm Auto-Balance"}
-                        </button>
-                      </div>
-
-                    </div>
-                  )}
-
-                  {/* TAB 5: HANDLED */}
-                  {activePulseScreenIndex === 5 && (
-                    <div className="flex-grow p-8 flex flex-col justify-between overflow-y-auto max-h-[600px] scrollbar-none">
-                      
-                      <div className="flex flex-col gap-4">
-                        {/* Summary Telemetry */}
-                        <div className="flex gap-4">
-                          <div className="flex-1 bg-[#FBF8F1] border border-[#2E2718]/8 p-3 rounded-lg">
-                            <span className="font-serif text-[24px] text-[#4E6A57] font-bold">2</span>
-                            <span className="text-[10px] font-mono text-[#9A8E72] block mt-0.5">Issues Resolved</span>
-                          </div>
-                          <div className="flex-1 bg-[#FBF8F1] border border-[#2E2718]/8 p-3 rounded-lg">
-                            <span className="font-serif text-[24px] text-[#B0813A] font-bold">3</span>
-                            <span className="text-[10px] font-mono text-[#9A8E72] block mt-0.5">In Progress, Owned</span>
-                          </div>
-                          <div className="flex-1 bg-[#FBF8F1] border border-[#2E2718]/8 p-3 rounded-lg">
-                            <span className="font-serif text-[24px] font-bold">0</span>
-                            <span className="text-[10px] font-mono text-[#9A8E72] block mt-0.5">Unassigned</span>
-                          </div>
-                        </div>
-
-                        {/* Handover Registry Table */}
-                        <div className="bg-[#FBF8F1] border border-[#2E2718]/10 rounded-xl overflow-hidden mt-2">
-                          <div className="grid grid-cols-5 gap-2 px-4 py-2 bg-[#EBE3D2] border-b border-[#2E2718]/10 text-[9px] font-mono uppercase text-[#9A8E72] font-bold">
-                            <div>Incident / Issue</div>
-                            <div>Assigned Owner</div>
-                            <div>Deadline</div>
-                            <div>Status</div>
-                            <div>Next Step</div>
-                          </div>
-
-                          {/* Row 1 */}
-                          <div className="grid grid-cols-5 gap-2 px-4 py-3 border-b border-[#2E2718]/5 text-[11px] items-center">
-                            <strong>Room 304 pipe leak relocation</strong>
-                            <span>Anna</span>
-                            <span>09:00</span>
-                            <span className="text-[#4E6A57] font-bold">✓ Resolved</span>
-                            <span className="text-[#9A8E72]">Relocation &amp; apology sent</span>
-                          </div>
-
-                          {/* Row 2 */}
-                          <div className="grid grid-cols-5 gap-2 px-4 py-3 border-b border-[#2E2718]/5 text-[11px] items-center">
-                            <strong>Overbooking relief tonight</strong>
-                            <span>Elena</span>
-                            <span>09:00</span>
-                            <span className={overbookingResolution !== 'pending' ? 'text-[#4E6A57] font-bold' : 'text-red-700 font-bold'}>
-                              {overbookingResolution !== 'pending' ? '✓ Resolved' : 'Unassigned'}
-                            </span>
-                            <span className="text-[#9A8E72]">
-                              {overbookingResolution !== 'pending' ? "Rebooked Chalet Verbois" : "Awaiting Picker"}
-                            </span>
-                          </div>
-
-                          {/* Row 3 */}
-                          <div className="grid grid-cols-5 gap-2 px-4 py-3 border-b border-[#2E2718]/5 text-[11px] items-center">
-                            <strong>VIP early check-in prep</strong>
-                            <span>Sofia</span>
-                            <span>10:45</span>
-                            <span className="text-[#B0813A] font-bold">In Progress</span>
-                            <span className="text-[#9A8E72]">{earlyCheckoutRequested ? "Early checkout requested" : "Set room amenities"}</span>
-                          </div>
-
-                          {/* Row 4 */}
-                          <div className="grid grid-cols-5 gap-2 px-4 py-3 text-[11px] items-center">
-                            <strong>Léa shift sick call cover</strong>
-                            <span>Elena</span>
-                            <span>08:00</span>
-                            <span className={isStaffReallocated ? 'text-[#4E6A57] font-bold' : 'text-[#B0813A] font-bold'}>
-                              {isStaffReallocated ? '✓ Resolved' : 'In Progress'}
-                            </span>
-                            <span className="text-[#9A8E72]">{isStaffReallocated ? "Tasks reassigned to Marc/Sofia" : "Needs auto-balance"}</span>
-                          </div>
-
-                        </div>
-                      </div>
-
-                      {/* Success block */}
-                      <div className="p-4 bg-[#EAF0E4] border border-[#4E6A57]/30 rounded-xl flex items-center gap-4 mt-6">
-                        <div className="w-8 h-8 rounded-full bg-[#4E6A57] flex items-center justify-center text-white text-xs">✓</div>
-                        <div className="flex-grow">
-                          <strong className="font-serif text-[14px]">You&apos;re clear to start the day.</strong>
-                          <p className="font-sans text-[10px] text-[#6E634C] mt-0.5">
-                            All critical handoff items have been assigned, scheduled, and resolved. Day team check-in is ready.
+                        {/* Node 1: Root Cause */}
+                        <div className="p-3 bg-[#FBF8F1] border border-[#B4553F]/40 rounded shadow-xs flex flex-col gap-1 relative">
+                          <span className="absolute -top-1.5 left-3 bg-[#B4553F] text-white font-mono text-[6.5px] px-1 rounded font-bold uppercase tracking-wider">ROOT CAUSE</span>
+                          <strong className="font-serif text-[12px] text-[#2E2718] mt-1">Room 304 flooded</strong>
+                          <p className="font-sans text-[9px] text-[#6E634C] leading-normal">
+                            Pipe leak at 02:00. Room offline. Removing tonight&apos;s last bit of room inventory.
                           </p>
                         </div>
-                        <button className="px-4 py-2 bg-[#4E6A57] text-[#FAF8F5] rounded-lg font-sans text-[11px] font-bold shadow-xs">
-                          Complete Handoff
+
+                        {/* Connection Arrow */}
+                        <div className="flex justify-center my-0.5 opacity-60">
+                          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#9A8E72" strokeWidth="1.5">
+                            <path d="M6 1 V11 M3 8 L6 11 L9 8"/>
+                          </svg>
+                        </div>
+
+                        {/* Node 2: Overbooked */}
+                        <div className="p-3 bg-[#FBF8F1] border border-[#B4553F]/40 rounded shadow-xs flex flex-col gap-1 relative">
+                          <span className="absolute -top-1.5 left-3 bg-[#B4553F] text-white font-mono text-[6.5px] px-1 rounded font-bold uppercase tracking-wider">CRITICAL</span>
+                          <strong className="font-serif text-[12px] text-[#2E2718] mt-1">Overbooked by one room</strong>
+                          <p className="font-sans text-[9px] text-[#6E634C] leading-normal">
+                            Sold-out night, now over capacity. Needs a relocation choice before 09:00.
+                          </p>
+                        </div>
+
+                        {/* Connection Arrow */}
+                        <div className="flex justify-center my-0.5 opacity-60">
+                          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#9A8E72" strokeWidth="1.5">
+                            <path d="M6 1 V11 M3 8 L6 11 L9 8"/>
+                          </svg>
+                        </div>
+
+                        {/* Node 3: VIP Room Conflict */}
+                        <div className="p-3 bg-[#FBF8F1] border border-[#B0813A]/40 rounded shadow-xs flex flex-col gap-1 relative">
+                          <span className="absolute -top-1.5 left-3 bg-[#B0813A] text-white font-mono text-[6.5px] px-1 rounded font-bold uppercase tracking-wider">ATTENTION</span>
+                          <strong className="font-serif text-[12px] text-[#2E2718] mt-1">VIP room prep conflict (Room 208)</strong>
+                          <p className="font-sans text-[9px] text-[#6E634C] leading-normal">
+                            Brandt early arrival 11:00. Room checks out at noon. Housekeeping turns in under 1hr.
+                          </p>
+                        </div>
+
+                      </div>
+
+                      {/* Compounding sidebar note */}
+                      <div className="p-3 bg-[#F2ECDE] rounded border border-[#2E2718]/8 flex flex-col gap-1">
+                        <strong className="font-mono text-[8px] tracking-wider uppercase text-[#9A8E72]">DO THIS FIRST</strong>
+                        <p className="font-sans text-[9.5px] text-[#2E2718] leading-relaxed">
+                          Resolving the overbooking clears <span className="font-bold">three</span> downstream items at once.
+                        </p>
+                        <button 
+                          onClick={() => setActivePulseScreenIndex(2)}
+                          className="w-full mt-2 py-2 rounded bg-[#4E6A57] text-[#FAF8F5] font-sans text-[10px] font-bold shadow-sm"
+                        >
+                          Resolve overbooking →
                         </button>
                       </div>
 
                     </div>
-                  )}
 
-                </div>
-
-                {/* Footer Telemetry Banner */}
-                <div className="height-[45px] border-t border-[#2E2718]/10 px-8 py-3 bg-[#EBE3D2] flex justify-between items-center text-[9px] font-mono text-[#9A8E72]">
-                  <span>Telemetry Feed: Live Connection Active</span>
-                  <span>SYNC STATE: OK · 0 incident alerts unassigned</span>
-                </div>
-
-              </div>
-
-            </div>
-
-            {/* Mobile Prototypes Showcase Title */}
-            <div className="flex justify-between items-end border-b border-[#2E2718]/15 pb-4 mt-12 text-[#2E2718]">
-              <div>
-                <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-[#9A8E72] font-semibold block">Fig. 04 // Companion Mobile Layouts</span>
-                <h2 className="font-serif text-[24px] font-bold mt-1">Pulse Companion Mobile Screens</h2>
-              </div>
-              <div className="font-sans text-[11px] text-[#9A8E72]">
-                Consistent color variables, typography, and density scaled for receptionist field operations.
-              </div>
-            </div>
-
-            {/* Grid of 6 Mobile screens (exact matching layout from previous step) */}
-            <div className="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 py-8 px-6 gap-x-8 gap-y-12 bg-[#FAF8F5]/30 border border-[#2E2718]/6 rounded-[40px] shadow-[inset_0_2px_8px_rgba(30,22,17,0.02)] justify-items-center">
-              
-              {/* SCREEN 01 */}
-              <div className="flex-shrink-0 flex flex-col gap-3 group">
-                <div className="flex justify-between items-center px-2 text-[#2E2718]">
-                  <span className="font-sans text-[10px] tracking-widest text-[#2E2718]/50 uppercase font-semibold">Mobile 01</span>
-                  <span className="font-serif text-xs italic">Morning Brief</span>
-                </div>
-                <div className="relative p-3 rounded-[50px] bg-[#2E2718] shadow-[0_25px_60px_-15px_rgba(30,22,17,0.25)] border-[0.5px] border-[#F6F2EA]/20">
-                  <div className="absolute top-5 left-1/2 -translate-x-1/2 w-32 h-4 rounded-full bg-[#2E2718] z-30 flex items-center justify-center gap-1.5 px-4">
-                    <div className="w-1.5 h-1.5 rounded-full bg-black/60" />
-                    <div className="h-0.5 flex-grow rounded-full bg-[#261E1A]" />
-                  </div>
-                  <div className="w-[390px] h-[844px] rounded-[38px] overflow-hidden bg-[#F4EFE4] relative paper-grain select-none flex flex-col justify-between text-[#2E2718] p-6 pt-9">
-                    <div className="flex justify-between items-center font-sans text-[9px] opacity-60">
-                      <span>07:00</span>
-                      <span>PULSE 1G</span>
-                    </div>
-                    <div className="flex justify-between items-center border-b border-[#2E2718]/8 pb-2 mt-2">
-                      <div>
-                        <h3 className="font-serif text-[18px] font-bold">Morning Brief</h3>
-                        <span className="font-sans text-[8px] text-[#9A8E72]">Elena Moser</span>
-                      </div>
-                      <span className="bg-[#B4553F]/14 text-[#B4553F] text-[8px] px-2 py-0.5 rounded-full font-bold">5 Tasks</span>
-                    </div>
-                    <div className="flex-grow flex flex-col gap-2 mt-3 overflow-y-auto scrollbar-none">
-                      <div className="p-2.5 bg-[#FBF8F1] border border-[#2E2718]/10 rounded shadow-xs text-[9.5px]">
-                        <div className="flex justify-between font-bold"><span>Room 304 Flooded</span><span className="text-[#B4553F]">CRITICAL</span></div>
-                        <p className="text-[#6E634C] mt-1">Couple relocated at 02:40 AM. Frustrated.</p>
-                      </div>
-                      <div className="p-2.5 bg-[#FBF8F1] border border-[#2E2718]/10 rounded shadow-xs text-[9.5px]">
-                        <div className="flex justify-between font-bold"><span>Overbooked by One</span><span className="text-[#B4553F]">09:00 DL</span></div>
-                        <p className="text-[#6E634C] mt-1">Relocation required before morning guest check-ins.</p>
-                      </div>
-                      <div className="p-2.5 bg-[#FBF8F1] border border-[#2E2718]/10 rounded shadow-xs text-[9.5px]">
-                        <div className="flex justify-between font-bold"><span>VIP Early Arrival (208)</span><span className="text-[#B0813A]">11:00 AM</span></div>
-                        <p className="text-[#6E634C] mt-1">Brandt Couple checks in early. Room prep gap &lt; 1hr.</p>
-                      </div>
-                    </div>
-                    <div className="border-t border-[#2E2718]/8 pt-2 flex justify-between font-sans text-[8.5px] font-bold opacity-60">
-                      <span className="text-[#4E6A57]">01. Brief</span>
-                      <span>02. Conflicts</span>
-                      <span>03. Overbook</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* SCREEN 02 */}
-              <div className="flex-shrink-0 flex flex-col gap-3 group">
-                <div className="flex justify-between items-center px-2 text-[#2E2718]">
-                  <span className="font-sans text-[10px] tracking-widest text-[#2E2718]/50 uppercase font-semibold">Mobile 02</span>
-                  <span className="font-serif text-xs italic">Conflicts</span>
-                </div>
-                <div className="relative p-3 rounded-[50px] bg-[#2E2718] shadow-[0_25px_60px_-15px_rgba(30,22,17,0.25)] border-[0.5px] border-[#F6F2EA]/20">
-                  <div className="absolute top-5 left-1/2 -translate-x-1/2 w-32 h-4 rounded-full bg-[#2E2718] z-30 flex items-center justify-center gap-1.5 px-4">
-                    <div className="w-1.5 h-1.5 rounded-full bg-black/60" />
-                    <div className="h-0.5 flex-grow rounded-full bg-[#261E1A]" />
-                  </div>
-                  <div className="w-[390px] h-[844px] rounded-[38px] overflow-hidden bg-[#F4EFE4] relative paper-grain select-none flex flex-col justify-between text-[#2E2718] p-6 pt-9">
-                    <div className="flex justify-between items-center font-sans text-[9px] opacity-60">
-                      <span>07:01</span>
-                      <span>PULSE 1G</span>
-                    </div>
-                    <div className="border-b border-[#2E2718]/8 pb-2 mt-2">
-                      <h3 className="font-serif text-[18px] font-bold">How these connect</h3>
-                      <span className="font-sans text-[8px] text-[#9A8E72]">Dependencies Map</span>
-                    </div>
-                    <div className="flex-grow flex flex-col gap-3 mt-4">
-                      <div className="p-2.5 bg-[#FBF8F1] border border-[#B4553F]/35 rounded text-[9px]">
-                        <span className="text-[#B4553F] font-bold block">ROOT CAUSE</span>
-                        <strong className="block text-[11px] mt-0.5">Room 304 Flooded</strong>
-                        <p className="text-[#6E634C] mt-0.5">Frees up 0 inventory rooms.</p>
-                      </div>
-                      <div className="text-center opacity-60">↓</div>
-                      <div className="p-2.5 bg-[#FBF8F1] border border-[#B4553F]/35 rounded text-[9px]">
-                        <span className="text-[#B4553F] font-bold block">CRITICAL</span>
-                        <strong className="block text-[11px] mt-0.5">Overbooked by One</strong>
-                        <p className="text-[#6E634C] mt-0.5">Forced relocation necessary tonight.</p>
-                      </div>
-                      <div className="text-center opacity-60">↓</div>
-                      <div className="p-2.5 bg-[#FBF8F1] border border-[#B0813A]/35 rounded text-[9px]">
-                        <span className="text-[#B0813A] font-bold block">ATTENTION</span>
-                        <strong className="block text-[11px] mt-0.5">VIP Room Prep Squeeze</strong>
-                        <p className="text-[#6E634C] mt-0.5">Room 208 turnaround time crunch.</p>
-                      </div>
-                    </div>
-                    <div className="border-t border-[#2E2718]/8 pt-2 flex justify-between font-sans text-[8.5px] font-bold opacity-60">
-                      <span>01. Brief</span>
+                    {/* Bottom Nav Tab */}
+                    <div className="px-6 pb-8 pt-3 border-t border-[#2E2718]/8 flex justify-between items-center font-sans text-[9px] font-bold text-[#2E2718]/60 bg-[#FAF8F5]">
+                      <span className="cursor-pointer" onClick={() => setActivePulseScreenIndex(0)}>01. Brief</span>
                       <span className="text-[#4E6A57]">02. Conflicts</span>
-                      <span>03. Overbook</span>
+                      <span className="cursor-pointer" onClick={() => setActivePulseScreenIndex(2)}>03. Overbook</span>
+                      <span className="cursor-pointer" onClick={() => setActivePulseScreenIndex(3)}>04. VIP</span>
                     </div>
+
                   </div>
                 </div>
               </div>
 
-              {/* SCREEN 03 */}
-              <div className="flex-shrink-0 flex flex-col gap-3 group">
+              {/* ==================== SCREEN 03: OVERBOOKING RESOLUTION ==================== */}
+              <div id="pulse-screen-2" className="flex-shrink-0 flex flex-col gap-3 group">
                 <div className="flex justify-between items-center px-2 text-[#2E2718]">
-                  <span className="font-sans text-[10px] tracking-widest text-[#2E2718]/50 uppercase font-semibold">Mobile 03</span>
-                  <span className="font-serif text-xs italic">Overbooking</span>
+                  <span className="font-sans text-[10px] tracking-widest text-[#2E2718]/50 uppercase font-semibold">Screen 03</span>
+                  <span className="font-serif text-xs italic text-[#2E2718]">Overbooking Relief</span>
                 </div>
+
                 <div className="relative p-3 rounded-[50px] bg-[#2E2718] shadow-[0_25px_60px_-15px_rgba(30,22,17,0.25)] border-[0.5px] border-[#F6F2EA]/20">
+                  {/* Speaker Notch */}
                   <div className="absolute top-5 left-1/2 -translate-x-1/2 w-32 h-4 rounded-full bg-[#2E2718] z-30 flex items-center justify-center gap-1.5 px-4">
                     <div className="w-1.5 h-1.5 rounded-full bg-black/60" />
                     <div className="h-0.5 flex-grow rounded-full bg-[#261E1A]" />
                   </div>
-                  <div className="w-[390px] h-[844px] rounded-[38px] overflow-hidden bg-[#F4EFE4] relative paper-grain select-none flex flex-col justify-between text-[#2E2718] p-6 pt-9">
-                    <div className="flex justify-between items-center font-sans text-[9px] opacity-60">
+
+                  {/* Screen Viewport */}
+                  <div className="w-[390px] h-[844px] rounded-[38px] overflow-hidden bg-[#F4EFE4] relative paper-grain select-none flex flex-col justify-between text-[#2E2718]">
+                    
+                    {/* Top status bar */}
+                    <div className="pt-9 px-6 flex justify-between items-center font-sans text-[9px] opacity-60">
                       <span>07:02</span>
-                      <span>PULSE 1G</span>
+                      <div className="flex items-center gap-1.5">
+                        <span>PULSE 1G</span>
+                        <div className="w-4 h-2.5 bg-current opacity-70 rounded-xs" />
+                      </div>
                     </div>
-                    <div className="border-b border-[#2E2718]/8 pb-2 mt-2">
-                      <h3 className="font-serif text-[18px] font-bold">Overbooking Relief</h3>
-                      <span className="font-sans text-[8px] text-[#9A8E72]">Pick Resolution</span>
+
+                    {/* App Header */}
+                    <div className="px-6 pt-4 border-b border-[#2E2718]/8 pb-3">
+                      <h2 className="font-serif text-[22px] font-bold">Resolve Overbooking</h2>
+                      <span className="font-sans text-[9px] uppercase tracking-wider text-[#9A8E72]">Compare impact, then confirm</span>
                     </div>
-                    <div className="flex-grow flex flex-col gap-2 mt-3 overflow-y-auto scrollbar-none">
+
+                    {/* App Content */}
+                    <div className="px-6 py-4 flex-grow flex flex-col gap-3.5 overflow-y-auto scrollbar-none">
+                      
+                      {/* Tonight's numbers info card */}
+                      <div className="p-3 bg-[#F2ECDE] rounded border border-[#2E2718]/10 flex flex-col gap-1">
+                        <span className="font-mono text-[7.5px] uppercase tracking-wider text-[#9A8E72]">TONIGHT CAPACITY</span>
+                        <div className="flex justify-between items-center font-serif text-[18px]">
+                          <span>90 Rooms Sold</span>
+                          <span>89 Usable</span>
+                          <span className="text-[#B4553F] font-bold">+1 Overflow</span>
+                        </div>
+                      </div>
+
                       {overbookingResolution === "pending" ? (
                         <>
+                          <span className="font-mono text-[8px] uppercase tracking-wider text-[#9A8E72]">Relocation Options</span>
+
+                          {/* Option 1: Rebook (Recommended) */}
                           <div 
                             onClick={() => setOverbookingResolution("rebooked")}
-                            className="p-2.5 bg-white border border-[#4E6A57] rounded-lg text-[9px] cursor-pointer"
+                            className="p-3 bg-[#FBF8F1] border-2 border-[#4E6A57] rounded shadow-sm flex flex-col gap-1 cursor-pointer hover:bg-[#FBF8F1]/80 transition-all"
                           >
-                            <span className="text-[#4E6A57] font-bold">1. Sister Property Relocate</span>
-                            <p className="text-[#6E634C] mt-0.5">Complimentary car shuttle + future night return.</p>
-                            <span className="font-bold block mt-1">-CHF 1,400</span>
+                            <div className="flex justify-between items-center">
+                              <span className="font-serif text-[13px] font-bold text-[#4E6A57]">1. Rebook to Sister Property</span>
+                              <span className="bg-[#4E6A57] text-[#FAF8F5] font-mono text-[6.5px] px-1.5 rounded">RECOMMENDED</span>
+                            </div>
+                            <p className="font-sans text-[9.5px] text-[#6E634C] leading-relaxed">
+                              Chalet Verbois (6 min away). Complimentary shuttle, free future night to soften impact.
+                            </p>
+                            <div className="flex justify-between items-center border-t border-[#2E2718]/5 pt-2 mt-1.5 font-mono text-[7.5px]">
+                              <span>Guest Impact: Minimal</span>
+                              <span className="text-red-700 font-bold">-CHF 1,400</span>
+                              <span>Risk: Low</span>
+                            </div>
                           </div>
+
+                          {/* Option 2: Consolidate */}
                           <div 
                             onClick={() => setOverbookingResolution("consolidate")}
-                            className="p-2.5 bg-white border border-[#2E2718]/10 rounded-lg text-[9px] cursor-pointer"
+                            className="p-3 bg-[#FBF8F1] border border-[#2E2718]/10 rounded shadow-xs flex flex-col gap-1 cursor-pointer hover:bg-[#FBF8F1]/80 transition-all"
                           >
-                            <strong>2. Consolidate flexible booking</strong>
-                            <p className="text-[#6E634C] mt-0.5">Suite upgrade family, freeing single room.</p>
-                            <span className="font-bold block mt-1">CHF 0</span>
+                            <strong className="font-serif text-[13px]">2. Consolidate flexible party</strong>
+                            <p className="font-sans text-[9.5px] text-[#6E634C] leading-relaxed">
+                              Move two-room family booking into a suite. Comp the room difference.
+                            </p>
+                            <div className="flex justify-between items-center border-t border-[#2E2718]/5 pt-2 mt-1.5 font-mono text-[7.5px]">
+                              <span>Guest: Moderate</span>
+                              <span className="text-[#4E6A57] font-bold">CHF 0 (Comped Suite)</span>
+                              <span>Risk: Med</span>
+                            </div>
+                          </div>
+
+                          {/* Option 3: Decline */}
+                          <div 
+                            onClick={() => setOverbookingResolution("decline")}
+                            className="p-3 bg-[#FBF8F1] border border-[#2E2718]/10 rounded shadow-xs flex flex-col gap-1 cursor-pointer hover:bg-[#FBF8F1]/80 transition-all"
+                          >
+                            <strong className="font-serif text-[13px]">3. Decline lowest-value booking</strong>
+                            <p className="font-sans text-[9.5px] text-[#6E634C] leading-relaxed">
+                              Turn away last booking with full refund and gesture.
+                            </p>
+                            <div className="flex justify-between items-center border-t border-[#2E2718]/5 pt-2 mt-1.5 font-mono text-[7.5px]">
+                              <span>Guest: High</span>
+                              <span className="text-red-700 font-bold">-CHF 980</span>
+                              <span>Risk: High</span>
+                            </div>
                           </div>
                         </>
                       ) : (
-                        <div className="p-4 bg-[#EAF0E4] border border-[#4E6A57]/30 rounded-xl text-center my-auto flex flex-col items-center gap-2">
-                          <span className="text-[#4E6A57] font-bold text-xs">✓ Decision Dispatched</span>
-                          <p className="text-[10px] text-[#6E634C] leading-normal">
-                            {overbookingResolution} option locked. Guest companion updated.
-                          </p>
+                        <div className="p-4 bg-[#EAF0E4] border border-[#4E6A57]/30 rounded flex flex-col items-center gap-3 text-center my-auto">
+                          <span className="w-8 h-8 rounded-full bg-[#4E6A57] flex items-center justify-center text-white text-xs">✓</span>
+                          <div>
+                            <strong className="font-serif text-[14px] text-[#4E6A57] block">Resolution Locked</strong>
+                            <p className="font-sans text-[10px] text-[#6E634C] mt-1.5 leading-relaxed">
+                              {overbookingResolution === "rebooked" && "Rebooked to Chalet Verbois. Shuttle dispatched, guest companion app updated."}
+                              {overbookingResolution === "consolidate" && "Consolidated family rooms into suite. Front desk team alerted."}
+                              {overbookingResolution === "decline" && "Lowest value booking declined. Refund processed and gesture email dispatched."}
+                            </p>
+                          </div>
+                          <button 
+                            onClick={() => setOverbookingResolution("pending")}
+                            className="text-[9px] font-mono text-[#4E6A57] border-b border-[#4E6A57] font-bold mt-1"
+                          >
+                            Select Different Option
+                          </button>
                         </div>
                       )}
+
                     </div>
-                    <div className="border-t border-[#2E2718]/8 pt-2 flex justify-between font-sans text-[8.5px] font-bold opacity-60">
-                      <span>02. Conflicts</span>
+
+                    {/* Bottom Nav Tab */}
+                    <div className="px-6 pb-8 pt-3 border-t border-[#2E2718]/8 flex justify-between items-center font-sans text-[9px] font-bold text-[#2E2718]/60 bg-[#FAF8F5]">
+                      <span className="cursor-pointer" onClick={() => setActivePulseScreenIndex(0)}>01. Brief</span>
+                      <span className="cursor-pointer" onClick={() => setActivePulseScreenIndex(1)}>02. Conflicts</span>
                       <span className="text-[#4E6A57]">03. Overbook</span>
-                      <span>04. VIP</span>
+                      <span className="cursor-pointer" onClick={() => setActivePulseScreenIndex(3)}>04. VIP</span>
                     </div>
+
                   </div>
                 </div>
               </div>
 
-              {/* SCREEN 04 */}
-              <div className="flex-shrink-0 flex flex-col gap-3 group">
+              {/* ==================== SCREEN 04: VIP ARRIVAL ==================== */}
+              <div id="pulse-screen-3" className="flex-shrink-0 flex flex-col gap-3 group">
                 <div className="flex justify-between items-center px-2 text-[#2E2718]">
-                  <span className="font-sans text-[10px] tracking-widest text-[#2E2718]/50 uppercase font-semibold">Mobile 04</span>
-                  <span className="font-serif text-xs italic">VIP prep</span>
+                  <span className="font-sans text-[10px] tracking-widest text-[#2E2718]/50 uppercase font-semibold">Screen 04</span>
+                  <span className="font-serif text-xs italic text-[#2E2718]">VIP Turnaround</span>
                 </div>
+
                 <div className="relative p-3 rounded-[50px] bg-[#2E2718] shadow-[0_25px_60px_-15px_rgba(30,22,17,0.25)] border-[0.5px] border-[#F6F2EA]/20">
+                  {/* Speaker Notch */}
                   <div className="absolute top-5 left-1/2 -translate-x-1/2 w-32 h-4 rounded-full bg-[#2E2718] z-30 flex items-center justify-center gap-1.5 px-4">
                     <div className="w-1.5 h-1.5 rounded-full bg-black/60" />
                     <div className="h-0.5 flex-grow rounded-full bg-[#261E1A]" />
                   </div>
-                  <div className="w-[390px] h-[844px] rounded-[38px] overflow-hidden bg-[#F4EFE4] relative paper-grain select-none flex flex-col justify-between text-[#2E2718] p-6 pt-9">
-                    <div className="flex justify-between items-center font-sans text-[9px] opacity-60">
+
+                  {/* Screen Viewport */}
+                  <div className="w-[390px] h-[844px] rounded-[38px] overflow-hidden bg-[#F4EFE4] relative paper-grain select-none flex flex-col justify-between text-[#2E2718]">
+                    
+                    {/* Top status bar */}
+                    <div className="pt-9 px-6 flex justify-between items-center font-sans text-[9px] opacity-60">
                       <span>07:03</span>
-                      <span>PULSE 1G</span>
-                    </div>
-                    <div className="border-b border-[#2E2718]/8 pb-2 mt-2">
-                      <h3 className="font-serif text-[18px] font-bold">Herr &amp; Frau Brandt</h3>
-                      <span className="font-sans text-[8px] text-[#9A8E72]">Room 208 Turnaround</span>
-                    </div>
-                    <div className="flex-grow flex flex-col gap-2 mt-3 text-[9.5px]">
-                      <div className="p-2.5 bg-white border rounded">
-                        <span className="text-[#9A8E72] block uppercase text-[7px]">PREFERENCES</span>
-                        <p className="mt-0.5">Quiet high floor, still water, feather-free bedding set.</p>
+                      <div className="flex items-center gap-1.5">
+                        <span>PULSE 1G</span>
+                        <div className="w-4 h-2.5 bg-current opacity-70 rounded-xs" />
                       </div>
-                      <div className="p-2.5 bg-white border rounded flex flex-col gap-1.5">
-                        <span className="text-[#9A8E72] block uppercase text-[7px] mb-1">AMENITIES STATE</span>
-                        <label className="flex items-center gap-1.5">
-                          <input type="checkbox" checked={true} readOnly className="rounded text-[#4E6A57] focus:ring-0" />
-                          <span className="line-through text-[#6E634C]">Alpine flowers arranged</span>
-                        </label>
-                        <label className="flex items-center gap-1.5">
-                          <input type="checkbox" checked={vipChampagne} onChange={(e) => setVipChampagne(e.target.checked)} className="rounded text-[#4E6A57] focus:ring-0" />
-                          <span>Champagne on ice</span>
-                        </label>
+                    </div>
+
+                    {/* App Header */}
+                    <div className="px-6 pt-4 border-b border-[#2E2718]/8 pb-3">
+                      <h2 className="font-serif text-[22px] font-bold">VIP Arrival</h2>
+                      <span className="font-sans text-[9px] uppercase tracking-wider text-[#9A8E72]">Herr &amp; Frau Brandt · Room 208</span>
+                    </div>
+
+                    {/* App Content */}
+                    <div className="px-6 py-4 flex-grow flex flex-col gap-3.5 overflow-y-auto scrollbar-none justify-between">
+                      
+                      <div className="flex flex-col gap-3">
+                        {/* Guest profile briefing */}
+                        <div className="p-3 bg-[#FAF8F5] border border-[#2E2718]/10 rounded shadow-xs flex flex-col gap-1">
+                          <span className="font-mono text-[7px] text-[#9A8E72] uppercase tracking-widest">GUEST PREFERENCES</span>
+                          <strong className="font-serif text-[13px]">6th stay · Anniversary trip</strong>
+                          <p className="font-sans text-[9.5px] text-[#6E634C] leading-normal">
+                            • High, quiet floor — away from the lift<br />
+                            • Still water, extra espresso pods<br />
+                            • Feather-free pillows &amp; duvet<br />
+                            • Late dinner, table by the window
+                          </p>
+                        </div>
+
+                        {/* Welcome amenities interactive checklists */}
+                        <div className="p-3 bg-[#FAF8F5] border border-[#2E2718]/10 rounded shadow-xs flex flex-col gap-2">
+                          <div className="flex justify-between items-center">
+                            <span className="font-mono text-[7px] text-[#9A8E72] uppercase tracking-widest">WELCOME AMENITIES</span>
+                            <span className="font-mono text-[8px] text-[#9A8E72]">
+                              {[true, true, vipChampagne, vipFireplace, vipBedding].filter(Boolean).length} of 5 Ready
+                            </span>
+                          </div>
+                          
+                          <label className="flex items-center gap-2 text-[9.5px] cursor-pointer">
+                            <input type="checkbox" checked={true} readOnly className="rounded border-[#2E2718]/30 text-[#4E6A57] focus:ring-0" />
+                            <span className="text-[#6E634C] line-through">Alpine flowers arranged</span>
+                          </label>
+                          <label className="flex items-center gap-2 text-[9.5px] cursor-pointer">
+                            <input type="checkbox" checked={true} readOnly className="rounded border-[#2E2718]/30 text-[#4E6A57] focus:ring-0" />
+                            <span className="text-[#6E634C] line-through">Handwritten welcome note</span>
+                          </label>
+                          <label className="flex items-center gap-2 text-[9.5px] cursor-pointer">
+                            <input 
+                              type="checkbox" 
+                              checked={vipChampagne} 
+                              onChange={(e) => setVipChampagne(e.target.checked)} 
+                              className="rounded border-[#2E2718]/30 text-[#4E6A57] focus:ring-0" 
+                            />
+                            <span>Champagne on ice</span>
+                          </label>
+                          <label className="flex items-center gap-2 text-[9.5px] cursor-pointer">
+                            <input 
+                              type="checkbox" 
+                              checked={vipFireplace} 
+                              onChange={(e) => setVipFireplace(e.target.checked)} 
+                              className="rounded border-[#2E2718]/30 text-[#4E6A57] focus:ring-0" 
+                            />
+                            <span>Fireplace laid &amp; lit</span>
+                          </label>
+                          <label className="flex items-center gap-2 text-[9.5px] cursor-pointer">
+                            <input 
+                              type="checkbox" 
+                              checked={vipBedding} 
+                              onChange={(e) => setVipBedding(e.target.checked)} 
+                              className="rounded border-[#2E2718]/30 text-[#4E6A57] focus:ring-0" 
+                            />
+                            <span>Feather-free bedding set</span>
+                          </label>
+                        </div>
                       </div>
-                      <button onClick={() => setEarlyCheckoutRequested(true)} className="w-full mt-1 bg-[#2E2718] text-white py-2 rounded font-sans text-[9px] font-bold">
-                        {earlyCheckoutRequested ? "✓ Checkout Requested" : "Request Early Checkout · 11:00"}
+
+                      {/* Action Triggers */}
+                      <div className="flex flex-col gap-2 mt-2">
+                        <button 
+                          onClick={() => setEarlyCheckoutRequested(true)}
+                          className={`w-full py-2.5 rounded text-[10px] font-bold shadow-sm transition-all ${
+                            earlyCheckoutRequested 
+                              ? "bg-[#4E6A57] text-white" 
+                              : "bg-[#2E2718] text-[#FAF8F5]"
+                          }`}
+                        >
+                          {earlyCheckoutRequested ? "✓ Checkout Requested at 11:00" : "Request early checkout · 11:00"}
+                        </button>
+                        
+                        <button 
+                          onClick={() => setSecondHousekeeperAdded(true)}
+                          className="w-full py-2.5 rounded border border-[#4E6A57]/30 text-[#4E6A57] text-[10px] font-bold bg-white hover:bg-[#FAF8F5] transition-all"
+                        >
+                          {secondHousekeeperAdded ? "✓ 2nd Housekeeper assigned (-30 min)" : "Add 2nd housekeeper · −30 min"}
+                        </button>
+
+                        <div className="flex items-center gap-3 mt-2 pt-2 border-t border-[#2E2718]/8">
+                          <div className="w-7 h-7 rounded-full bg-[#D8CDB4] flex items-center justify-center font-bold text-[9px]">MR</div>
+                          <div className="flex-grow">
+                            <div className="font-sans text-[10px] font-bold">Marta Ruiz · Housekeeper</div>
+                            <span className="text-[8px] text-[#9A8E72]">Floor 2 · currently in Room 204</span>
+                          </div>
+                          <span className="text-[8px] bg-[#4E6A57]/12 text-[#4E6A57] font-bold px-2 py-0.5 rounded-full">On Standby</span>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    {/* Bottom Nav Tab */}
+                    <div className="px-6 pb-8 pt-3 border-t border-[#2E2718]/8 flex justify-between items-center font-sans text-[9px] font-bold text-[#2E2718]/60 bg-[#FAF8F5]">
+                      <span className="cursor-pointer" onClick={() => setActivePulseScreenIndex(0)}>01. Brief</span>
+                      <span className="cursor-pointer" onClick={() => setActivePulseScreenIndex(1)}>02. Conflicts</span>
+                      <span className="cursor-pointer" onClick={() => setActivePulseScreenIndex(2)}>03. Overbook</span>
+                      <span className="text-[#4E6A57]">04. VIP</span>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              {/* ==================== SCREEN 05: TEAM ==================== */}
+              <div id="pulse-screen-4" className="flex-shrink-0 flex flex-col gap-3 group">
+                <div className="flex justify-between items-center px-2 text-[#2E2718]">
+                  <span className="font-sans text-[10px] tracking-widest text-[#2E2718]/50 uppercase font-semibold">Screen 05</span>
+                  <span className="font-serif text-xs italic">Team Shift Rebalance</span>
+                </div>
+
+                <div className="relative p-3 rounded-[50px] bg-[#2E2718] shadow-[0_25px_60px_-15px_rgba(30,22,17,0.25)] border-[0.5px] border-[#F6F2EA]/20">
+                  {/* Speaker Notch */}
+                  <div className="absolute top-5 left-1/2 -translate-x-1/2 w-32 h-4 rounded-full bg-[#2E2718] z-30 flex items-center justify-center gap-1.5 px-4">
+                    <div className="w-1.5 h-1.5 rounded-full bg-black/60" />
+                    <div className="h-0.5 flex-grow rounded-full bg-[#261E1A]" />
+                  </div>
+
+                  {/* Screen Viewport */}
+                  <div className="w-[390px] h-[844px] rounded-[38px] overflow-hidden bg-[#F4EFE4] relative paper-grain select-none flex flex-col justify-between text-[#2E2718]">
+                    
+                    {/* Top status bar */}
+                    <div className="pt-9 px-6 flex justify-between items-center font-sans text-[9px] opacity-60">
+                      <span>07:04</span>
+                      <div className="flex items-center gap-1.5">
+                        <span>PULSE 1G</span>
+                        <div className="w-4 h-2.5 bg-current opacity-70 rounded-xs" />
+                      </div>
+                    </div>
+
+                    {/* App Header */}
+                    <div className="px-6 pt-4 border-b border-[#2E2718]/8 pb-3 flex justify-between items-center">
+                      <div>
+                        <h2 className="font-serif text-[22px] font-bold">Today&apos;s Work</h2>
+                        <span className="font-sans text-[9px] uppercase tracking-wider text-[#9A8E72]">3 of 4 on shift · Léa sick</span>
+                      </div>
+                      <button 
+                        onClick={() => setIsStaffReallocated(true)}
+                        className="bg-[#4E6A57] text-[#FAF8F5] font-sans text-[9px] font-bold px-2.5 py-1 rounded"
+                      >
+                        Auto-balance
                       </button>
                     </div>
-                    <div className="border-t border-[#2E2718]/8 pt-2 flex justify-between font-sans text-[8.5px] font-bold opacity-60">
-                      <span>03. Overbook</span>
-                      <span className="text-[#4E6A57]">04. VIP</span>
-                      <span>05. Team</span>
+
+                    {/* App Content */}
+                    <div className="px-6 py-4 flex-grow flex flex-col gap-3 overflow-y-auto scrollbar-none">
+                      
+                      {/* Sick Employee Column */}
+                      <div className="p-3 bg-[#F1EBDD] border border-dashed border-[#B4553F]/40 rounded flex flex-col gap-2">
+                        <div className="flex items-center gap-2">
+                          <span className="w-6 h-6 rounded-full bg-[#E6D6C0] border border-[#2E2718]/10 flex items-center justify-center font-bold text-[9px] text-[#9A8560]">LÉ</span>
+                          <div className="flex-grow">
+                            <span className="font-sans text-[11px] font-bold text-[#8A5040] block">Léa · Out Sick</span>
+                            <span className="text-[7.5px] font-mono text-[#B4553F]">{isStaffReallocated ? "0 Tasks Outstanding" : "6 tasks need owners"}</span>
+                          </div>
+                        </div>
+                        
+                        {!isStaffReallocated && (
+                          <div className="flex flex-col gap-1.5 mt-1 font-sans text-[9px]">
+                            <div className="p-2 bg-[#FBF8F1] border rounded flex justify-between items-center">
+                              <span>09:00 · Follow up Rm 217 guests</span>
+                              <span className="text-[#4E6A57] font-bold">→ Suggest: Anna</span>
+                            </div>
+                            <div className="p-2 bg-[#FBF8F1] border rounded flex justify-between items-center">
+                              <span>10:30 · Greet VIP Brandt</span>
+                              <span className="text-[#4E6A57] font-bold">→ Suggest: Sofia</span>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Staff Member: Anna */}
+                      <div className="p-3 bg-[#FBF8F1] border border-[#2E2718]/10 rounded flex flex-col gap-2">
+                        <div className="flex justify-between items-center">
+                          <div className="flex items-center gap-2">
+                            <span className="w-6 h-6 rounded-full bg-[#D8CDB4] flex items-center justify-center font-bold text-[9px]">AN</span>
+                            <span className="font-sans text-[11.5px] font-bold">Anna</span>
+                          </div>
+                          <span className="font-mono text-[8px] text-[#B0813A]">{isStaffReallocated ? "Full · 7 tasks" : "Full · 5 tasks"}</span>
+                        </div>
+                        <div className="h-1 bg-[#EFE8DA] rounded-full overflow-hidden">
+                          <div className="h-full bg-[#B0813A] transition-all" style={{ width: isStaffReallocated ? "95%" : "88%" }} />
+                        </div>
+                      </div>
+
+                      {/* Staff Member: Marc */}
+                      <div className="p-3 bg-[#FBF8F1] border border-[#4E6A57]/30 rounded flex flex-col gap-2">
+                        <div className="flex justify-between items-center">
+                          <div className="flex items-center gap-2">
+                            <span className="w-6 h-6 rounded-full bg-[#D8CDB4] flex items-center justify-center font-bold text-[9px]">MC</span>
+                            <span className="font-sans text-[11.5px] font-bold">Marc</span>
+                          </div>
+                          <span className="font-mono text-[8px] text-[#4E6A57]">{isStaffReallocated ? "4 tasks" : "2 tasks"}</span>
+                        </div>
+                        <div className="h-1 bg-[#EFE8DA] rounded-full overflow-hidden">
+                          <div className="h-full bg-[#4E6A57] transition-all" style={{ width: isStaffReallocated ? "80%" : "42%" }} />
+                        </div>
+                        {!isStaffReallocated && (
+                          <div className="border border-dashed border-[#4E6A57]/45 rounded py-2 text-center text-[#4E6A57] font-bold text-[9px]">
+                            Drop Reassigned Tasks Here
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Staff Member: Sofia */}
+                      <div className="p-3 bg-[#FBF8F1] border border-[#2E2718]/10 rounded flex flex-col gap-2">
+                        <div className="flex justify-between items-center">
+                          <div className="flex items-center gap-2">
+                            <span className="w-6 h-6 rounded-full bg-[#D8CDB4] flex items-center justify-center font-bold text-[9px]">SF</span>
+                            <span className="font-sans text-[11.5px] font-bold">Sofia · Concierge</span>
+                          </div>
+                          <span className="font-mono text-[8px] text-[#6E634C]">{isStaffReallocated ? "Balanced · 5 tasks" : "Balanced · 4 tasks"}</span>
+                        </div>
+                        <div className="h-1 bg-[#EFE8DA] rounded-full overflow-hidden">
+                          <div className="h-full bg-[#6E634C] transition-all" style={{ width: isStaffReallocated ? "78%" : "64%" }} />
+                        </div>
+                      </div>
+
                     </div>
+
+                    {/* Bottom Nav Tab */}
+                    <div className="px-6 pb-8 pt-3 border-t border-[#2E2718]/8 flex justify-between items-center font-sans text-[9px] font-bold text-[#2E2718]/60 bg-[#FAF8F5]">
+                      <span className="cursor-pointer" onClick={() => setActivePulseScreenIndex(0)}>01. Brief</span>
+                      <span className="cursor-pointer" onClick={() => setActivePulseScreenIndex(1)}>02. Conflicts</span>
+                      <span className="cursor-pointer" onClick={() => setActivePulseScreenIndex(2)}>03. Overbook</span>
+                      <span className="cursor-pointer" onClick={() => setActivePulseScreenIndex(3)}>04. VIP</span>
+                    </div>
+
                   </div>
                 </div>
               </div>
 
-              {/* SCREEN 05 */}
-              <div className="flex-shrink-0 flex flex-col gap-3 group">
-                <div className="flex justify-between items-center px-2 text-[#2E2718]">
-                  <span className="font-sans text-[10px] tracking-widest text-[#2E2718]/50 uppercase font-semibold">Mobile 05</span>
-                  <span className="font-serif text-xs italic">Team Schedule</span>
+              {/* ==================== SCREEN 06: EVERYTHING OWNED ==================== */}
+              <div id="pulse-screen-5" className="flex-shrink-0 flex flex-col gap-3 group">
+                <div className="flex justify-between items-center px-2">
+                  <span className="font-sans text-[10px] tracking-widest text-[#1E1611]/50 uppercase font-semibold">Screen 06</span>
+                  <span className="font-serif text-xs italic text-[#1E1611]">Active registry checklist</span>
                 </div>
-                <div className="relative p-3 rounded-[50px] bg-[#2E2718] shadow-[0_25px_60px_-15px_rgba(30,22,17,0.25)] border-[0.5px] border-[#F6F2EA]/20">
-                  <div className="absolute top-5 left-1/2 -translate-x-1/2 w-32 h-4 rounded-full bg-[#2E2718] z-30 flex items-center justify-center gap-1.5 px-4">
-                    <div className="w-1.5 h-1.5 rounded-full bg-black/60" />
-                    <div className="h-0.5 flex-grow rounded-full bg-[#261E1A]" />
-                  </div>
-                  <div className="w-[390px] h-[844px] rounded-[38px] overflow-hidden bg-[#F4EFE4] relative paper-grain select-none flex flex-col justify-between text-[#2E2718] p-6 pt-9">
-                    <div className="flex justify-between items-center font-sans text-[9px] opacity-60">
-                      <span>07:04</span>
-                      <span>PULSE 1G</span>
-                    </div>
-                    <div className="border-b border-[#2E2718]/8 pb-2 mt-2 flex justify-between items-center">
-                      <div>
-                        <h3 className="font-serif text-[18px] font-bold">Today&apos;s Work</h3>
-                        <span className="font-sans text-[8px] text-[#9A8E72]">Léa sick call rebalance</span>
-                      </div>
-                      <button onClick={() => setIsStaffReallocated(true)} className="bg-[#4E6A57] text-white text-[8px] px-2 py-0.5 rounded font-bold">Balance</button>
-                    </div>
-                    <div className="flex-grow flex flex-col gap-2 mt-3 overflow-y-auto scrollbar-none text-[9.5px]">
-                      <div className="p-2 bg-[#F1EBDD] border border-dashed rounded text-[#8A5040]">
-                        <strong>Léa (Sick)</strong> · {isStaffReallocated ? "0 Tasks left" : "6 tasks need owner"}
-                      </div>
-                      <div className="p-2 bg-white border rounded">
-                        <strong>Anna</strong> · {isStaffReallocated ? "Workload: 95%" : "Workload: 88%"}
-                      </div>
-                      <div className="p-2 bg-white border rounded">
-                        <strong>Marc</strong> · {isStaffReallocated ? "Workload: 80%" : "Workload: 42%"}
-                      </div>
-                    </div>
-                    <div className="border-t border-[#2E2718]/8 pt-2 flex justify-between font-sans text-[8.5px] font-bold opacity-60">
-                      <span>04. VIP</span>
-                      <span className="text-[#4E6A57]">05. Team</span>
-                      <span>06. Handled</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-              {/* SCREEN 06 */}
-              <div className="flex-shrink-0 flex flex-col gap-3 group">
-                <div className="flex justify-between items-center px-2 text-[#2E2718]">
-                  <span className="font-sans text-[10px] tracking-widest text-[#2E2718]/50 uppercase font-semibold">Mobile 06</span>
-                  <span className="font-serif text-xs italic">Handled</span>
-                </div>
-                <div className="relative p-3 rounded-[50px] bg-[#2E2718] shadow-[0_25px_60px_-15px_rgba(30,22,17,0.25)] border-[0.5px] border-[#F6F2EA]/20">
-                  <div className="absolute top-5 left-1/2 -translate-x-1/2 w-32 h-4 rounded-full bg-[#2E2718] z-30 flex items-center justify-center gap-1.5 px-4">
+                <div className="relative p-3 rounded-[50px] bg-[#1E1611] shadow-[0_25px_60px_-15px_rgba(30,22,17,0.25)] border-[0.5px] border-[#F6F2EA]/20">
+                  {/* Speaker Notch */}
+                  <div className="absolute top-5 left-1/2 -translate-x-1/2 w-32 h-4 rounded-full bg-[#1E1611] z-30 flex items-center justify-center gap-1.5 px-4">
                     <div className="w-1.5 h-1.5 rounded-full bg-black/60" />
                     <div className="h-0.5 flex-grow rounded-full bg-[#261E1A]" />
                   </div>
-                  <div className="w-[390px] h-[844px] rounded-[38px] overflow-hidden bg-[#F4EFE4] relative paper-grain select-none flex flex-col justify-between text-[#2E2718] p-6 pt-9">
-                    <div className="flex justify-between items-center font-sans text-[9px] opacity-60">
+
+                  {/* Screen Viewport */}
+                  <div className="w-[390px] h-[844px] rounded-[38px] overflow-hidden bg-[#FAF8F5] relative paper-grain select-none flex flex-col justify-between text-[#1E1611]">
+                    
+                    {/* Top status bar */}
+                    <div className="pt-9 px-6 flex justify-between items-center font-sans text-[9px] opacity-60">
                       <span>07:05</span>
-                      <span>PULSE 1G</span>
-                    </div>
-                    <div className="border-b border-[#2E2718]/8 pb-2 mt-2">
-                      <h3 className="font-serif text-[18px] font-bold">Handled</h3>
-                      <span className="font-sans text-[8px] text-[#9A8E72]">Active Ops Registry status</span>
-                    </div>
-                    <div className="flex-grow flex flex-col gap-2 mt-3 overflow-y-auto scrollbar-none text-[9px]">
-                      <div className="p-2 bg-white border rounded flex justify-between">
-                        <span>304 relocation follow up</span>
-                        <span className="text-[#4E6A57] font-bold">Resolved</span>
-                      </div>
-                      <div className="p-2 bg-white border rounded flex justify-between">
-                        <span>Overbooking tonight</span>
-                        <span className={overbookingResolution !== "pending" ? "text-[#4E6A57] font-bold" : "text-red-700 font-bold"}>
-                          {overbookingResolution !== "pending" ? "Resolved" : "Pending"}
-                        </span>
-                      </div>
-                      <div className="p-2 bg-white border rounded flex justify-between">
-                        <span>VIP Early Brandt check-in</span>
-                        <span className="text-[#B0813A] font-bold">In Progress</span>
+                      <div className="flex items-center gap-1.5">
+                        <span>PULSE 1G</span>
+                        <div className="w-4 h-2.5 bg-current opacity-70 rounded-xs" />
                       </div>
                     </div>
-                    <div className="border-t border-[#2E2718]/8 pt-2 flex justify-between font-sans text-[8.5px] font-bold opacity-60">
-                      <span>05. Team</span>
-                      <span className="text-[#4E6A57]">06. Handled</span>
-                      <span>01. Brief</span>
+
+                    {/* App Header */}
+                    <div className="px-6 pt-4 border-b border-[#1E1611]/8 pb-3">
+                      <h2 className="font-serif text-lg font-bold">Everything Handled</h2>
+                      <span className="font-mono text-[7px] uppercase tracking-wider text-[#1E1611]/50">Active Handover State</span>
                     </div>
+
+                    {/* App Content */}
+                    <div className="px-6 py-4 flex-grow flex flex-col gap-3 overflow-y-auto scrollbar-none justify-between">
+                      
+                      <div className="flex flex-col gap-2 font-sans text-[9px]">
+                        
+                        {/* Task 1 */}
+                        <div className="p-2.5 border border-[#1E1611]/8 bg-white rounded shadow-xs flex flex-col gap-0.5">
+                          <div className="flex justify-between items-center">
+                            <span className="font-bold">Room 304 relocation follow up</span>
+                            <span className="text-[#4E6A57] font-mono text-[7px] font-bold">✓ RESOLVED</span>
+                          </div>
+                          <span className="opacity-60 text-[7.5px]">Owner: Anna · Amenity note delivered</span>
+                        </div>
+
+                        {/* Task 2 */}
+                        <div className="p-2.5 border border-[#1E1611]/8 bg-white rounded shadow-xs flex flex-col gap-0.5">
+                          <div className="flex justify-between items-center">
+                            <span className="font-bold">Overbooking Relief</span>
+                            <span className={`font-mono text-[7px] font-bold ${
+                              overbookingResolution !== 'pending' ? 'text-[#4E6A57]' : 'text-red-600'
+                            }`}>
+                              {overbookingResolution !== 'pending' ? '✓ RESOLVED' : 'UNASSIGNED'}
+                            </span>
+                          </div>
+                          <span className="opacity-60 text-[7.5px]">
+                            Owner: Elena · {overbookingResolution !== 'pending' ? "Rebooked Chalet Verbois" : "Awaiting Picker"}
+                          </span>
+                        </div>
+
+                        {/* Task 3 */}
+                        <div className="p-2.5 border border-[#1E1611]/8 bg-white rounded shadow-xs flex flex-col gap-0.5">
+                          <div className="flex justify-between items-center">
+                            <span className="font-bold">VIP early arrival (Brandt)</span>
+                            <span className="text-[#B0813A] font-mono text-[7px] font-bold">IN PROGRESS</span>
+                          </div>
+                          <span className="opacity-60 text-[7.5px]">Owner: Sofia · {earlyCheckoutRequested ? "Early checkout requested" : "Preparing room amenities"}</span>
+                        </div>
+
+                        {/* Task 4 */}
+                        <div className="p-2.5 border border-[#1E1611]/8 bg-white rounded shadow-xs flex flex-col gap-0.5">
+                          <div className="flex justify-between items-center">
+                            <span className="font-bold">Reception Shift Coverage</span>
+                            <span className={`font-mono text-[7px] font-bold ${isStaffReallocated ? 'text-[#4E6A57]' : 'text-[#B0813A]'}`}>
+                              {isStaffReallocated ? '✓ RESOLVED' : 'IN PROGRESS'}
+                            </span>
+                          </div>
+                          <span className="opacity-60 text-[7.5px]">Owner: Elena · {isStaffReallocated ? "Jean reassigned cover" : "Understaffed"}</span>
+                        </div>
+
+                      </div>
+
+                      {/* Handoff success banner */}
+                      <div className="p-3.5 bg-[#FAF8F5] border border-[#4E6A57]/30 rounded flex flex-col gap-2">
+                        <strong className="font-serif text-[14px] leading-tight">Handover Ready.</strong>
+                        <p className="font-sans text-[8.5px] text-[#6E634C] leading-relaxed">
+                          Every critical conflict has been assigned an owner and next step. Ready to hand off to day team.
+                        </p>
+                        <button className="w-full py-2 bg-[#4E6A57] text-[#FAF8F5] font-sans text-[9px] font-bold shadow-xs">
+                          Hand off to day team
+                        </button>
+                      </div>
+
+                    </div>
+
+                    {/* Bottom Nav Tab */}
+                    <div className="px-6 pb-8 pt-3 border-t border-[#1E1611]/8 flex justify-between items-center font-sans text-[8.5px] font-bold text-[#1E1611]/60 bg-[#FAF8F5]">
+                      <span>Brief</span>
+                      <span>Conflicts</span>
+                      <span>Resolution</span>
+                      <span>Staff</span>
+                    </div>
+
                   </div>
                 </div>
               </div>
@@ -1203,4 +901,4 @@ activeProduct === "pulse" && (
 
           </div>
         </>
-      )
+      )}

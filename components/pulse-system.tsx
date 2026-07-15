@@ -103,7 +103,7 @@ const OperationsFeed = () => (
 )
 
 export const PulseShell = ({ active, children }: { active: string; children: ReactNode }) => (
-  <div className="w-[1360px] h-[590px] bg-[#FAF8F5] paper-grain rounded-[8px] overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.3)] border border-[#1E1611]/10 flex flex-col relative select-none">
+  <div className="w-[1360px] h-[860px] bg-[#FAF8F5] paper-grain rounded-[8px] overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.3)] border border-[#1E1611]/10 flex flex-col relative">
     <TopStrip />
     <div className="flex flex-1 min-h-0">
       <NavRail active={active} />
@@ -143,7 +143,6 @@ export const LedgerEntry = ({
   meta,
   owner,
   action,
-  onActionClick,
 }: {
   time: string
   severity?: Severity
@@ -152,7 +151,6 @@ export const LedgerEntry = ({
   meta: string
   owner: string
   action: string
-  onActionClick?: () => void
 }) => (
   <div className="flex items-start gap-5 py-4 border-b border-[#1E1611]/7 last:border-0">
     <div className="w-[62px] pt-0.5 shrink-0">
@@ -164,82 +162,47 @@ export const LedgerEntry = ({
       <div className="text-[11px] text-[#1E1611]/40 mt-1">{meta}</div>
     </div>
     <div className="w-[112px] shrink-0 text-[11.5px] text-[#1E1611]/55 pt-1">{owner}</div>
-    <button 
-      onClick={onActionClick}
-      className="shrink-0 text-[12px] text-[#2F483A] font-medium pt-1 hover:opacity-70 transition-opacity"
-    >
-      {action} ›
-    </button>
+    <button className="shrink-0 text-[12px] text-[#2F483A] font-medium pt-1 hover:opacity-70 transition-opacity">{action} ›</button>
   </div>
 )
 
 export const EditorialStat = ({ value, label, tone }: { value: ReactNode; label: string; tone?: string }) => (
-  <div className="flex flex-col gap-1">
-    <span className="font-serif text-[28px] leading-none" style={{ color: tone ?? "#1E1611" }}>
+  <div className="flex flex-col gap-1 items-center">
+    <span className="font-serif text-[32px] leading-none font-light" style={{ color: tone ?? "#1E1611", fontVariantNumeric: "lining-nums" }}>
       {value}
     </span>
-    <span className="text-[9px] uppercase tracking-[0.12em] text-[#1E1611]/40">{label}</span>
+    <span className="text-[9px] uppercase tracking-[0.12em] font-semibold text-[#1E1611]/45 text-center">{label}</span>
   </div>
 )
 
 export const PunchStrip = ({ total, filled, label }: { total: number; filled: number; label: string }) => (
-  <div className="flex flex-col gap-1.5 select-none">
-    <div className="flex items-center justify-between text-[9px] font-sans font-semibold text-[#1E1611]/45 uppercase tracking-wide">
+  <div className="flex flex-col gap-2">
+    <div className="flex items-center justify-between text-[8.5px] font-semibold text-[#1E1611]/45 uppercase tracking-wider">
       <span>{label}</span>
-      <span className="font-mono text-[9px] font-bold">{filled}/{total}</span>
+      <span className="font-mono" style={{ fontVariantNumeric: "lining-nums" }}>{filled}/{total}</span>
     </div>
-    <div className="flex gap-1 p-0.5 bg-[#1E1611]/3 rounded border border-[#1E1611]/8">
-      {Array.from({ length: total }).map((_, i) => {
-        const isFilled = i < filled
-        return (
-          <div 
-            key={i} 
-            className="h-3 flex-grow rounded-[2px] border border-[#1E1611]/5 flex items-center justify-center relative transition-all duration-[800ms]"
-            style={{ 
-              backgroundColor: isFilled ? "#2F483A" : "#FAF8F5",
-              boxShadow: isFilled ? "inset 0 1px 2px rgba(47, 72, 58, 0.25)" : "none"
-            }}
-          >
-            {/* Perforation hole punch center indicator */}
-            <div 
-              className={`w-1 h-1 rounded-full transition-all ${
-                isFilled 
-                  ? "bg-[#FAF8F5]/60" 
-                  : "bg-[#1E1611]/15"
-              }`} 
-            />
-          </div>
-        )
-      })}
+    <div className="flex gap-[3.5px]">
+      {Array.from({ length: total }).map((_, i) => (
+        <span key={i} className="h-[9px] flex-1 rounded-[1.5px] transition-all" style={{ background: i < filled ? "#2F483A" : "rgba(30,22,17,0.09)" }} />
+      ))}
     </div>
   </div>
 )
 
 // Paper-card container — gives a section presence against the page
-// background without becoming a flat SaaS rectangle (deckled edge + inner line + metal eyelet).
-export const Card = ({ children, className = "", tagEyelet = false }: { children: ReactNode; className?: string; tagEyelet?: boolean }) => (
-  <div className={`deckled-card linen-shadow rounded-[10px] relative overflow-hidden bg-[#FAF8F5] border border-[#1E1611]/12 p-5 ${className}`}>
-    {/* Optional metal eyelet hole for vintage file tag look */}
-    {tagEyelet && (
-      <div className="absolute top-3 left-1/2 -translate-x-1/2 flex flex-col items-center pointer-events-none select-none z-20">
-        <div className="w-3.5 h-3.5 rounded-full bg-[#EBE3D2] border border-[#1E1611]/15 shadow-inner flex items-center justify-center">
-          <div className="w-1.5 h-1.5 rounded-full bg-[#FAF8F5] border border-[#1E1611]/8 shadow-[inset_0_1px_2px_rgba(0,0,0,0.15)]" />
-        </div>
-      </div>
-    )}
-    {/* Ledger double outer thin lining */}
-    <div className="absolute inset-[3px] border border-[#1E1611]/6 rounded-[8px] pointer-events-none" />
-    <div className="relative z-10 flex flex-col h-full">{children}</div>
-  </div>
+// background without becoming a flat SaaS rectangle (deckled edge + linen shadow).
+export const Card = ({ children, className = "" }: { children: ReactNode; className?: string }) => (
+  <div className={`deckled-card linen-shadow rounded-[10px] ${className}`}>{children}</div>
 )
 
-// Swiss mechanical watch dial style radial gauge with 30-degree graduations and a thin pointer needle
+// A quiet instrument-panel dial — for a single magnitude (0-100), not a
+// comparison. Track + one arc, rounded end, no legend (the label names it).
 export const RadialGauge = ({
   value,
   valueLabel,
   label,
   tone = "#2F483A",
-  size = 76,
+  size = 66,
 }: {
   value: number
   valueLabel: string
@@ -247,29 +210,16 @@ export const RadialGauge = ({
   tone?: string
   size?: number
 }) => {
-  const strokeW = 3.5
-  const r = (size - 18) / 2
+  const strokeW = 4
+  const r = (size - 12) / 2
   const c = 2 * Math.PI * r
   const offset = c * (1 - Math.min(100, Math.max(0, value)) / 100)
-  
-  // Needle rotation (0% starts at -90deg, 100% ends at 270deg)
-  const angle = (value / 100) * 360 - 90
-  
   return (
-    <div className="flex flex-col items-center gap-2 select-none">
+    <div className="flex flex-col items-center gap-1.5">
       <div className="relative" style={{ width: size, height: size }}>
-        <svg width={size} height={size} className="overflow-visible">
-          {/* Dial ticks (12 tick marks at 30-deg intervals like a chronometer) */}
-          <g transform={`translate(${size/2}, ${size/2})`} opacity="0.28" stroke="#1E1611" strokeWidth="0.75">
-            {Array.from({ length: 12 }).map((_, i) => (
-              <line key={i} x1="0" y1={-r - 4} x2="0" y2={-r - 1} transform={`rotate(${i * 30})`} />
-            ))}
-          </g>
-          
-          {/* Circular gauge track */}
+        <svg width={size} height={size} className="-rotate-90">
+          <circle cx={size / 2} cy={size / 2} r={size / 2 - 2} fill="none" stroke="rgba(30,22,17,0.05)" strokeWidth="0.75" strokeDasharray="2 2" />
           <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="rgba(30,22,17,0.06)" strokeWidth={strokeW} />
-          
-          {/* Active indicator arc */}
           <circle
             cx={size / 2}
             cy={size / 2}
@@ -280,73 +230,34 @@ export const RadialGauge = ({
             strokeLinecap="round"
             strokeDasharray={c}
             strokeDashoffset={offset}
-            className="transition-all duration-[1200ms] ease-out -rotate-90 origin-center"
-          />
-          
-          {/* Center pivot point */}
-          <circle cx={size / 2} cy={size / 2} r="2.5" fill="#1E1611" />
-          <circle cx={size / 2} cy={size / 2} r="1" fill="#FAF8F5" />
-          
-          {/* Instrument needle */}
-          <line 
-            x1={size / 2} 
-            y1={size / 2} 
-            x2={size / 2 + (r - 1) * Math.cos((angle * Math.PI) / 180)} 
-            y2={size / 2 + (r - 1) * Math.sin((angle * Math.PI) / 180)} 
-            stroke="#1E1611" 
-            strokeWidth="0.75" 
-            opacity="0.85"
-            className="transition-all duration-[1200ms] ease-out origin-center"
+            className="transition-all duration-1000 ease-out"
           />
         </svg>
-        <div className="absolute inset-0 flex flex-col items-center justify-center pt-2">
-          <span className="font-serif text-[12px] font-bold tracking-tight text-[#1E1611]" style={{ fontFamily: "Cormorant Garamond, serif" }}>{valueLabel}</span>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span className="font-serif text-[12.5px] font-medium tracking-tight" style={{ color: tone, fontVariantNumeric: "lining-nums" }}>{valueLabel}</span>
         </div>
       </div>
-      <span className="text-[9px] font-sans font-semibold uppercase tracking-[0.12em] text-[#1E1611]/40 text-center leading-tight">{label}</span>
+      <span className="text-[8.5px] uppercase tracking-[0.12em] font-semibold text-[#1E1611]/45 text-center leading-tight">{label}</span>
     </div>
   )
 }
 
-// Ledger slide-rule comparison grid (ruler layout with a slider notch)
+// Two measures, one scale, direct-labeled — no legend needed for a pair.
 export const BarCompare = ({ label, items }: { label: string; items: { label: string; value: number }[] }) => {
   const max = Math.max(...items.map((i) => i.value))
   return (
-    <div className="flex flex-col gap-2 min-w-[160px] select-none">
-      <div className="text-[9px] font-sans font-semibold uppercase tracking-[0.12em] text-[#1E1611]/40">{label}</div>
-      <div className="flex flex-col gap-2.5">
-        {items.map((it, i) => {
-          const percentage = (it.value / max) * 100
-          return (
-            <div key={i} className="flex items-center gap-2.5">
-              <span className="text-[10px] font-sans font-medium text-[#1E1611]/60 w-[60px] shrink-0 truncate">{it.label}</span>
-              
-              {/* Ruler/slide track */}
-              <div className="flex-grow h-4 relative bg-[#1E1611]/3 rounded border border-[#1E1611]/8 overflow-hidden flex items-center">
-                {/* Scale ticks */}
-                <div className="absolute inset-0 flex justify-between pointer-events-none opacity-20">
-                  {Array.from({ length: 9 }).map((_, j) => (
-                    <div key={j} className={`w-[0.5px] bg-[#1E1611] ${j % 4 === 0 ? "h-full" : "h-1"}`} />
-                  ))}
-                </div>
-                
-                {/* Progress color fill */}
-                <div 
-                  className="h-full bg-[#2F483A]/10 border-r border-[#2F483A] transition-all duration-[1200ms] ease-out" 
-                  style={{ width: `${percentage}%` }} 
-                />
-                
-                {/* Slider tab */}
-                <div 
-                  className="absolute w-1 h-3 bg-[#1E1611] rounded-[1px] transition-all duration-[1200ms] ease-out" 
-                  style={{ left: `calc(${percentage}% - 2px)` }} 
-                />
-              </div>
-              
-              <span className="text-[11px] font-mono font-bold text-[#1E1611] w-[18px] text-right">{it.value}</span>
+    <div className="flex flex-col gap-1.5 min-w-[150px]">
+      <div className="text-[8.5px] uppercase tracking-[0.12em] font-semibold text-[#1E1611]/45">{label}</div>
+      <div className="flex flex-col gap-2">
+        {items.map((it, i) => (
+          <div key={i} className="flex items-center gap-2.5">
+            <span className="text-[10px] text-[#1E1611]/50 w-[62px] shrink-0 font-medium">{it.label}</span>
+            <div className="flex-1 h-[4px] rounded-full bg-[#1E1611]/6 overflow-hidden relative">
+              <div className="h-full rounded-full bg-[#2F483A]" style={{ width: `${(it.value / max) * 100}%` }} />
             </div>
-          )
-        })}
+            <span className="text-[11px] font-mono font-bold text-[#1E1611] w-[16px] text-right" style={{ fontVariantNumeric: "lining-nums" }}>{it.value}</span>
+          </div>
+        ))}
       </div>
     </div>
   )
@@ -491,42 +402,38 @@ export const ActionText = ({ children, muted = false }: { children: ReactNode; m
 // (haptic-feeling hover/active states from globals.css) + full pill shape +
 // tracked uppercase label + a soft glow shadow tinted to match. This is
 // what ties Pulse's primary actions to the Host app's own buttons.
-export const PrimaryAction = ({ children, className = "", onClick }: { children: ReactNode; className?: string; onClick?: () => void }) => (
+export const PrimaryAction = ({ children, className = "" }: { children: ReactNode; className?: string }) => (
   <button
-    onClick={onClick}
     className={`paper-grain tactile-switch h-12 px-7 rounded-full bg-[#2F483A] hover:bg-[#26392E] active:translate-y-[0.5px] transition-all text-[#FAF8F5] font-sans text-[11px] uppercase tracking-[0.15em] font-bold border border-[#2F483A]/20 shadow-[0_4px_14px_rgba(47,72,58,0.28)] ${className}`}
   >
     {children}
   </button>
 )
 
-export const SecondaryAction = ({ children, onClick }: { children: ReactNode; onClick?: () => void }) => (
-  <button 
-    onClick={onClick}
-    className="tactile-switch h-12 px-7 rounded-full border border-[#1E1611]/18 text-[#1E1611]/70 font-sans text-[11px] uppercase tracking-[0.15em] font-bold hover:border-[#1E1611]/35 transition-all"
-  >
+export const SecondaryAction = ({ children }: { children: ReactNode }) => (
+  <button className="tactile-switch h-12 px-7 rounded-full border border-[#1E1611]/18 text-[#1E1611]/70 font-sans text-[11px] uppercase tracking-[0.15em] font-bold hover:border-[#1E1611]/35 transition-all">
     {children}
   </button>
 )
 
 export const PulseDesktopHeader = () => (
-  <div className="max-w-[1360px] mx-auto w-full flex items-end justify-between mb-10 text-[#1E1611]">
+  <div className="max-w-[1360px] mx-auto w-full flex items-end justify-between mb-10">
     <div className="flex items-center gap-3">
-      <Monogram className="w-8 h-8 text-[#1E1611]/35" />
+      <Monogram className="w-8 h-8 text-[#EDE6D6]" />
       <div>
-        <div className="font-serif text-[26px] text-[#1E1611] tracking-[0.1em]">Pulse</div>
-        <div className="text-[12.5px] text-[#1E1611]/55 mt-0.5">Aurelia — operations command centre · the 7:00 AM handover</div>
+        <div className="font-serif text-[26px] text-[#EDE6D6] tracking-[0.1em]">Pulse</div>
+        <div className="text-[12.5px] text-[#A79E8B] mt-0.5">Aurelia — operations command centre · the 7:00 AM handover</div>
       </div>
     </div>
-    <div className="text-[11.5px] text-[#1E1611]/55 leading-relaxed text-right max-w-[260px]">
+    <div className="text-[11.5px] text-[#7C7666] leading-relaxed text-right max-w-[260px]">
       Built for speed — from &ldquo;everything is on fire&rdquo; to &ldquo;handled&rdquo; in two minutes.
     </div>
   </div>
 )
 
 export const PulseScreenCaption = ({ number, text }: { number: string; text: string }) => (
-  <div className="flex items-baseline gap-2.5 text-[#1E1611]">
-    <span className="text-[11px] font-mono text-[#2F483A] tracking-wider font-semibold">{number}</span>
-    <span className="text-[12.5px] text-[#1E1611]/60">{text}</span>
+  <div className="flex items-baseline gap-2.5">
+    <span className="text-[11px] font-mono text-[#8DAE97] tracking-wider font-semibold">{number}</span>
+    <span className="text-[12.5px] text-[#8A8271]">{text}</span>
   </div>
 )

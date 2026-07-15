@@ -59,132 +59,36 @@ export default function PulsePage() {
             </div>
 
             {viewMode === "desktop" && (
-              <div className="w-full overflow-x-auto rounded-[38px] border border-[#1E1611]/12 shadow-sm bg-[#E3DDD0] py-10 px-8 relative overflow-hidden select-none">
-                
-                {/* Controlled messiness artifacts */}
-                <CoffeeRing className="top-12 right-20 opacity-30" />
-                <CoffeeRing className="bottom-24 left-10 opacity-20 scale-75" />
-                
-                {/* Figma Canvas Floating Cursors */}
-                <div className="absolute pointer-events-none z-30 flex items-center gap-1" style={{ left: '480px', top: '120px' }}>
-                  <svg className="w-4 h-4 fill-[#C084FC] stroke-white stroke-[1.5]" viewBox="0 0 24 24">
-                    <path d="M4 4l5 16 3-6 6-3z" />
-                  </svg>
-                  <span className="bg-[#C084FC] text-[#FAF8F5] text-[8px] font-bold px-1.5 py-0.5 rounded-sm shadow-xs font-sans">Lukas G.</span>
-                </div>
-
-                <div className="absolute pointer-events-none z-30 flex items-center gap-1" style={{ right: '350px', top: '920px' }}>
-                  <svg className="w-4 h-4 fill-[#F43F5E] stroke-white stroke-[1.5]" viewBox="0 0 24 24">
-                    <path d="M4 4l5 16 3-6 6-3z" />
-                  </svg>
-                  <span className="bg-[#F43F5E] text-[#FAF8F5] text-[8px] font-bold px-1.5 py-0.5 rounded-sm shadow-xs font-sans">Aurelia Design Lead</span>
-                </div>
-
-                <PulseDesktopHeader />
-
-                <div className="flex flex-col gap-8 items-center mt-6">
-                  
-                  {/* Screen 01 */}
-                  <div className="flex flex-col gap-3 relative">
-                    <PushPin className="top-2 left-10 bg-red-500 border-red-600" />
-                    <PulseBriefDesktop 
-                      onNavigate={(tab) => {
-                        const element = document.getElementById(`desktop-screen-${tab}`)
-                        if (element) {
-                          element.scrollIntoView({ behavior: "smooth", block: "center" })
-                        }
-                      }}
-                      overbookingResolution={overbookingResolution} 
-                      isStaffReallocated={isStaffReallocated} 
-                    />
-                    <div id="desktop-screen-0" className="flex justify-between items-center px-4 w-[1360px]">
+              <div className="w-full overflow-x-auto rounded-[24px]">
+                <div style={{ minWidth: "max-content", background: "#2B2822", padding: "56px 64px 72px" }}>
+                  <PulseDesktopHeader />
+                  <div style={{ display: "flex", flexDirection: "column", gap: "60px", alignItems: "flex-start" }}>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "22px" }}>
+                      <PulseBriefDesktop />
                       <PulseScreenCaption number="01" text="Morning Brief — the whole night in 15 seconds" />
-                      <span className="font-mono text-[9px] text-[#1E1611]/45">Artboard 01 // morning_brief.fig</span>
                     </div>
-                  </div>
-
-                  {/* Screen 02 */}
-                  <div className="flex flex-col gap-3 relative">
-                    <PushPin className="top-2 right-10 bg-blue-500 border-blue-600" />
-                    <PulseConflictsDesktop 
-                      onNavigate={(tab) => {
-                        const element = document.getElementById(`desktop-screen-${tab}`)
-                        if (element) {
-                          element.scrollIntoView({ behavior: "smooth", block: "center" })
-                        }
-                      }}
-                      overbookingResolution={overbookingResolution} 
-                      isStaffReallocated={isStaffReallocated} 
-                    />
-                    <div id="desktop-screen-1" className="flex justify-between items-center px-4 w-[1360px]">
+                    <div style={{ display: "flex", flexDirection: "column", gap: "22px" }}>
+                      <PulseConflictsDesktop />
                       <PulseScreenCaption number="02" text="Conflicts — dependencies, not a pile of alerts" />
-                      <span className="font-mono text-[9px] text-[#1E1611]/45">Artboard 02 // conflict_dependencies.fig</span>
                     </div>
-                  </div>
-
-                  {/* Screen 03 */}
-                  <div className="flex flex-col gap-3 relative">
-                    <PushPin className="top-2 left-1/2 bg-yellow-500 border-yellow-600" />
-                    <PulseOverbookingDesktop 
-                      overbookingResolution={overbookingResolution} 
-                      setOverbookingResolution={setOverbookingResolution} 
-                    />
-                    <div id="desktop-screen-2" className="flex justify-between items-center px-4 w-[1360px]">
+                    <div style={{ display: "flex", flexDirection: "column", gap: "22px" }}>
+                      <PulseOverbookingDesktop />
                       <PulseScreenCaption number="03" text="Overbooking — decide with impact in view" />
-                      <span className="font-mono text-[9px] text-[#1E1611]/45">Artboard 03 // overbooking_picker.fig</span>
                     </div>
-                  </div>
-
-                  {/* Screen 04 */}
-                  <div className="flex flex-col gap-3 relative">
-                    <MaskingTape className="-top-3 left-10 rotate-[5deg] w-14 h-4" />
-                    <PulseVipDesktop 
-                      vipChampagne={vipChampagne} 
-                      setVipChampagne={setVipChampagne} 
-                      vipFireplace={vipFireplace} 
-                      setVipFireplace={setVipFireplace} 
-                      vipBedding={vipBedding} 
-                      setVipBedding={setVipBedding} 
-                      earlyCheckoutRequested={earlyCheckoutRequested} 
-                      setEarlyCheckoutRequested={setEarlyCheckoutRequested} 
-                      secondHousekeeperAdded={secondHousekeeperAdded} 
-                      setSecondHousekeeperAdded={setSecondHousekeeperAdded} 
-                    />
-                    <div id="desktop-screen-3" className="flex justify-between items-center px-4 w-[1360px]">
+                    <div style={{ display: "flex", flexDirection: "column", gap: "22px" }}>
+                      <PulseVipDesktop />
                       <PulseScreenCaption number="04" text="VIP Arrival — the whole turnaround on one screen" />
-                      <span className="font-mono text-[9px] text-[#1E1611]/45">Artboard 04 // vip_turnaround.fig</span>
                     </div>
-                  </div>
-
-                  {/* Screen 05 */}
-                  <div className="flex flex-col gap-3 relative">
-                    <PushPin className="top-2 right-12 bg-purple-500 border-purple-600" />
-                    <PulseTeamDesktop 
-                      isStaffReallocated={isStaffReallocated} 
-                      setIsStaffReallocated={setIsStaffReallocated} 
-                    />
-                    <div id="desktop-screen-4" className="flex justify-between items-center px-4 w-[1360px]">
+                    <div style={{ display: "flex", flexDirection: "column", gap: "22px" }}>
+                      <PulseTeamDesktop />
                       <PulseScreenCaption number="05" text="Team — rebalance the shift like a board" />
-                      <span className="font-mono text-[9px] text-[#1E1611]/45">Artboard 05 // staff_rebalancing.fig</span>
                     </div>
-                  </div>
-
-                  {/* Screen 06 */}
-                  <div className="flex flex-col gap-3 relative">
-                    <MaskingTape className="-top-3 right-10 rotate-[-8deg] w-14 h-4" />
-                    <PulseHandledDesktop 
-                      overbookingResolution={overbookingResolution} 
-                      isStaffReallocated={isStaffReallocated} 
-                      earlyCheckoutRequested={earlyCheckoutRequested} 
-                    />
-                    <div id="desktop-screen-5" className="flex justify-between items-center px-4 w-[1360px]">
+                    <div style={{ display: "flex", flexDirection: "column", gap: "22px" }}>
+                      <PulseHandledDesktop />
                       <PulseScreenCaption number="06" text="Handled — owner, deadline, status, next" />
-                      <span className="font-mono text-[9px] text-[#1E1611]/45">Artboard 06 // handoff_ready.fig</span>
                     </div>
                   </div>
-
                 </div>
-
               </div>
             )}
 
