@@ -243,29 +243,34 @@ export default function Page() {
               {/* Layout Content (Editorial text alignment) */}
               <div className="px-7 pb-8 pt-4 flex flex-col gap-5 relative z-10">
                 <div className="flex flex-col gap-1 mt-1">
-                  <h2 className="font-serif text-[34px] font-light text-[#1E1611] leading-[1.05] tracking-wide letterpress-heading">
-                    Good evening,<br />
+                  <h2 className="font-serif text-[34px] font-light text-[#1E1611] leading-[1.08] tracking-wide letterpress-heading">
+                    We&apos;ve been expecting you,<br />
                     <span className="italic font-normal text-[#1E1611]">Herr Keller.</span>
                   </h2>
-                  <p className="font-sans text-[12.5px] font-light text-[#1E1611]/70 leading-relaxed mt-4 max-w-[270px]">
-                    We know it&apos;s been a long day. Your room is ready.
+                  <p className="font-sans text-[11px] font-light text-[#1E1611]/75 leading-relaxed mt-3 max-w-[290px] tracking-wide">
+                    Skip reception entirely. Your luggage has been brought up, and a warm hearth is already lit in Room 214.
                   </p>
                 </div>
 
                 {/* Overlapping stationery letterpress card */}
-                <div className="deckled-card p-5 rounded-[24px] linen-shadow flex items-center justify-between bg-[#FAF8F5]">
-                  <div>
-                    <p className="font-sans text-[8.5px] uppercase tracking-[0.12em] text-[#1E1611]/50 mb-0.5 font-semibold">Your Sanctuary</p>
-                    <p className="font-serif text-base font-semibold text-[#1E1611]">Room 214 · Second floor</p>
+                <div className="deckled-card p-5.5 rounded-[24px] linen-shadow flex justify-between items-center bg-[#FAF8F5] relative overflow-hidden border border-[#1E1611]/5">
+                  <TornPaperEdge className="text-[#FAF8F5] opacity-80" />
+                  <div className="flex flex-col gap-1 relative z-10">
+                    <span className="font-sans text-[7.5px] uppercase tracking-[0.18em] text-[#2F483A] font-bold">Skip Reception</span>
+                    <h3 className="font-serif text-[17px] font-medium text-[#1E1611]">Room 214 · Sanctuary</h3>
+                    <p className="font-sans text-[8.5px] text-[#1E1611]/50 tracking-wide mt-0.5">Second floor · Estimated 2 min walk</p>
                   </div>
-                  <Monogram className="w-8 h-8 text-[#1E1611]/25" />
+                  <div className="flex flex-col items-end gap-1.5 relative z-10">
+                    <Monogram className="w-7 h-7 text-[#1E1611]/30" />
+                    <span className="font-serif text-[8.5px] italic text-[#1E1611]/45">Alt 1,800m</span>
+                  </div>
                 </div>
 
                 <button 
                   onClick={() => scrollToScreen(1)}
                   className="paper-grain tactile-switch w-full bg-[#2F483A] hover:bg-[#23382D] active:translate-y-[0.5px] transition-all py-4 text-center text-[#FAF8F5] font-sans text-[10px] uppercase tracking-[0.15em] font-bold rounded-[22px] border border-[#2F483A]/20 shadow-[0_4px_12px_rgba(47,72,58,0.15)]"
                 >
-                  I&apos;m here
+                  Begin Arrival
                 </button>
               </div>
             </div>
@@ -294,10 +299,9 @@ export default function Page() {
 
               {/* Wooden/brass keycard with gold foil engraving */}
               <div className="my-auto py-2 flex flex-col items-center gap-6">
-                
-                {/* Physical Card Container (Dark Oak wood with brass foil text) */}
+                             {/* Physical Card Container (Dark Oak wood with brass foil text) */}
                 <div 
-                  className="w-60 h-[300px] rounded-[30px] p-6 flex flex-col justify-between relative overflow-hidden shadow-[inset_0_1px_0px_rgba(255,255,255,0.08),_0_12px_28px_-4px_rgba(0,0,0,0.35)] animate-fade-in"
+                  className="w-60 h-[300px] rounded-[30px] p-6 flex flex-col justify-between relative overflow-hidden shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.12),_inset_0_-1px_1px_rgba(0,0,0,0.4),_0_16px_36px_-6px_rgba(0,0,0,0.5)] animate-fade-in"
                   style={{ 
                     background: "linear-gradient(135deg, #2D1D13 0%, #1A0F0A 100%)", 
                     borderColor: "#C5A880",
@@ -308,8 +312,8 @@ export default function Page() {
                   <div className="absolute inset-0 opacity-[0.22] pointer-events-none mix-blend-overlay bg-repeat card-noise-overlay" />
                   
                   <div className="flex justify-between items-start relative z-10">
-                    <Monogram className="w-6 h-6 text-[#C5A880] opacity-60" />
-                    <span className="font-sans text-[7px] uppercase tracking-[0.2em] text-[#C5A880]/70 font-semibold">Aurelia Room Card</span>
+                    <Monogram className="w-6 h-6 text-[#C5A880] opacity-60 drop-shadow-[0_1px_0px_rgba(255,255,255,0.08)]" />
+                    <span className="font-sans text-[7px] uppercase tracking-[0.2em] text-[#C5A880]/70 font-semibold" style={{ textShadow: "0 1px 0px rgba(255,255,255,0.08)" }}>Aurelia Room Card</span>
                   </div>
 
                   {/* Brass sensor chip - interactive glowing state */}
@@ -320,45 +324,48 @@ export default function Page() {
                       </div>
                     </div>
                     <div className="text-center">
-                      <p className="font-serif text-[15px] font-semibold text-[#FAF8F5] tracking-wide letterpress-heading">Herr Keller</p>
-                      <p className="font-sans text-[8px] uppercase tracking-[0.18em] text-[#C5A880] mt-0.5 font-medium">Room 214 · Sanctuary</p>
+                      <p className="font-serif text-[15px] font-semibold text-[#FAF8F5] tracking-wide letterpress-heading" style={{ textShadow: "0 1px 0px rgba(0,0,0,0.3)" }}>Herr Keller</p>
+                      <p className="font-sans text-[8px] uppercase tracking-[0.18em] text-[#C5A880] mt-0.5 font-medium" style={{ textShadow: "0 1px 0px rgba(255,255,255,0.08)" }}>Room 214 · Sanctuary</p>
                     </div>
                   </div>
 
                   <div className="flex justify-between items-end border-t border-[#FAF8F5]/10 pt-3 relative z-10">
                     <div>
                       <p className="font-sans text-[5.5px] uppercase tracking-wider text-[#FAF8F5]/50">Valid Until</p>
-                      <p className="font-sans text-[7px] font-bold text-[#C5A880] uppercase tracking-widest">18 July 2026</p>
+                      <p className="font-sans text-[7px] font-bold text-[#C5A880] uppercase tracking-widest" style={{ textShadow: "0 1px 0px rgba(255,255,255,0.08)" }}>18 July 2026</p>
                     </div>
-                    <span className="font-serif text-[11px] font-bold text-[#C5A880]/30">No. 214</span>
+                    <span className="font-serif text-[11px] font-bold text-[#C5A880]/30" style={{ textShadow: "0 1px 0px rgba(255,255,255,0.08)" }}>No. 214</span>
                   </div>
                 </div>
 
                 {/* Hand-finished welcome letter layout with Wax Seal */}
-                <div className="deckled-card p-5 rounded-[24px] linen-shadow flex flex-col items-center justify-center text-center gap-3.5 w-full bg-[#FAF8F5] min-h-[170px] relative overflow-hidden">
-                  <TornPaperEdge className="text-[#FAF8F5]" />
+                <div className="deckled-card p-5 rounded-[24px] linen-shadow flex flex-col items-center justify-center text-center gap-3 w-full bg-[#FAF8F5] min-h-[170px] relative overflow-hidden border border-[#1E1611]/5">
+                  <TornPaperEdge className="text-[#FAF8F5] opacity-85" />
+                  
+                  <div className="absolute top-3.5 right-5 text-[6px] font-sans tracking-[0.15em] text-[#1E1611]/35 font-semibold z-10">
+                    15 JULY, 23:41
+                  </div>
                   
                   {!isSealBroken ? (
                     <>
-                      <p className="font-sans text-[8px] uppercase tracking-[0.15em] text-[#1E1611]/40 mb-0.5 relative z-10">Welcome Note</p>
-                      <h4 className="font-serif text-[17px] italic text-[#1E1611] leading-relaxed relative z-10 px-1">
-                        &ldquo;Everything is done. Nothing to sign.&rdquo;
+                      <p className="font-sans text-[7.5px] uppercase tracking-[0.15em] text-[#1E1611]/45 mt-2.5 relative z-10 font-bold">Welcome Note</p>
+                      <h4 className="font-serif text-[15px] italic text-[#1E1611] leading-relaxed relative z-10 px-2 mt-1">
+                        &ldquo;Your room is waiting. Nothing more is needed tonight.&rdquo;
                       </h4>
-                      <div className="relative z-10 py-1">
+                      <div className="relative z-10 py-0.5">
                         <WaxSeal onClick={handleSealClick} isBroken={isSealBroken} />
                       </div>
-                      <p className="font-sans text-[8px] text-[#1E1611]/50 tracking-wider uppercase relative z-10">Break seal to activate card</p>
+                      <p className="font-sans text-[7.5px] text-[#1E1611]/45 tracking-wider uppercase relative z-10">Break seal to activate key</p>
                     </>
                   ) : (
-                    <div className="flex flex-col gap-1.5 animate-fade-in duration-700 relative z-10">
-                      <span className="font-sans text-[8.5px] uppercase tracking-widest text-[#1E1611]/70 font-semibold">Key successfully active</span>
-                      <h4 className="font-serif text-[15px] text-[#1E1611] leading-relaxed italic px-2">
-                        Your phone key is active.<br />
-                        Please bypass reception and proceed to 214.
+                    <div className="flex flex-col items-center gap-1.5 animate-fade-in duration-700 relative z-10 mt-2">
+                      <span className="font-sans text-[8px] uppercase tracking-widest text-[#2F483A] font-bold">Key Successfully Active</span>
+                      <h4 className="font-serif text-[14.5px] text-[#1E1611] leading-relaxed italic px-2">
+                        Your phone key is active. Please bypass reception and proceed directly to 214.
                       </h4>
-                      <p className="font-sans text-[8.5px] text-[#1E1611]/55 leading-relaxed px-4">
-                        Sanctuary temperature is prepared at 21.5°C with fireplace lit.
-                      </p>
+                      <div className="text-right w-full mt-1.5 pr-2">
+                        <span className="font-serif text-[10.5px] italic text-[#1E1611]/60">— Lukas Gruben</span>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -370,7 +377,7 @@ export default function Page() {
                   className={`paper-grain tactile-switch w-full py-4 text-center font-sans text-[10px] uppercase tracking-[0.15em] font-bold rounded-[22px] border transition-all ${!isSealBroken ? 'bg-[#2F483A]/40 text-[#FAF8F5]/60 border-[#2F483A]/10 cursor-not-allowed' : 'bg-[#2F483A] text-[#FAF8F5] border-[#2F483A]/20 hover:bg-[#23382D] active:translate-y-[0.5px] shadow-[0_4px_12px_rgba(47,72,58,0.15)]'}`}
                   disabled={!isSealBroken}
                 >
-                  Show me the way
+                  Walk With Me
                 </button>
               </div>
             </div>
