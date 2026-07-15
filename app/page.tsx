@@ -180,31 +180,201 @@ export default function Page() {
   }
 
   return (
-    <main className="min-h-screen bg-[#F2EDE2] paper-grain flex flex-col justify-between overflow-x-hidden font-sans select-none selection:bg-[#2F483A] selection:text-[#F6F2EA]">
+    <main className="min-h-screen bg-[#F4F1EA] paper-grain flex flex-col gap-12 p-8 select-none selection:bg-[#2F483A] selection:text-[#F6F2EA] overflow-y-auto relative">
       
-      {/* Editorial Dashboard Header (Apple Level Luxury Typography) */}
-      <header className="px-8 pt-8 pb-4 max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-[#1E1611]/10">
-        <div>
-          <div className="flex items-center gap-3">
-            <span className="font-serif text-xl tracking-[0.3em] font-semibold text-[#1E1611] select-all">A U R E L I A</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2F483A]" />
-            <span className="font-sans text-xs tracking-[0.2em] uppercase text-[#1E1611]/55">Host Guest App</span>
-          </div>
-          <h1 className="font-serif text-3xl font-light text-[#1E1611] mt-1 select-all tracking-wide">Late Arrival Choreography</h1>
-        </div>
-        
-        <div className="flex flex-wrap gap-x-6 gap-y-2 text-[10.5px] font-sans tracking-[0.15em] uppercase text-[#1E1611]/60">
-          <div><strong className="text-[#1E1611]">Location:</strong> Swiss Alps, 1,800m</div>
-          <div><strong className="text-[#1E1611]">Atmosphere:</strong> Quiet, Precise, Warm</div>
-          <div><strong className="text-[#1E1611]">Nightly:</strong> CHF 1,400</div>
-        </div>
-      </header>
+      {/* Figma Canvas Floating Cursors (Controlled Messiness) */}
+      <div className="absolute pointer-events-none z-50 flex items-center gap-1 select-none" style={{ left: '380px', top: '160px' }}>
+        <svg className="w-4 h-4 fill-[#C084FC] stroke-white stroke-[1.5]" viewBox="0 0 24 24">
+          <path d="M4 4l5 16 3-6 6-3z" />
+        </svg>
+        <span className="bg-[#C084FC] text-[#FAF8F5] text-[8px] font-bold px-1.5 py-0.5 rounded-sm shadow-sm font-sans">Lukas G.</span>
+      </div>
 
-      {/* Screen Presentation Showcase */}
-      <div 
-        ref={containerRef}
-        className="w-full flex-grow overflow-x-auto py-8 px-8 flex gap-8 items-start scrollbar-thin scrollbar-thumb-[#1E1611]/10 scrollbar-track-transparent"
-      >
+      <div className="absolute pointer-events-none z-50 flex items-center gap-1 select-none" style={{ right: '400px', top: '980px' }}>
+        <svg className="w-4 h-4 fill-[#FB923C] stroke-white stroke-[1.5]" viewBox="0 0 24 24">
+          <path d="M4 4l5 16 3-6 6-3z" />
+        </svg>
+        <span className="bg-[#FB923C] text-[#FAF8F5] text-[8px] font-bold px-1.5 py-0.5 rounded-sm shadow-sm font-sans">Aurelia Design</span>
+      </div>
+
+      {/* ==================== UPPER CANVAS: RESEARCH & TIMELINE ==================== */}
+      <div className="max-w-[1650px] mx-auto w-full flex flex-wrap gap-8 items-stretch justify-start">
+        
+        {/* SECTION 01: The Story & About Aurelia */}
+        <div className="bg-[#FAF8F5]/85 border border-[#1E1611]/8 p-7 rounded-[28px] shadow-sm flex flex-col justify-between w-[380px] relative">
+          <div className="flex items-center gap-1.5 text-[8.5px] uppercase tracking-wider font-semibold text-[#1E1611]/40 select-none">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1E1611]/30" />
+            <span>Section 01 // The Story</span>
+          </div>
+          <div className="my-3">
+            <h2 className="font-serif text-3xl font-light text-[#1E1611] leading-tight letterpress-heading">
+              Late Arrival<br />Choreography
+            </h2>
+            <p className="font-sans text-[11px] text-[#1E1611]/70 leading-relaxed font-light mt-3">
+              A hospitality experience designed for guests who have reached the end of a long, exhausting journey.
+            </p>
+          </div>
+          
+          <div className="border-t border-[#1E1611]/10 pt-4 mt-1 flex flex-col gap-2.5">
+            <span className="font-sans text-[7.5px] uppercase tracking-[0.18em] text-[#1E1611]/55 font-bold">About Aurelia</span>
+            <div className="grid grid-cols-2 gap-y-2 gap-x-4 text-[10px] font-sans">
+              <div><strong className="text-[#1E1611]">Location:</strong> Swiss Alps</div>
+              <div><strong className="text-[#1E1611]">Capacity:</strong> 90 Rooms</div>
+              <div><strong className="text-[#1E1611]">Ownership:</strong> Family Owned</div>
+              <div><strong className="text-[#1E1611]">Type:</strong> Luxury Resort</div>
+              <div><strong className="text-[#1E1611]">Nightly:</strong> CHF 1,400</div>
+              <div><strong className="text-[#1E1611]">Loyalty:</strong> 60% Return</div>
+            </div>
+            <div className="mt-1.5 flex flex-wrap gap-1 text-[7.5px] uppercase tracking-widest text-[#2F483A] font-bold">
+              <span>No Front Desk Theatre</span>
+              <span>•</span>
+              <span>Quiet Precision</span>
+              <span>•</span>
+              <span>Warmth</span>
+            </div>
+          </div>
+        </div>
+
+        {/* SECTION 02: User Persona (Herr Keller) */}
+        <div className="bg-[#FAF8F5]/85 border border-[#1E1611]/8 p-7 rounded-[28px] shadow-sm flex flex-col justify-between w-[380px] relative rotate-[0.5deg]">
+          <div className="flex items-center gap-1.5 text-[8.5px] uppercase tracking-wider font-semibold text-[#1E1611]/40 select-none">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1E1611]/30" />
+            <span>Section 02 // Persona</span>
+          </div>
+          
+          <div className="flex gap-4 items-center border-b border-[#1E1611]/10 pb-4 my-2">
+            <div 
+              className="w-18 h-20 bg-cover bg-center rounded-lg border border-[#1E1611]/10 filter grayscale brightness-[96%] relative overflow-hidden" 
+              style={{ backgroundImage: "url('/user_images/image_4.jpg')" }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 pointer-events-none mix-blend-overlay opacity-15 bg-repeat noise-overlay" />
+            </div>
+            <div className="flex flex-col gap-0.5">
+              <h3 className="font-serif text-xl font-bold text-[#1E1611]">Herr Keller</h3>
+              <span className="text-[#1E1611]/55 text-[8.5px] uppercase tracking-widest font-semibold">Business Traveler · 42</span>
+              <span className="text-[#2F483A] font-bold text-[9px] uppercase tracking-wider">4th stay · VIP Guest</span>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-2 font-serif text-[13.5px] italic text-[#1E1611]/75 leading-relaxed py-1" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
+            <p>• Flight delayed 4 hours (arrives 11:40 PM)</p>
+            <p>• Mentally exhausted after a long journey</p>
+            <p>• Just wants to go straight to sleep</p>
+            <p>• Doesn&apos;t want paperwork or formal conversations</p>
+            <p>• Doesn&apos;t want decisions or choices right now</p>
+            <p>• Needs total reassurance that everything is ready</p>
+          </div>
+        </div>
+
+        {/* SECTION 03 & 04: Timeline & Emotional Journey */}
+        <div className="bg-[#FAF8F5]/85 border border-[#1E1611]/8 p-7 rounded-[28px] shadow-sm flex flex-col justify-between w-[480px] relative">
+          <div className="flex items-center gap-1.5 text-[8.5px] uppercase tracking-wider font-semibold text-[#1E1611]/40 select-none">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1E1611]/30" />
+            <span>Section 03 & 04 // Journey & Emotion</span>
+          </div>
+
+          {/* Journey Timeline */}
+          <div className="flex flex-col gap-2.5 my-2">
+            <span className="font-sans text-[7.5px] uppercase tracking-[0.18em] text-[#1E1611]/55 font-bold">Timeline</span>
+            <div className="flex items-center justify-between gap-1 text-[8.5px] font-sans">
+              {["Flight", "Airport", "Taxi", "Funicular", "Arrival", "Room", "Food", "Sleep", "Morning"].map((step, i, arr) => (
+                <React.Fragment key={step}>
+                  <div className="flex flex-col items-center gap-1">
+                    <span className="font-medium text-[#1E1611]">{step}</span>
+                  </div>
+                  {i < arr.length - 1 && <span className="text-[#1E1611]/25 text-[8px] select-none">→</span>}
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+
+          {/* Emotional Journey */}
+          <div className="border-t border-[#1E1611]/10 pt-4 flex flex-col gap-3">
+            <span className="font-sans text-[7.5px] uppercase tracking-[0.18em] text-[#1E1611]/55 font-bold">Emotional Arc</span>
+            <div className="flex items-center justify-between gap-1 text-[9px] font-sans">
+              {[
+                { emoji: "😩", desc: "Delayed", color: "text-[#EF4444]" },
+                { emoji: "😓", desc: "Tired", color: "text-[#F59E0B]" },
+                { emoji: "😐", desc: "Arrives", color: "text-[#9CA3AF]" },
+                { emoji: "🙂", desc: "Reassured", color: "text-[#2F483A]" },
+                { emoji: "😊", desc: "Warmed", color: "text-[#2F483A]" },
+                { emoji: "😴", desc: "Sleep", color: "text-[#1E1611]" },
+                { emoji: "🌄", desc: "Fresh", color: "text-[#2F483A]" }
+              ].map((item, i, arr) => (
+                <React.Fragment key={item.desc}>
+                  <div className="flex flex-col items-center gap-1.5 flex-1 text-center">
+                    <span className="text-lg leading-none">{item.emoji}</span>
+                    <span className={`font-semibold tracking-wider uppercase text-[7px] ${item.color}`}>{item.desc}</span>
+                  </div>
+                  {i < arr.length - 1 && <span className="text-[#1E1611]/15 text-[8px] pt-1.5">→</span>}
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* SECTION 12: Moodboard */}
+        <div className="bg-[#FAF8F5]/85 border border-[#1E1611]/8 p-7 rounded-[28px] shadow-sm flex flex-col justify-between w-[340px] relative rotate-[-0.5deg] overflow-hidden">
+          <div className="flex items-center gap-1.5 text-[8.5px] uppercase tracking-wider font-semibold text-[#1E1611]/40 select-none">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1E1611]/30" />
+            <span>Section 12 // Moodboard</span>
+          </div>
+
+          <div className="relative h-24 my-2 flex gap-2">
+            {/* Alps Polaroid */}
+            <div className="w-18 bg-white p-1 rounded-sm shadow-sm rotate-[-4deg] flex flex-col gap-1 border border-[#1E1611]/5 flex-shrink-0">
+              <div className="h-12 w-full bg-cover bg-center rounded-xs" style={{ backgroundImage: "url('/user_images/image_5.jpg')" }} />
+              <span className="font-serif text-[5px] italic text-[#1E1611]/70 text-center mt-0.5">Alps</span>
+            </div>
+
+            {/* Fireplace Polaroid */}
+            <div className="w-18 bg-white p-1 rounded-sm shadow-sm rotate-[3deg] flex flex-col gap-1 border border-[#1E1611]/5 flex-shrink-0 translate-y-1.5">
+              <div className="h-12 w-full bg-cover bg-center rounded-xs" style={{ backgroundImage: "url('/user_images/image_6.jpg')" }} />
+              <span className="font-serif text-[5px] italic text-[#1E1611]/70 text-center mt-0.5">Hearth</span>
+            </div>
+
+            {/* Hospitality Polaroid */}
+            <div className="w-18 bg-white p-1 rounded-sm shadow-sm rotate-[-2deg] flex flex-col gap-1 border border-[#1E1611]/5 flex-shrink-0 -translate-y-1">
+              <div className="h-12 w-full bg-cover bg-center rounded-xs" style={{ backgroundImage: "url('/user_images/image_8.jpg')" }} />
+              <span className="font-serif text-[5px] italic text-[#1E1611]/70 text-center mt-0.5">Luxury</span>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap gap-1.5 text-[6.5px] font-sans uppercase tracking-widest text-[#1E1611]/50 font-bold justify-center border-t border-[#1E1611]/5 pt-3">
+            <span>Aman</span>
+            <span>•</span>
+            <span>Paper</span>
+            <span>•</span>
+            <span>Wax Seal</span>
+            <span>•</span>
+            <span>Wood</span>
+            <span>•</span>
+            <span>Fireplace</span>
+          </div>
+        </div>
+
+      </div>
+
+      {/* ==================== MIDDLE CANVAS: FINAL UI FLOW & SCREEN GOALS ==================== */}
+      <div className="max-w-[1650px] mx-auto w-full flex flex-col gap-3">
+        
+        {/* Figma Frame Header */}
+        <div className="flex items-center gap-1.5 px-4 text-[10px] font-sans font-semibold text-[#1E1611]/50">
+          <svg className="w-3.5 h-3.5 stroke-current fill-none" viewBox="0 0 14 14">
+            <rect x="2" y="2" width="10" height="10" rx="1.5" />
+            <line x1="2" y1="5.5" x2="12" y2="5.5" />
+            <line x1="5.5" y1="2" x2="5.5" y2="12" />
+          </svg>
+          <span>Final Mockups Flow // Late Arrival Choreography</span>
+          <span className="bg-[#2F483A] text-[#FAF8F5] text-[7.5px] uppercase tracking-widest px-2.5 py-0.5 rounded-full font-bold ml-2">6 Screens Flow</span>
+        </div>
+
+        {/* Horizontal Mockups Showcase Track */}
+        <div 
+          ref={containerRef}
+          className="w-full flex overflow-x-auto py-6 px-4 gap-8 items-start scrollbar-thin scrollbar-thumb-[#1E1611]/10 scrollbar-track-transparent bg-[#FAF8F5]/30 border border-[#1E1611]/6 rounded-[40px] shadow-[inset_0_2px_8px_rgba(30,22,17,0.02)]"
+        >
         
         {/* ==================== SCREEN 1: ARRIVAL ==================== */}
         <div id="screen-0" className="flex-shrink-0 flex flex-col gap-3 group">
@@ -279,6 +449,14 @@ export default function Page() {
 
         {/* ==================== SCREEN 2: INVISIBLE CHECK-IN ==================== */}
         <div id="screen-1" className="flex-shrink-0 flex flex-col gap-3 group">
+          {/* SECTION 09: Screen Goal Sticky Note */}
+          <div className="w-[390px] p-4 bg-[#FEF9C3] shadow-sm border border-[#EFE5A3] rounded-[16px] text-[10px] font-sans text-[#1E1611] flex gap-3 items-start relative select-none">
+            <span className="bg-[#FEF08A] text-[7px] uppercase font-bold tracking-widest px-2 py-0.5 rounded-sm flex-shrink-0">Goal 02</span>
+            <div className="flex flex-col gap-0.5">
+              <strong className="font-semibold text-[11px]">Remove Paperwork</strong>
+              <p className="opacity-70 leading-normal">Bypass signature details. Connect key delivery to a simple physical gesture (breaking a wax seal note) that triggers keycard activation.</p>
+            </div>
+          </div>
           <div className="flex justify-between items-center px-2">
             <span className="font-sans text-[10px] tracking-widest text-[#1E1611]/50 uppercase font-semibold">Screen 02</span>
             <span className="font-serif text-xs italic text-[#1E1611]">23:41 · Invisible Check-In</span>
@@ -386,6 +564,14 @@ export default function Page() {
 
         {/* ==================== SCREEN 3: WAYFINDING ==================== */}
         <div id="screen-2" className="flex-shrink-0 flex flex-col gap-3 group">
+          {/* SECTION 09: Screen Goal Sticky Note */}
+          <div className="w-[390px] p-4 bg-[#FEF9C3] shadow-sm border border-[#EFE5A3] rounded-[16px] text-[10px] font-sans text-[#1E1611] flex gap-3 items-start relative select-none">
+            <span className="bg-[#FEF08A] text-[7px] uppercase font-bold tracking-widest px-2 py-0.5 rounded-sm flex-shrink-0">Goal 03</span>
+            <div className="flex flex-col gap-0.5">
+              <strong className="font-semibold text-[11px]">Remove Navigation Anxiety</strong>
+              <p className="opacity-70 leading-normal">Provide a clean blueprint map and an immersive spatial viewfinder walkthrough to guide the guest through corridors directly to Room 214.</p>
+            </div>
+          </div>
           <div className="flex justify-between items-center px-2">
             <span className="font-sans text-[10px] tracking-widest text-[#1E1611]/50 uppercase font-semibold">Screen 03</span>
             <span className="font-serif text-xs italic text-[#1E1611]">23:41 · Wayfinding</span>
@@ -510,6 +696,14 @@ export default function Page() {
 
         {/* ==================== SCREEN 4: ANTICIPATED SUPPER ==================== */}
         <div id="screen-3" className="flex-shrink-0 flex flex-col gap-3 group">
+          {/* SECTION 09: Screen Goal Sticky Note */}
+          <div className="w-[390px] p-4 bg-[#FEF9C3] shadow-sm border border-[#EFE5A3] rounded-[16px] text-[10px] font-sans text-[#1E1611] flex gap-3 items-start relative select-none">
+            <span className="bg-[#FEF08A] text-[7px] uppercase font-bold tracking-widest px-2 py-0.5 rounded-sm flex-shrink-0">Goal 04</span>
+            <div className="flex flex-col gap-0.5">
+              <strong className="font-semibold text-[11px]">Reduce Decision Fatigue</strong>
+              <p className="opacity-70 leading-normal">Rather than presenting a sprawling room service catalog, suggest a single light organic course suited for late-night restorative sleep.</p>
+            </div>
+          </div>
           <div className="flex justify-between items-center px-2">
             <span className="font-sans text-[10px] tracking-widest text-[#1E1611]/50 uppercase font-semibold">Screen 04</span>
             <span className="font-serif text-xs italic text-[#1E1611]">23:43 · Anticipated Supper</span>
@@ -656,6 +850,14 @@ export default function Page() {
 
         {/* ==================== SCREEN 5: GOODNIGHT & AMBIENCE ==================== */}
         <div id="screen-4" className="flex-shrink-0 flex flex-col gap-3 group">
+          {/* SECTION 09: Screen Goal Sticky Note */}
+          <div className="w-[390px] p-4 bg-[#FEF9C3] shadow-sm border border-[#EFE5A3] rounded-[16px] text-[10px] font-sans text-[#1E1611] flex gap-3 items-start relative select-none">
+            <span className="bg-[#FEF08A] text-[7px] uppercase font-bold tracking-widest px-2 py-0.5 rounded-sm flex-shrink-0">Goal 05</span>
+            <div className="flex flex-col gap-0.5">
+              <strong className="font-semibold text-[11px]">Create Calming Ambience</strong>
+              <p className="opacity-70 leading-normal">Enable pre-sleep room custom settings: dynamic slider thermostat, active fireplace toggle, and pillow scent selection.</p>
+            </div>
+          </div>
           <div className="flex justify-between items-center px-2">
             <span className="font-sans text-[10px] tracking-widest text-[#1E1611]/50 uppercase font-semibold">Screen 05</span>
             <span className="font-serif text-xs italic text-[#261E1A]/80">23:46 · Goodnight</span>
@@ -801,6 +1003,14 @@ export default function Page() {
 
         {/* ==================== SCREEN 6: NEXT MORNING ==================== */}
         <div id="screen-5" className="flex-shrink-0 flex flex-col gap-3 group">
+          {/* SECTION 09: Screen Goal Sticky Note */}
+          <div className="w-[390px] p-4 bg-[#FEF9C3] shadow-sm border border-[#EFE5A3] rounded-[16px] text-[10px] font-sans text-[#1E1611] flex gap-3 items-start relative select-none">
+            <span className="bg-[#FEF08A] text-[7px] uppercase font-bold tracking-widest px-2 py-0.5 rounded-sm flex-shrink-0">Goal 06</span>
+            <div className="flex flex-col gap-0.5">
+              <strong className="font-semibold text-[11px]">Leave Final Impression</strong>
+              <p className="opacity-70 leading-normal">Surprise the guest with a quiet morning greeting letter and a confirmation note that their late-night delayed luggage has been resolved in-room.</p>
+            </div>
+          </div>
           <div className="flex justify-between items-center px-2">
             <span className="font-sans text-[10px] tracking-widest text-[#1E1611]/50 uppercase font-semibold">Screen 06</span>
             <span className="font-serif text-xs italic text-[#1E1611]">09:12 · Next Morning</span>
@@ -865,69 +1075,183 @@ export default function Page() {
         </div>
 
       </div>
+    </div>
 
-      {/* Editorial Art Direction & Critique Panel */}
-      <footer className="bg-[#EFEAE0] border-t border-[#1E1611]/10 py-8 px-8">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
-          
-          {/* Aesthetic Specifications */}
-          <div className="flex flex-col gap-4">
-            <h3 className="font-serif text-lg font-medium text-[#1E1611]">Visual Taste & Inspiration</h3>
-            <ul className="text-xs text-[#1E1611]/75 flex flex-col gap-2 font-sans tracking-wide leading-relaxed">
-              <li className="flex gap-2">
-                <span className="text-[#2F483A]">✓</span>
-                <span><strong>Tactile Ripped Edges:</strong> Incorporated a custom `.torn-paper` SVG mask dividing screens organically, mimicking physical torn-paper hotel stationery cards.</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-[#2F483A]">✓</span>
-                <span><strong>Extremely Rounded Edges:</strong> Upgraded card, button, and image corner-radii (from `24px` to `38px`) to match the soft, pillowy, luxury feel of high-end design catalogs.</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-[#2F483A]">✓</span>
-                <span><strong>Outlined Circular controls:</strong> Toggles and buttons feature clean geometric outlines and subtle backgrounds, promoting spaciousness.</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-[#2F483A]">✓</span>
-                <span><strong>Choreographed Gradients:</strong> Full-bleed imagery fades softly into text using multi-layered dark amber-coffee blending, maintaining visual readability.</span>
-              </li>
-            </ul>
+      {/* ==================== LOWER CANVAS: PRODUCT THINKING, FIGMA NOTES & HANDOFF ==================== */}
+      <div className="max-w-[1650px] mx-auto w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
+        
+        {/* SECTION 05: Product Thinking & Scribbles */}
+        <div className="bg-[#FAF8F5]/85 border border-[#1E1611]/8 p-6 rounded-[24px] shadow-sm flex flex-col justify-between font-sans text-xs min-h-[220px]">
+          <div className="flex items-center gap-1.5 text-[8px] uppercase tracking-widest font-semibold text-[#1E1611]/45">
+            <span>Section 05 // Product Thinking</span>
           </div>
-
-          {/* Palette Swatches */}
-          <div className="flex flex-col gap-4">
-            <h3 className="font-serif text-lg font-medium text-[#1E1611]">Brand Swatches</h3>
-            <div className="grid grid-cols-3 gap-3">
-              <div className="p-3 bg-[#FAF8F5] rounded-md border border-[#1E1611]/10 flex flex-col gap-2 linen-shadow">
-                <div className="h-8 w-full bg-[#F6F2EA] rounded-sm border border-[#1E1611]/5" />
-                <span className="font-sans text-[10px] text-[#1E1611] font-bold">Parchment</span>
-                <span className="font-sans text-[8px] text-[#1E1611]/55 uppercase">#F6F2EA</span>
-              </div>
-              <div className="p-3 bg-[#FAF8F5] rounded-md border border-[#1E1611]/10 flex flex-col gap-2 linen-shadow">
-                <div className="h-8 w-full bg-[#1E1611] rounded-sm" />
-                <span className="font-sans text-[10px] text-[#1E1611] font-bold">Espresso Ink</span>
-                <span className="font-sans text-[8px] text-[#1E1611]/55 uppercase">#1E1611</span>
-              </div>
-              <div className="p-3 bg-[#FAF8F5] rounded-md border border-[#1E1611]/10 flex flex-col gap-2 linen-shadow">
-                <div className="h-8 w-full bg-[#2F483A] rounded-sm" />
-                <span className="font-sans text-[10px] text-[#1E1611] font-bold">Spruce Green</span>
-                <span className="font-sans text-[8px] text-[#1E1611]/55 uppercase">#2F483A</span>
-              </div>
+          <div className="flex flex-col gap-3 font-serif text-[13px] italic text-[#1E1611]/75 my-2" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
+            <div>
+              <p className="font-semibold text-black not-italic text-[11px] uppercase tracking-wider opacity-60">Guest is exhausted</p>
+              <p className="text-[11.5px] leading-relaxed mt-0.5">→ zero forms, zero inputs, zero paperwork on screen. Technology recedes.</p>
+            </div>
+            <div className="border-t border-[#1E1611]/5 pt-2">
+              <p className="font-semibold text-black not-italic text-[11px] uppercase tracking-wider opacity-60">Choices increase stress</p>
+              <p className="text-[11.5px] leading-relaxed mt-0.5">→ suggest single supper course instead of browsing a full restaurant menu.</p>
+            </div>
+            <div className="border-t border-[#1E1611]/5 pt-2">
+              <p className="font-semibold text-black not-italic text-[11px] uppercase tracking-wider opacity-60">Anticipate over React</p>
+              <p className="text-[11.5px] leading-relaxed mt-0.5">→ suggest key card activation, fireplace lit state, and luggage transit pre-resolved.</p>
             </div>
           </div>
-
-          {/* Interactive Critique Helper */}
-          <div className="flex flex-col gap-4">
-            <h3 className="font-serif text-lg font-medium text-[#1E1611]">Design Logic & Butler Principle</h3>
-            <p className="text-xs text-[#1E1611]/70 leading-relaxed font-sans">
-              Technology disappears into the background. Every element acts like hotel stationery resting on a linen sheet. The UI is designed to require a single decision or disappear entirely as tasks are anticipated and resolved by the resort staff.
-            </p>
-            <div className="p-3 bg-[#2F483A] text-[#F6F2EA] rounded-sm font-serif italic text-xs leading-relaxed text-center shadow-sm">
-              &ldquo;Silence is the ultimate luxury. We serve with quiet precision.&rdquo;
-            </div>
-          </div>
-
         </div>
-      </footer>
+
+        {/* SECTION 06: Assumptions */}
+        <div className="bg-[#FAF8F5]/85 border border-[#1E1611]/8 p-6 rounded-[24px] shadow-sm flex flex-col gap-4 font-sans text-xs min-h-[220px]">
+          <div className="flex items-center gap-1.5 text-[8px] uppercase tracking-widest font-semibold text-[#1E1611]/45">
+            <span>Section 06 // Assumptions</span>
+          </div>
+          <div className="grid grid-cols-2 gap-2 text-[9px] my-auto">
+            <div className="p-2.5 bg-[#FEF9C3] border border-[#EFE5A3] rotate-[1.5deg] rounded-sm shadow-xs flex flex-col gap-0.5">
+              <span className="font-bold">KYC Done</span>
+              <p className="opacity-75 leading-tight">Guest completed payment during booking.</p>
+            </div>
+            <div className="p-2.5 bg-[#D1F2FF] border border-[#B0E2FA] rotate-[-2deg] rounded-sm shadow-xs flex flex-col gap-0.5">
+              <span className="font-bold">Bluetooth Lock</span>
+              <p className="opacity-75 leading-tight">Sanctuary doors support Bluetooth key entry.</p>
+            </div>
+            <div className="p-2.5 bg-[#FFE2E2] border border-[#F5C2C2] rotate-[-0.5deg] rounded-sm shadow-xs flex flex-col gap-0.5">
+              <span className="font-bold">Geofenced</span>
+              <p className="opacity-75 leading-tight">Funicular geofence pre-loads active state key.</p>
+            </div>
+            <div className="p-2.5 bg-[#E2FFE2] border border-[#C2F5C2] rotate-[2deg] rounded-sm shadow-xs flex flex-col gap-0.5">
+              <span className="font-bold">Kitchen Open</span>
+              <p className="opacity-75 leading-tight">Kitchen open until 12:00 AM for late guest.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* SECTION 07 & 08: Service Blueprint & Flow */}
+        <div className="bg-[#FAF8F5]/85 border border-[#1E1611]/8 p-6 rounded-[24px] shadow-sm flex flex-col justify-between font-sans text-xs min-h-[220px]">
+          <div className="flex items-center gap-1.5 text-[8px] uppercase tracking-widest font-semibold text-[#1E1611]/45">
+            <span>Section 07 & 08 // Service Blueprint & Flow</span>
+          </div>
+          
+          <div className="flex flex-col gap-2 my-2">
+            <div className="flex flex-col gap-1">
+              <span className="font-sans text-[7.5px] uppercase tracking-[0.15em] text-[#1E1611]/55 font-bold">App Interaction Flow</span>
+              <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-[8.5px] font-medium text-[#1E1611]/80">
+                {["Opening", "Check-In", "Wayfinding", "Entry", "Supper", "Sleep", "Morning"].map((flow, i, arr) => (
+                  <React.Fragment key={flow}>
+                    <span className="bg-[#1E1611]/5 px-1.5 py-0.5 rounded-sm">{flow}</span>
+                    {i < arr.length - 1 && <span className="opacity-45">→</span>}
+                  </React.Fragment>
+                ))}
+              </div>
+            </div>
+
+            <div className="border-t border-[#1E1611]/10 pt-2.5 flex flex-col gap-1">
+              <span className="font-sans text-[7.5px] uppercase tracking-[0.15em] text-[#1E1611]/55 font-bold">Service Blueprint alignment</span>
+              <div className="text-[8px] leading-relaxed text-[#1E1611]/70 font-mono flex flex-col gap-0.5">
+                <p><strong>GUEST:</strong> triggers funicular geofence</p>
+                <p><strong>RECEPTION:</strong> skipping front desk, pre-allocates room</p>
+                <p><strong>KITCHEN:</strong> preps suggestedConsommé and pairs tea</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* SECTION 10: Design Principles */}
+        <div className="bg-[#FAF8F5]/85 border border-[#1E1611]/8 p-6 rounded-[24px] shadow-sm flex flex-col justify-between font-sans text-xs min-h-[220px]">
+          <div className="flex items-center gap-1.5 text-[8px] uppercase tracking-widest font-semibold text-[#1E1611]/45">
+            <span>Section 10 // Design Principles</span>
+          </div>
+          <div className="flex flex-col gap-2 font-serif text-[12.5px] italic text-[#2F483A]/90 my-auto" style={{ fontFamily: '"Kalam", "Comic Sans MS", cursive' }}>
+            <p className="flex gap-2 items-center">✔ <span className="text-[#1E1611] font-sans text-xs not-italic">One primary action per screen</span></p>
+            <p className="flex gap-2 items-center">✔ <span className="text-[#1E1611] font-sans text-xs not-italic">Technology stays completely invisible</span></p>
+            <p className="flex gap-2 items-center">✔ <span className="text-[#1E1611] font-sans text-xs not-italic">Anticipation over client reaction</span></p>
+            <p className="flex gap-2 items-center">✔ <span className="text-[#1E1611] font-sans text-xs not-italic">Quiet luxury through total restraint</span></p>
+            <p className="flex gap-2 items-center">✔ <span className="text-[#1E1611] font-sans text-xs not-italic">Every interaction reduces guest effort</span></p>
+          </div>
+        </div>
+
+        {/* SECTION 11: Edge Cases & Fallbacks */}
+        <div className="bg-[#FAF8F5]/85 border border-[#1E1611]/8 p-6 rounded-[24px] shadow-sm flex flex-col justify-between font-mono text-[9px] text-[#1E1611]/80 min-h-[220px]">
+          <div className="flex items-center gap-1.5 text-[8px] uppercase tracking-widest font-sans font-semibold text-[#1E1611]/45">
+            <span>Section 11 // Edge Cases & Fallbacks</span>
+          </div>
+          <div className="flex flex-col gap-2.5 my-2">
+            <div className="p-2.5 bg-[#FFE2E2] border border-[#F5C2C2] rounded-md flex flex-col gap-0.5">
+              <strong className="text-[#1E1611] font-sans font-semibold text-[9.5px]">Phone Battery Dead</strong>
+              <p className="opacity-70 leading-normal font-mono">Concierge stationed at funicular gate with pre-printed physical keycard slip.</p>
+            </div>
+            <div className="p-2.5 bg-[#FFE2E2] border border-[#F5C2C2] rounded-md flex flex-col gap-0.5">
+              <strong className="text-[#1E1611] font-sans font-semibold text-[9.5px]">Digital Key Fail</strong>
+              <p className="opacity-70 leading-normal font-mono">Room local lock has secondary encrypted fallback; physical key card prepared in sanctuary box.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* SECTION 13 & 14: Component Thinking & Motion */}
+        <div className="bg-[#FAF8F5]/85 border border-[#1E1611]/8 p-6 rounded-[24px] shadow-sm flex flex-col justify-between font-sans text-xs min-h-[220px]">
+          <div className="flex items-center gap-1.5 text-[8px] uppercase tracking-widest font-semibold text-[#1E1611]/45">
+            <span>Section 13 & 14 // Components & Motion</span>
+          </div>
+          <div className="flex flex-col gap-3 text-[9.5px] text-[#1E1611]/70 leading-normal my-auto">
+            <div>
+              <strong className="text-black uppercase tracking-wider text-[8px] block opacity-60">Figma Component Details</strong>
+              <p className="mt-0.5">Button Radius: 22px · Touch Targets: ≥44px · Card Corner Radius: 24px · Shadows: soft warm offset (stationery-look)</p>
+            </div>
+            <div className="border-t border-[#1E1611]/5 pt-2 flex flex-col gap-0.5">
+              <strong className="text-black uppercase tracking-wider text-[8px] block opacity-60">Motion Signature</strong>
+              <p>Wax Seal tap → breaks seal card → slide key · Map viewfinder → zoom viewport · Door unlock → auto-fade lights + fireplace lit.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* SECTION 15: Engineering Handoff Specs */}
+        <div className="bg-[#FAF8F5]/85 border border-[#1E1611]/8 p-6 rounded-[24px] shadow-sm flex flex-col justify-between font-mono text-[9px] text-[#1E1611]/80 min-h-[220px]">
+          <div className="flex items-center gap-1.5 text-[8px] uppercase tracking-widest font-sans font-semibold text-[#1E1611]/45">
+            <span>Section 15 // Engineering Handoff Specs</span>
+          </div>
+          <div className="flex flex-col gap-2 my-auto">
+            <div>
+              <span className="font-bold text-[#2F483A]">Layout Engine:</span>
+              <p className="opacity-70 mt-0.5">8pt spacing scale. Auto Layout constraints. Touch targets ≥ 44px. WCAG AA compliance check.</p>
+            </div>
+            <div>
+              <span className="font-bold text-[#2F483A]">Tokens:</span>
+              <p className="opacity-70 mt-0.5">Parchment: #EFEAE0 · Ink: #1E1611 · Spruce: #2F483A · Corner Radius: 38px/24px</p>
+            </div>
+            <div>
+              <span className="font-bold text-[#2F483A]">Motion Curve:</span>
+              <p className="opacity-70 mt-0.5">Duration: 200ms · Curve: cubic-bezier(0.16, 1, 0.3, 1) · Haptic feedback: light impact</p>
+            </div>
+          </div>
+        </div>
+
+        {/* SECTION 16: Future Opportunities Roadmap */}
+        <div className="bg-[#FAF8F5]/85 border border-[#1E1611]/8 p-6 rounded-[24px] shadow-sm flex flex-col justify-between font-sans text-xs min-h-[220px]">
+          <div className="flex items-center gap-1.5 text-[8px] uppercase tracking-widest font-semibold text-[#1E1611]/45">
+            <span>Section 16 // Future Opportunities</span>
+          </div>
+          <div className="grid grid-cols-2 gap-2 text-[8.5px] leading-relaxed text-[#1E1611]/70 my-auto">
+            <div className="p-2 border border-[#1E1611]/5 rounded bg-white/40">
+              <strong>Morning Spa</strong>
+              <p>Pre-scheduled late check-out massage suggestions.</p>
+            </div>
+            <div className="p-2 border border-[#1E1611]/5 rounded bg-white/40">
+              <strong>Hearth Control</strong>
+              <p>Extend digital key integration to adjust cabin fire status.</p>
+            </div>
+            <div className="p-2 border border-[#1E1611]/5 rounded bg-white/40">
+              <strong>Butler Chat</strong>
+              <p>Silent text concierge line for immediate needs.</p>
+            </div>
+            <div className="p-2 border border-[#1E1611]/5 rounded bg-white/40">
+              <strong>Alps Weather</strong>
+              <p>Dynamic morning ski forecasts and lift statuses.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </main>
   )
 }
