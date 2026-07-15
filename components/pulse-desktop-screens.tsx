@@ -329,7 +329,7 @@ export const PulseVipDesktop = () => (
           </div>
 
           <div className="mt-auto pt-5 border-t border-dashed border-[#1E1611]/12">
-            <OwnerToken initials="MR" name="Marta Ruiz" image="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150&h=150" />
+            <OwnerToken initials="MR" name="Marta Ruiz" image="https://images.unsplash.com/photo-1594744803329-e58b31de215f?auto=format&fit=crop&q=80&w=150&h=150" />
           </div>
         </div>
 
@@ -380,7 +380,7 @@ const TEAM_COLUMNS = [
     status: "Out sick",
     tone: "#C2410C",
     reassign: true,
-    image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=150&h=150",
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150&h=150",
     tasks: [
       { time: "09:00 · Rm 217", title: "Follow up with 304 guests", suggest: "Anna" },
       { time: "10:30 · Lobby", title: "Greet VIP Brandt on arrival", suggest: "Sofia" },
@@ -392,7 +392,7 @@ const TEAM_COLUMNS = [
     status: "Full · 5 tasks",
     tone: "#8A6D3B",
     capacity: 88,
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150",
+    image: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&q=80&w=150&h=150",
     tasks: [
       { time: "08:00 · Desk", title: "Morning departures (11)" },
       { time: "All day", title: "Front desk cover" },
@@ -404,7 +404,7 @@ const TEAM_COLUMNS = [
     tone: "#2F483A",
     capacity: 42,
     dropzone: true,
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150",
+    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150&h=150",
     tasks: [{ time: "All morning", title: "Arrivals desk (14)" }],
   },
   {
@@ -412,7 +412,7 @@ const TEAM_COLUMNS = [
     status: "Balanced · concierge",
     tone: "#1E1611",
     capacity: 64,
-    image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80&w=150&h=150",
+    image: "https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&q=80&w=150&h=150",
     tasks: [
       { time: "by 11:00", title: "VIP arrival & amenities" },
       { time: "Evening", title: "Dinner reservations" },
